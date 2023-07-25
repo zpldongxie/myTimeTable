@@ -1,10 +1,10 @@
 <view class="container">
   <view class="top">{{type}}学校信息</view>
   <view class="subCon">
-    <view class="formItem"><input type="text" placeholder="学校名" bindinput="handleNameInput" value="{{current.name}}" />
+    <view class="formItem"><input type="text" placeholder="学校名" bindinput="handleNameInput" maxlength="32" value="{{current.name}}" />
       <Text class="tips">填写学校名称，请尽可能使用全名</Text>
     </view>
-    <view class="formItem"><input type="text" placeholder="学校地址，例：陕西省，西安市，雁塔区" bindinput="handleAddressInput" value="{{current.address}}" />
+    <view class="formItem"><input type="text" placeholder="学校地址，例：陕西省，西安市，雁塔区" maxlength="64" bindinput="handleAddressInput" value="{{current.address}}" />
       <Text class="tips">全国这么大，总有重名的可能，让大家知道是哪里的学校就不会错了</Text>
     </view>
   </view>

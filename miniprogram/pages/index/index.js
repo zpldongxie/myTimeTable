@@ -1,5 +1,6 @@
 const {
-  callFunction
+  callFunction,
+  setOpenId
 } = require('../../utils.js');
 
 Page({
@@ -23,6 +24,7 @@ Page({
         });
         return null
       }
+      setOpenId(resp.result.openid);
       this.setData({
         openId: resp.result.openid
       });

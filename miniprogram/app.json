@@ -13,7 +13,9 @@
     "pages/sumRecord/index",
     "pages/sumRecordResult/index",
     "pages/chooseClass/index",
-    "pages/editSchool/index"
+    "pages/editSchool/index",
+    "pages/editClass/index",
+    "pages/timeTable/index"
   ],
   "window": {
     "backgroundColor": "#a7cf5b",

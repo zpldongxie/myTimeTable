@@ -14,6 +14,11 @@ App({
       });
     }
 
-    this.globalData = {};
+    this.globalData = {
+      openId: null,
+      currentSchool: null,
+      currentGrade: null,
+      currentClass: null
+    };
   }
 });

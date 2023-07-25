@@ -3,8 +3,9 @@
 }
 
 .select-box .input {
-  height: 40px;
-  /* padding: 0 10px; */
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 10px;
   border-bottom: 1px solid #999;
 }
 
@@ -14,7 +15,7 @@
   left: 0;
   right: 0;
   max-height: 200rpx;
-  background-color: #fff;
+  background-color: #a7cf5b;
   overflow-y: auto;
   border: 1px solid #ccc;
   border-top: none;
@@ -26,10 +27,26 @@
 .select-box .dropdown-item {
   padding: 10rpx;
   cursor: pointer;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.select-box .dropdown-item .item-address {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #888888;
+  margin-bottom: 10rpx;
 }
 
 .select-box .scroll-view {
   max-height: 200rpx;
+}
+
+.picker-item {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 10px;
+  border-bottom: 1px solid #999;
 }
 
 .tips {

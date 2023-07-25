@@ -5,42 +5,45 @@ cloud.init({
 });
 const db = cloud.database();
 
-// 学校管理
+// 班级管理
 exports.main = async (event, context) => {
   const {
     method,
     ...payload
   } = event.data || {};
 
-  const schoolDB = db.collection('schools');
+  const classDB = db.collection('classes');
 
   switch (method) {
     case 'get': {
-      // 按名称查询
+      // 按学校和年级查询
       const {
-        name
+        schoolId,
+        gradeCode,
       } = payload;
-      return await schoolDB.where({
-        name
-      }).get();
-    }
-    case 'filter': {
-      const {
-        name
-      } = payload;
-      const regExp = db.RegExp({
-        regexp: name,
-        options: 'i', // i表示不区分大小写
-      });
-      return await schoolDB.where({
-        name: regExp,
+      if (!schoolId) {
+        return {
+          errCode: 1,
+          msg: '缺少学校Id'
+        }
+      }
+      if (!gradeCode) {
+        return {
+          errCode: 1,
+          msg: '缺少年级Code'
+        }
+      }
+      return await classDB.where({
+        schoolId,
+        gradeCode
       }).get();
     }
     case 'create': {
       // 创建
       const {
         name,
-        address,
+        schoolId,
+        gradeCode,
         creator
       } = payload;
       if (!name) {
@@ -49,10 +52,16 @@ exports.main = async (event, context) => {
           msg: '缺少名称'
         }
       }
-      if (!address) {
+      if (!schoolId) {
         return {
           errCode: 1,
-          msg: '缺少地址'
+          msg: '缺少学校Id'
+        }
+      }
+      if (!gradeCode) {
+        return {
+          errCode: 1,
+          msg: '缺少年级Code'
         }
       }
       if (!creator) {
@@ -61,10 +70,11 @@ exports.main = async (event, context) => {
           msg: '缺少创建者信息'
         }
       }
-      return await schoolDB.add({
+      return await classDB.add({
         data: {
           name,
-          address,
+          schoolId,
+          gradeCode,
           creator
         }
       });
@@ -74,7 +84,6 @@ exports.main = async (event, context) => {
       const {
         _id,
         name,
-        address,
         creator
       } = payload;
       if (!_id) {
@@ -87,13 +96,10 @@ exports.main = async (event, context) => {
       if (name) {
         info.name = name;
       }
-      if (address) {
-        info.address = address;
-      }
       if (creator) {
         info.creator = creator;
       }
-      return await schoolDB.where({
+      return await classDB.where({
           _id
         })
         .update({

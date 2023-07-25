@@ -1,31 +1,36 @@
-// pages/editSchool/index.js
+// pages/editClass/index.js
 const {
   callFunction,
-  getOpenId,
-  setCurrentSchool
+  getCurrentSchool,
+  getCurrentGrade,
+  setCurrentClass,
+  getOpenId
 } = require('../../utils.js');
 
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    openId: '',
-    type: '', // 操作类型，创建，修改，删除
-    current: {
-      id: '',
-      name: '',
-      address: ''
-    }, // 当前学校，修改和删除时有效
+    openId: null,
+    currentSchool: null,
+    currentGrade: null,
+    name: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const openId = getOpenId();
+    const currentSchool = getCurrentSchool();
+    const currentGrade = getCurrentGrade();
     this.setData({
-      openId: getOpenId(),
-    })
+      openId,
+      currentSchool,
+      currentGrade,
+    });
     switch (options.type) {
       case 'update':
         this.setData({
@@ -48,32 +53,17 @@ Page({
     }
   },
 
-  /** 学校名 */
   handleNameInput(e) {
     const inputValue = e.detail.value.trim();
     this.setData({
-      current: {
-        ...this.data.current,
-        name: inputValue
-      }
+      name: inputValue
     })
   },
 
-  /** 学校地址 */
-  handleAddressInput(e) {
-    const inputValue = e.detail.value.trim();
-    this.setData({
-      current: {
-        ...this.data.current,
-        address: inputValue
-      }
-    })
-  },
-
-  /** 创建学校 */
-  async createSchool(info) {
+  /** 创建班级 */
+  async createClass(info) {
     try {
-      const res = await callFunction('schools', {
+      const res = await callFunction('classes', {
         method: 'create',
         ...info,
       });
@@ -103,7 +93,7 @@ Page({
       setTimeout(function () {
         wx.navigateBack();
       }, 1000);
-      setCurrentSchool({
+      setCurrentClass({
         ...info,
         _id: res.result._id
       });
@@ -115,7 +105,7 @@ Page({
         // 处理唯一索引约束的异常
         console.log('插入记录失败，已存在重复数据');
         wx.showToast({
-          title: '这个学校信息已经存在，不用再创建了。',
+          title: '这个班级已经存在，不用再创建了。',
           icon: 'none'
         })
       } else {
@@ -129,16 +119,9 @@ Page({
   /** 提交 */
   handleSubmit() {
     // 进行表单验证
-    if (!this.data.current.name) {
+    if (!this.data.name) {
       wx.showToast({
-        title: '请填写学校名称',
-        icon: 'none'
-      });
-      return;
-    }
-    if (!this.data.current.address) {
-      wx.showToast({
-        title: '请填写学校地址',
+        title: '名称不能为空',
         icon: 'none'
       });
       return;
@@ -148,9 +131,10 @@ Page({
       content: '请确认信息无误',
       complete: (res) => {
         if (res.confirm) {
-          this.createSchool({
-            name: this.data.current.name,
-            address: this.data.current.address,
+          this.createClass({
+            name: this.data.name,
+            schoolId: this.data.currentSchool._id,
+            gradeCode: this.data.currentGrade.code,
             creator: this.data.openId,
           });
         }
