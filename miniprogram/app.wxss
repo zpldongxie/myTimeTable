@@ -4,24 +4,61 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-} 
+  padding: 10rpx;
+}
+
+.subCon {
+  border: 1px solid #a7cf5b;
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 3px rgb(167 207 91 / 0.5);
+  font-weight: 400;
+  font-size: 35rpx;
+}
 
 button {
   background: initial;
 }
 
-button:focus{
+button:focus {
   outline: 0;
 }
 
-button::after{
+button::after {
   border: none;
 }
 
+.button {
+  width: 300rpx;
+  text-align: center;
+  margin: 20rpx auto 0 auto;
+  height: 80rpx;
+  color: white;
+  border-radius: 5px;
+  line-height: 80rpx;
+  background-color: #07c160;
+}
+
+.tips {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #888888;
+  margin-bottom: 28rpx;
+}
 
 page {
-  background: #f6f6f6;
+  height: 100vh;
+  background: #a7cf5b;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+page view {
+  box-sizing: border-box;
 }

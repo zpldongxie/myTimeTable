@@ -1,1 +1,41 @@
-/* pages/chooseClass/index.wxss */
+.select-box {
+  position: relative;
+}
+
+.select-box .input {
+  height: 40px;
+  /* padding: 0 10px; */
+  border-bottom: 1px solid #999;
+}
+
+.select-box .dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  max-height: 200rpx;
+  background-color: #fff;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.select-box .dropdown-item {
+  padding: 10rpx;
+  cursor: pointer;
+}
+
+.select-box .scroll-view {
+  max-height: 200rpx;
+}
+
+.tips {
+  margin-top: 20rpx;
+}
+
+.tips a {
+  color: #33f
+}

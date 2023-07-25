@@ -1,0 +1,21 @@
+.formItem {
+  margin: 16px 0;
+}
+
+input {
+  height: 40px;
+  /* padding: 0 10px; */
+  border-bottom: 1px solid #999;
+  margin-bottom: 5px;
+}
+
+.formItem .tips {
+  color: #666;
+}
+
+.bottomTips {
+  color: #666;
+  font-size: 35rpx;
+  text-indent: 2em;
+  line-height: 50rpx;
+}

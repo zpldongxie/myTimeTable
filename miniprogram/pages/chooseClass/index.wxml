@@ -1,2 +1,26 @@
-<!--pages/chooseClass/index.wxml-->
-<text>pages/chooseClass/index.wxml</text>
+<view class="container">
+  <view class="top">进入我的班级</view>
+  <view class="subCon">
+    <text class="label">选择学校</text>
+    <view class="select-box school">
+      <input class="input" placeholder="输入学校名快速查找" bindinput="handleInput" value="{{selectedSchool.name}}" />
+      <view class="dropdown" wx:if="{{showSchoolDropdown}}">
+        <scroll-view class="scroll-view" scroll-y="{{showSchoolDropdown}}" scroll-into-view="{{scrollIntoView}}">
+          <view class="dropdown-item" wx:for="{{filteredSchools}}" wx:key="_id" bindtap="handleSelect" data-school="{{item}}">{{item.name}}</view>
+        </scroll-view>
+      </view>
+    </view>
+    <view class="tips">
+      找不到自己的学校？<a bindtap="jumpPage" data-page="editSchool" data-params="type=create">创建一个</a>。
+    </view>
+  </view>
+
+  <view class="subCon grade" wx:if="{{showGrade}}">
+    <view class="select-box">
+      <text class="label">选择年级：</text>
+      <picker bindchange="handleGradeChange" value="{{selectedGradeIndex}}" range="{{grades}}">
+        <view class="picker-item">{{grades[selectedGradeIndex]}}</view>
+      </picker>
+    </view>
+  </view>
+</view>

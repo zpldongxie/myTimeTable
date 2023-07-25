@@ -8,13 +8,13 @@ const db = cloud.database();
 // 用户管理
 exports.main = async (event, context) => {
   const {
-    type,
+    method,
     ...payload
   } = event.data || {};
 
   const userDB = db.collection('users');
 
-  switch (type) {
+  switch (method) {
     case 'get':
       // 按openId查询
       const {

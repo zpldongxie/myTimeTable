@@ -27,7 +27,7 @@ Page({
         openId: resp.result.openid
       });
       return callFunction('users', {
-        type: 'get',
+        method: 'get',
         openId: this.data.openId,
       })
     }).then((resp) => {
@@ -38,7 +38,8 @@ Page({
         });
         return null
       }
-      if (resp.result) {
+      console.log('resp: ', resp);
+      if (resp.result.data.length) {
         // 有用户登录记录
         // wx.navigateTo({
         //   url: `/pages/${e.currentTarget.dataset.page}/index?envId=${this.data.selectedEnv.envId}`,
