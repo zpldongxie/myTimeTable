@@ -69,14 +69,62 @@ const debounceAsync = function (func, wait) {
       }, wait);
     });
   };
-}
+};
+
+/** 按名称模糊搜索学校 */
+const getSchools = async (name) => {
+  if (!name) {
+    return [];
+  }
+  return callFunction('schools', {
+    method: 'filter',
+    name,
+  }).then(function (res) {
+    if (res.errMsg !== "cloud.callFunction:ok") {
+      console.error(res.errMsg);
+      return [];
+    }
+    if (res.result.errCode || res.result.errMsg !== 'collection.get:ok') {
+      console.error(res.result);
+      return [];
+    }
+    return res.result.data;
+  }).catch(function (e) {
+    console.error(e)
+    return [];
+  });
+};
+
+/** 根据_id查找单个学校 */
+const getSchoolById = async (_id) => {
+  if (!_id) {
+    console.warn('参数缺少_id');
+    return null;
+  }
+  return callFunction('schools', {
+    method: 'getById',
+    _id,
+  }).then(function (res) {
+    if (res.errMsg !== "cloud.callFunction:ok") {
+      console.error(res.errMsg);
+      return null;
+    }
+    if (res.result.errCode || res.result.errMsg !== 'document.get:ok') {
+      console.error(res.result);
+      return null;
+    }
+    return res.result.data;
+  }).catch(function (e) {
+    console.error(e)
+    return null;
+  });
+};
 
 /** 查询所有年级 */
 const getGrades = async () => {
   return callFunction('grades', {
     method: 'get',
   }).then(function (res) {
-    console.log('res: ', res)
     if (res.errMsg !== "cloud.callFunction:ok") {
       console.error(res.errMsg);
       return [];
@@ -92,13 +140,93 @@ const getGrades = async () => {
   });
 }
 
+/** 按code查询单个年级 */
+const getGradeByCode = async (code) => {
+  if (!code) {
+    console.error('参数缺少code');
+    return [];
+  }
+  const grades = await getGrades();
+  return grades.find(g => g.code === code) || null
+};
+
+/** 按学校和年级查找班级列表 */
+const getClasses = async ({
+  schoolId,
+  gradeCode
+}) => {
+  if (!schoolId) {
+    console.error('参数缺少schoolId');
+    return [];
+  }
+  if (!gradeCode) {
+    console.error('参数缺少gradeCode');
+    return [];
+  }
+  return callFunction('classes', {
+    method: 'get',
+    schoolId,
+    gradeCode,
+  }).then(function (res) {
+    if (res.errMsg !== "cloud.callFunction:ok") {
+      console.error(res.errMsg);
+      return [];
+    }
+    if (res.result.errCode || res.result.errMsg !== 'collection.get:ok') {
+      console.error(res.result);
+      return [];
+    }
+    return res.result.data;
+  }).catch(function (e) {
+    console.error(e)
+    return [];
+  });
+};
+
+/** 按条件查找单个班级 */
+const getClass = async ({
+  schoolId,
+  gradeCode,
+  name
+}) => {
+  if (!schoolId) {
+    console.error('参数缺少schoolId');
+    return null;
+  }
+  if (!gradeCode) {
+    console.error('参数缺少gradeCode');
+    return null;
+  }
+  if (!name) {
+    console.error('参数缺少班级name');
+    return null;
+  }
+  return callFunction('classes', {
+    method: 'get',
+    schoolId,
+    gradeCode,
+    name,
+  }).then(function (res) {
+    if (res.errMsg !== "cloud.callFunction:ok") {
+      console.error(res.errMsg);
+      return null;
+    }
+    if (res.result.errCode || res.result.errMsg !== 'collection.get:ok') {
+      console.error(res.result);
+      return null;
+    }
+    return res.result.data.length ? res.result.data[0] : null;
+  }).catch(function (e) {
+    console.error(e)
+    return null;
+  });
+};
+
 module.exports = {
   /** 云函数调用封装 */
   callFunction,
   /** 防抖方法封装 */
   debounceAsync,
-  /** 查询所有年级 */
-  getGrades,
   /** 全局，获取openId */
   getOpenId,
   /** 全局，设置openId */
@@ -115,4 +243,10 @@ module.exports = {
   getCurrentClass,
   /** 全局，设置班级 */
   setCurrentClass,
+  getSchools,
+  getSchoolById,
+  getGrades,
+  getGradeByCode,
+  getClasses,
+  getClass,
 }

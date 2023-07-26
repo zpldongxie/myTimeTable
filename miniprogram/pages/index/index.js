@@ -1,6 +1,12 @@
 const {
   callFunction,
-  setOpenId
+  setOpenId,
+  setCurrentSchool,
+  setCurrentGrade,
+  getSchoolById,
+  getGradeByCode,
+  getClass,
+  setCurrentClass
 } = require('../../utils.js');
 
 Page({
@@ -16,6 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const that = this;
     callFunction('getOpenId').then((resp) => {
       if (resp.errMsg !== "cloud.callFunction:ok") {
         wx.showToast({
@@ -40,20 +47,73 @@ Page({
         });
         return null
       }
-      console.log('resp: ', resp);
       if (resp.result.data.length) {
         // 有用户登录记录
-        // wx.navigateTo({
-        //   url: `/pages/${e.currentTarget.dataset.page}/index?envId=${this.data.selectedEnv.envId}`,
-        // });
-        wx.showToast({
-          title: '老用户，直接进入课表',
+        const userInfo = resp.result.data[0];
+        getSchoolById(userInfo.schoolId).then(res => {
+          if (res) {
+            // 保存当前学校信息
+            setCurrentSchool(res);
+            return {};
+          }
+          return {
+            errCode: 1,
+            errMsg: '您上次进入的学校已被删除，请重新选择或创建学校和班级。'
+          };
+        }).then(res => {
+          if (res.errCode) {
+            return res;
+          }
+          // 查年级
+          return getGradeByCode(userInfo.gradeCode);
+        }).then(res => {
+          if (res.errCode) {
+            return res;
+          }
+          if (res) {
+            // 保存当前年级信息
+            setCurrentGrade(res);
+            return {};
+          }
+          return {
+            errCode: 1,
+            errMsg: null,
+          };
+        }).then(res => {
+          if (res.errCode) {
+            return res;
+          }
+          // 查班级
+          return getClass({
+            schoolId: userInfo.schoolId,
+            gradeCode: userInfo.gradeCode,
+            name: userInfo.className
+          });
+        }).then(res => {
+          if (res.errCode) {
+            return res;
+          }
+          if (res) {
+            // 保存当前班级信息
+            setCurrentClass(res);
+            return {};
+          }
+          return {
+            errCode: 1,
+            errMsg: '您上次进入的班级已被删除，请重新选择或创建班级。',
+          };
+        }).then(res => {
+          if (res.errCode) {
+            return that.gotoChoosePage(res.errMsg);
+          }
+          if (res) {
+            return that.gotoTimeTablePage();
+          }
+          that.gotoChoosePage();
         })
       } else {
         // 无用户登录记录
-        wx.navigateTo({
-          url: `/pages/chooseClass/index?openId=${this.data.openId}`,
-        });
+        that.gotoChoosePage();
       }
     }).catch((e) => {
       console.error(e);
@@ -61,6 +121,32 @@ Page({
         title: '系统错误，请联系管理员',
         icon: 'none'
       });
+    });
+  },
+
+  /** 跳转到班级选择页 */
+  gotoChoosePage(msg) {
+    if (msg) {
+      wx.showToast({
+        title: msg,
+        icon: 'none'
+      });
+      setTimeout(() => {
+        wx.navigateTo({
+          url: `/pages/chooseClass/index?openId=${this.data.openId}`,
+        });
+      }, 2000);
+    } else {
+      wx.navigateTo({
+        url: `/pages/chooseClass/index?openId=${this.data.openId}`,
+      });
+    }
+  },
+
+  /** 跳转到课表页 */
+  gotoTimeTablePage() {
+    wx.navigateTo({
+      url: `/pages/timeTable/index`,
     });
   },
 

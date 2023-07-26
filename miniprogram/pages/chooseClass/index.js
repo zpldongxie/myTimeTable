@@ -4,7 +4,10 @@ const {
   getGrades,
   setCurrentSchool,
   setCurrentGrade,
-  setCurrentClass
+  setCurrentClass,
+  getOpenId,
+  getSchools,
+  getClasses
 } = require('../../utils.js');
 
 Page({
@@ -33,7 +36,7 @@ Page({
   onLoad(options) {
     const that = this;
     // 对学校查询做防抖处理
-    this.debouncedFindSchool = debounceAsync(this.filterSchool, 500);
+    this.debouncedFindSchool = debounceAsync(getSchools, 500);
     getGrades().then(function (gradeList) {
       that.setData({
         gradeList,
@@ -44,6 +47,7 @@ Page({
   },
 
   jumpPage(e) {
+    // 创建班级必需先选好学校和年级
     if (e.currentTarget.dataset.page === 'editClass') {
       if (!this.data.selectedSchool._id || !this.data.selectedGrade) {
         wx.showToast({
@@ -54,6 +58,10 @@ Page({
         return;
       }
     }
+    // 进入课表时保存记录，下次用户可直接从首页进行跳转
+    if (e.currentTarget.dataset.page === 'timeTable') {
+      this.createUserRecord();
+    }
     let url = `/pages/${e.currentTarget.dataset.page}/index`
     if (e.currentTarget.dataset.params) {
       url += `?${e.currentTarget.dataset.params}`
@@ -63,58 +71,48 @@ Page({
     });
   },
 
-  /** 按学校名称模糊查找 */
-  async filterSchool(name) {
-    if (!name) {
-      return [];
+  /** 记录用户选择，异步处理，若失败，最多下次进来还要选班级，不影响正常使用 */
+  async createUserRecord() {
+    const currentSchool = this.data.selectedSchool || {};
+    const currentGrade = this.data.selectedGrade || {};
+    const currentClass = this.data.selectedClass || {};
+    const info = {
+      schoolId: currentSchool._id,
+      gradeCode: currentGrade.code,
+      className: currentClass.name,
+      openId: getOpenId()
+    };
+    if (!info.schoolId || !info.gradeCode || !info.className || !info.openId) {
+      console.warn('用户信息不完整: ', info);
+      return;
     }
-    return callFunction('schools', {
-      method: 'filter',
-      name,
-    }).then(function(res) {
-      if (res.errMsg !== "cloud.callFunction:ok") {
-        console.error(res.errMsg);
-        return [];
-      }
-      if (res.result.errMsg !== 'collection.get:ok') {
-        console.error(res.result.errMsg);
-        return [];
-      }
-      return res.result.data;
-    }).catch(function(e) {
-      console.error(e)
-      return [];
-    });
-  },
 
-  /** 按学校和年级查找班级列表 */
-  async getClasses() {
-    if (!this.data.selectedSchool._id) {
-      console.error('没有学校_id');
-      return [];
-    }
-    if (!this.data.selectedGrade) {
-      console.error('没有年级Code');
-      return [];
-    }
-    return callFunction('classes', {
-      method: 'get',
-      schoolId: this.data.selectedSchool._id,
-      gradeCode: this.data.selectedGrade.code,
-    }).then(function(res) {
-      if (res.errMsg !== "cloud.callFunction:ok") {
-        console.error(res.errMsg);
-        return [];
+    try {
+      const res = await callFunction('users', {
+        method: 'upsert',
+        ...info,
+      });
+      if (res.errMsg !== 'cloud.callFunction:ok') {
+        console.warn('云函数调用异常。');
+        console.warn(res.errMsg);
+        return;
       }
-      if (res.result.errMsg !== 'collection.get:ok') {
-        console.error(res.result.errMsg);
-        return [];
+      if (res.result.errCode || (res.result.errMsg !== 'collection.add:ok' && res.result.errMsg !== 'document.update:ok')) {
+        console.warn('数据库操作异常。');
+        console.warn(res.result);
+        return;
       }
-      return res.result.data;
-    }).catch(function(e) {
-      console.error(e)
-      return [];
-    });
+      return res.result;
+    } catch (e) {
+      // 判断异常类型
+      if (e.errMsg && e.errMsg.includes('-502001')) {
+        // 处理唯一索引约束的异常
+        console.warn('插入记录失败，已存在重复数据');
+      } else {
+        // 处理其他异常
+        console.warn('插入记录失败：', e);
+      }
+    }
   },
 
   /** 学校名称输入 */
@@ -178,8 +176,10 @@ Page({
       selectedClassIndex: -1,
       showIntoButton: false
     });
-    this.getClasses().then((value) => {
-      console.log('value: ', value);
+    getClasses({
+      schoolId: this.data.selectedSchool._id,
+      gradeCode: this.data.selectedGrade?.code
+    }).then((value) => {
       that.setData({
         classList: value,
         classes: value.map(v => v.name),
@@ -190,12 +190,11 @@ Page({
 
   /** 选择班级 */
   handleClassChange(e) {
-    const that = this;
     const selectedClassIndex = e.detail.value; // 获取选中的年级索引
-    const selectedClass = this.data.classList.find(g => g.name === this.data.grades[selectedClassIndex]) || null;
+    const selectedClass = this.data.classList.find(g => g.name === this.data.classes[selectedClassIndex]) || null;
     setCurrentClass(selectedClass);
     this.setData({
-      selectedClass: selectedClass,
+      selectedClass,
       selectedClassIndex,
       showIntoButton: true
     });

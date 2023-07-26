@@ -20,13 +20,59 @@ exports.main = async (event, context) => {
       const {
         openId
       } = payload;
+      if (!openId) {
+        return {
+          errCode: 1,
+          msg: '缺少openId'
+        }
+      }
       return await userDB.where({
         openId
       }).get();
-
+    case 'upsert': {
+      // 插入或更新
+      const {
+        schoolId,
+        gradeCode,
+        className,
+        openId
+      } = payload;
+      if (!schoolId || !gradeCode || !className || !openId) {
+        return {
+          errCode: 1,
+          msg: '参数不完整，无法保存。',
+        };
+      }
+      const info = {
+        schoolId,
+        gradeCode,
+        className,
+        openId
+      };
+      return await userDB.where(info).get().then(res => {
+        if (res.data.length) {
+          // update
+          return userDB.doc(res.data[0]._id).update({
+            data: {
+              ...info,
+              updatedAt: new Date()
+            }
+          });
+        } else {
+          // create
+          return userDB.add({
+            data: {
+              ...info,
+              createdAt: new Date()
+            }
+          });
+        }
+      });
+    }
     default:
-      break;
+      return {
+        errCode: 1,
+          msg: '未指定正确的操作类型',
+      };
   }
-  // 返回数据库查询结果
-  return null;
 };

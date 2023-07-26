@@ -76,9 +76,9 @@ Page({
         })
         return;
       }
-      if (res.result.errMsg !== 'collection.add:ok') {
+      if (res.result.errCode || res.result.errMsg !== 'collection.add:ok') {
         console.error('数据库操作异常。');
-        console.error(res.result.errMsg);
+        console.error(res.result);
         wx.showToast({
           title: '好像没有创建成功，请过一会再试试',
           icon: 'none'
@@ -99,11 +99,10 @@ Page({
       });
       return res.result._id;
     } catch (e) {
-      console.log(e.errMsg.includes('-502001'));
       // 判断异常类型
-      if (e.errMsg.includes('-502001')) {
+      if (e.errMsg && e.errMsg.includes('-502001')) {
         // 处理唯一索引约束的异常
-        console.log('插入记录失败，已存在重复数据');
+        console.warn('插入记录失败，已存在重复数据');
         wx.showToast({
           title: '这个班级已经存在，不用再创建了。',
           icon: 'none'
@@ -113,7 +112,6 @@ Page({
         console.error('插入记录失败：', e);
       }
     }
-
   },
 
   /** 提交 */

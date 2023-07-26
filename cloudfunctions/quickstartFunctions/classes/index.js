@@ -20,6 +20,7 @@ exports.main = async (event, context) => {
       const {
         schoolId,
         gradeCode,
+        name
       } = payload;
       if (!schoolId) {
         return {
@@ -33,10 +34,14 @@ exports.main = async (event, context) => {
           msg: '缺少年级Code'
         }
       }
-      return await classDB.where({
+      const queryInfo = {
         schoolId,
         gradeCode
-      }).get();
+      }
+      if (name) {
+        queryInfo.name = name;
+      }
+      return await classDB.where(queryInfo).get();
     }
     case 'create': {
       // 创建
@@ -75,7 +80,8 @@ exports.main = async (event, context) => {
           name,
           schoolId,
           gradeCode,
-          creator
+          creator,
+          createdAt: new Date()
         }
       });
     }
@@ -92,7 +98,9 @@ exports.main = async (event, context) => {
           msg: '未指定_id'
         }
       }
-      const info = {};
+      const info = {
+        updatedAt: new Date()
+      };
       if (name) {
         info.name = name;
       }

@@ -15,6 +15,13 @@ exports.main = async (event, context) => {
   const schoolDB = db.collection('schools');
 
   switch (method) {
+    case 'getById': {
+      // 按ID查询
+      const {
+        _id
+      } = payload;
+      return await schoolDB.doc(_id).get();
+    }
     case 'get': {
       // 按名称查询
       const {
@@ -65,7 +72,8 @@ exports.main = async (event, context) => {
         data: {
           name,
           address,
-          creator
+          creator,
+          createdAt: new Date()
         }
       });
     }
@@ -83,7 +91,9 @@ exports.main = async (event, context) => {
           msg: '未指定_id'
         }
       }
-      const info = {};
+      const info = {
+        updatedAt: new Date()
+      };
       if (name) {
         info.name = name;
       }

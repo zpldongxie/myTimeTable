@@ -9,7 +9,6 @@ const db = cloud.database();
 // 创建集合云函数入口函数
 exports.main = async (event, context) => {
   const { dbName } = event.data || {};
-  console.log('dbName: ', dbName)
   if (!dbName) {
     return {
       success: false,
