@@ -25,18 +25,24 @@
   <view class="subCon grade">
     <view class="select-box">
       <text class="label">选择年级：</text>
-      <picker bindchange="handleGradeChange" value="{{selectedGradeIndex}}" range="{{grades}}">
-        <view class="picker-item">{{grades[selectedGradeIndex]}}</view>
+      <picker wx:if="{{selectedSchool._id}}" bindchange="handleGradeChange" value="{{selectedGradeIndex}}" range="{{grades}}">
+        <view class="picker-item">{{grades[selectedGradeIndex] || '请选择'}}</view>
       </picker>
+      <view wx:else="{{selectedSchool._id}}">
+        <view class="picker-item">{{grades[selectedGradeIndex]}}</view>
+      </view>
     </view>
   </view>
 
   <view class="subCon class">
     <view class="select-box">
       <text class="label">选择班级：</text>
-      <picker bindchange="handleClassChange" value="{{selectedClassIndex}}" range="{{classes}}">
-        <view class="picker-item">{{classes[selectedClassIndex]}}</view>
+      <picker wx:if="{{selectedGrade}}" bindchange="handleClassChange" value="{{selectedClassIndex}}" range="{{classes}}">
+        <view class="picker-item">{{classes[selectedClassIndex] || '请选择'}}</view>
       </picker>
+      <view wx:else="{{selectedGrade}}">
+        <view class="picker-item">{{classes[selectedClassIndex]}}</view>
+      </view>
     </view>
     <view class="tips">
       没有自己的班级？<a bindtap="jumpPage" data-page="editClass" data-params="type=create">创建一个</a>。

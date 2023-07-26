@@ -14,7 +14,7 @@
   top: 40px;
   left: 0;
   right: 0;
-  max-height: 200rpx;
+  max-height: 60vh;
   background-color: #a7cf5b;
   overflow-y: auto;
   border: 1px solid #ccc;
@@ -36,10 +36,6 @@
   font-weight: 400;
   color: #888888;
   margin-bottom: 10rpx;
-}
-
-.select-box .scroll-view {
-  max-height: 200rpx;
 }
 
 .picker-item {

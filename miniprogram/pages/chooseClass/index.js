@@ -124,6 +124,9 @@ Page({
         filteredSchools: result,
         showSchoolDropdown: inputValue !== "", // 输入框有值时显示下拉框
         scrollIntoView: "", // 清空滚动位置
+        selectedSchool: {
+          name: inputValue
+        },
         selectedGrade: null,
         selectedGradeIndex: -1,
         selectedClass: null,

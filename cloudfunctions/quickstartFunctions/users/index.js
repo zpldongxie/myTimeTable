@@ -69,6 +69,21 @@ exports.main = async (event, context) => {
         }
       });
     }
+    case 'del': {
+      // 按openId删除
+      const {
+        openId
+      } = payload;
+      if (!openId) {
+        return {
+          errCode: 1,
+          msg: '缺少openId'
+        }
+      }
+      return await userDB.where({
+        openId
+      }).remove();
+    }
     default:
       return {
         errCode: 1,

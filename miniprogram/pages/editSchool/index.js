@@ -17,6 +17,8 @@ Page({
       name: '',
       address: ''
     }, // 当前学校，修改和删除时有效
+    region: [],
+    customItem: '全部'
   },
 
   /**
@@ -60,13 +62,14 @@ Page({
   },
 
   /** 学校地址 */
-  handleAddressInput(e) {
-    const inputValue = e.detail.value.trim();
+  bindRegionChange(e) {
+    const inputValue = e.detail.value;
     this.setData({
       current: {
         ...this.data.current,
-        address: inputValue
-      }
+        address: inputValue.join(','),
+      },
+      region: inputValue
     })
   },
 

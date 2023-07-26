@@ -104,11 +104,19 @@ Page({
           };
         }).then(res => {
           if (res.errCode) {
+            callFunction('users', {
+              method: 'del',
+              openId: that.data.openId
+            })
             return that.gotoChoosePage(res.errMsg);
           }
           if (res) {
             return that.gotoTimeTablePage();
           }
+          callFunction('users', {
+            method: 'del',
+            openId: that.data.openId
+          })
           that.gotoChoosePage();
         })
       } else {
