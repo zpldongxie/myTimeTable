@@ -15,12 +15,13 @@
     "pages/chooseClass/index",
     "pages/editSchool/index",
     "pages/editClass/index",
-    "pages/timeTable/index"
+    "pages/timeTable/index",
+    "pages/editSchedule/index"
   ],
   "window": {
-    "backgroundColor": "#a7cf5b",
+    "backgroundColor": "#a29be4",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#a7cf5b",
+    "navigationBarBackgroundColor": "#a29be4",
     "navigationBarTitleText": "我班课表",
     "navigationBarTextStyle": "black"
   },

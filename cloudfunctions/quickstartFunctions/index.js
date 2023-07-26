@@ -1,9 +1,14 @@
 const getOpenId = require('./getOpenId/index');
 const getMiniProgramCode = require('./getMiniProgramCode/index');
 const users = require('./users/index');
+// 学校
 const schools = require('./schools/index');
+// 年级
 const grades = require('./grades/index');
+// 班级
 const classes = require('./classes/index');
+// 作息时间
+const schedules = require('./schedules/index');
 const createCollection = require('./createCollection/index');
 const selectRecord = require('./selectRecord/index');
 const updateRecord = require('./updateRecord/index');
@@ -25,6 +30,8 @@ exports.main = async (event, context) => {
       return await grades.main(event, context);
     case 'classes':
       return await classes.main(event, context);
+    case 'schedules':
+      return await schedules.main(event, context);
     case 'createCollection':
       return await createCollection.main(event, context);
     case 'selectRecord':

@@ -1,2 +1,13 @@
 <!--pages/timeTable/index.wxml-->
-<text>pages/timeTable/index.wxml</text>
+<view class="container">
+  <view class="top">
+    <view class="title">{{currentGrade.name}}{{currentClass.name}}课程表</view>
+    <view class="subTitle">{{currentSchool.name}}</view>
+  </view>
+  <view wx:if="{{isReday && schedule}}">有课表</view>
+  <view wx:if="{{isReday && !schedule}}" class="subCon">
+    <view>这个班级还没有课表</view>
+    <view>我来创建一个</view>
+    <view>邀请好友来创建</view>
+  </view>
+</view>

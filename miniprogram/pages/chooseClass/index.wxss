@@ -15,7 +15,7 @@
   left: 0;
   right: 0;
   max-height: 60vh;
-  background-color: #a7cf5b;
+  background-color: #a29be4;
   overflow-y: auto;
   border: 1px solid #ccc;
   border-top: none;

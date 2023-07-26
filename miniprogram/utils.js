@@ -71,6 +71,32 @@ const debounceAsync = function (func, wait) {
   };
 };
 
+/** 
+ * 分析云函数调用结果 
+ * @param {Object} res 云函数调用结果 
+ * @param {string} messageType 数据库信息类型，例如列表查询为collection.get，按id查询为document.get，创建为collection.add，更新为document.update
+ * @param {any} defaultValue 默认值 
+ * @returns {any} 返回分析后的数据 
+ */
+const analysisRes = ({
+  res,
+  messageType,
+  defaultValue
+}) => {
+  if (res.errMsg !== "cloud.callFunction:ok") {
+    console.warn('云函数调用异常。');
+    console.error(res.errMsg);
+    return defaultValue;
+  }
+  // messageType为数据库信息类型，例如列表查询为collection.get，按id查询为document.get，创建为collection.add，更新为document.update
+  if (res.result.errCode || (messageType && res.result.errMsg !== messageType + ':ok')) {
+    console.warn('数据库操作异常。');
+    console.error(res.result);
+    return defaultValue;
+  }
+  return res.result.data;
+}
+
 /** 按名称模糊搜索学校 */
 const getSchools = async (name) => {
   if (!name) {
@@ -80,15 +106,11 @@ const getSchools = async (name) => {
     method: 'filter',
     name,
   }).then(function (res) {
-    if (res.errMsg !== "cloud.callFunction:ok") {
-      console.error(res.errMsg);
-      return [];
-    }
-    if (res.result.errCode || res.result.errMsg !== 'collection.get:ok') {
-      console.error(res.result);
-      return [];
-    }
-    return res.result.data;
+    return analysisRes({
+      res,
+      messageType: 'collection.get',
+      defaultValue: []
+    });
   }).catch(function (e) {
     console.error(e)
     return [];
@@ -105,15 +127,11 @@ const getSchoolById = async (_id) => {
     method: 'getById',
     _id,
   }).then(function (res) {
-    if (res.errMsg !== "cloud.callFunction:ok") {
-      console.error(res.errMsg);
-      return null;
-    }
-    if (res.result.errCode || res.result.errMsg !== 'document.get:ok') {
-      console.error(res.result);
-      return null;
-    }
-    return res.result.data;
+    return analysisRes({
+      res,
+      messageType: 'document.get',
+      defaultValue: null
+    });
   }).catch(function (e) {
     console.error(e)
     return null;
@@ -168,15 +186,11 @@ const getClasses = async ({
     schoolId,
     gradeCode,
   }).then(function (res) {
-    if (res.errMsg !== "cloud.callFunction:ok") {
-      console.error(res.errMsg);
-      return [];
-    }
-    if (res.result.errCode || res.result.errMsg !== 'collection.get:ok') {
-      console.error(res.result);
-      return [];
-    }
-    return res.result.data;
+    return analysisRes({
+      res,
+      messageType: 'collection.get',
+      defaultValue: []
+    });
   }).catch(function (e) {
     console.error(e)
     return [];
@@ -207,15 +221,16 @@ const getClass = async ({
     gradeCode,
     name,
   }).then(function (res) {
-    if (res.errMsg !== "cloud.callFunction:ok") {
-      console.error(res.errMsg);
-      return null;
+    return analysisRes({
+      res,
+      messageType: 'collection.get',
+      defaultValue: []
+    });
+  }).then(res => {
+    if (res.length) {
+      return res[0];
     }
-    if (res.result.errCode || res.result.errMsg !== 'collection.get:ok') {
-      console.error(res.result);
-      return null;
-    }
-    return res.result.data.length ? res.result.data[0] : null;
+    return null;
   }).catch(function (e) {
     console.error(e)
     return null;
@@ -243,6 +258,7 @@ module.exports = {
   getCurrentClass,
   /** 全局，设置班级 */
   setCurrentClass,
+  analysisRes,
   getSchools,
   getSchoolById,
   getGrades,
