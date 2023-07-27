@@ -19,6 +19,14 @@
   font-size: 35rpx;
 }
 
+.a, button.a {
+  color: #33f;
+  display: inline;
+  padding: 0;
+  font-weight: unset;
+  font-size: unset;
+}
+
 button {
   background: initial;
 }

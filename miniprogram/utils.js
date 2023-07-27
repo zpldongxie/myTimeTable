@@ -51,6 +51,14 @@ const getCurrentClass = () => {
 const setCurrentClass = (info) => {
   app.globalData.currentClass = info;
 }
+/** 全局，获取当前用户 */
+const getCurrentUser = () => {
+  return app.globalData.currentUser;
+}
+/** 全局，设置当前用户 */
+const setCurrentUser = (info) => {
+  app.globalData.currentUser = info;
+}
 
 /** 防抖方法封装 */
 const debounceAsync = function (func, wait) {
@@ -258,6 +266,10 @@ module.exports = {
   getCurrentClass,
   /** 全局，设置班级 */
   setCurrentClass,
+  /** 全局，获取当前用户 */
+  getCurrentUser,
+  /** 全局，设置当前用户 */
+  setCurrentUser,
   analysisRes,
   getSchools,
   getSchoolById,

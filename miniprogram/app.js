@@ -18,7 +18,8 @@ App({
       openId: null,
       currentSchool: null,
       currentGrade: null,
-      currentClass: null
+      currentClass: null,
+      currentUser: null,
     };
   }
 });
