@@ -2,7 +2,8 @@
 const {
   callFunction,
   getOpenId,
-  setCurrentSchool
+  setCurrentSchool,
+  getCurrentUser
 } = require('../../utils.js');
 
 Page({
@@ -150,10 +151,12 @@ Page({
       content: '请确认信息无误',
       complete: (res) => {
         if (res.confirm) {
+          const userInfo = getCurrentUser();
           this.createSchool({
             name: this.data.current.name,
             address: this.data.current.address,
             creator: this.data.openId,
+            creatorUser: userInfo,
           });
         }
       }

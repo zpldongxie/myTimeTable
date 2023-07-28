@@ -18,7 +18,8 @@
       </view>
     </view>
     <view class="tips">
-      找不到自己的学校？<a bindtap="jumpPage" data-page="editSchool" data-params="type=create">创建一个</a>。
+      找不到自己的学校？<getUserInfoBtn text="创建一个" className="a" force failTips="不告诉我你是谁，就不让你去创建学校信息哦。" bind:callback="jumpPage" data-page="editSchool" data-params="type=create" />
+      <!-- <Text class="a" bindtap="jumpPage" data-page="editSchool" data-params="type=create">创建一个</Text>。 -->
     </view>
   </view>
 
@@ -45,7 +46,8 @@
       </view>
     </view>
     <view class="tips">
-      没有自己的班级？<a bindtap="jumpPage" data-page="editClass" data-params="type=create">创建一个</a>。
+      没有自己的班级？<getUserInfoBtn text="创建一个" className="a" force failTips="不告诉我你是谁，就不让你去创建班级信息哦。" bind:callback="jumpPage" data-page="editClass" data-params="type=create" />
+      <!-- <a bindtap="jumpPage" data-page="editClass" data-params="type=create">创建一个</a>。 -->
     </view>
   </view>
 

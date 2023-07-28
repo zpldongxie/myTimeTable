@@ -48,7 +48,3 @@
 .tips {
   margin-top: 20rpx;
 }
-
-.tips a {
-  color: #33f
-}

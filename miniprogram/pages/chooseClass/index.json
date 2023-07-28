@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "getUserInfoBtn": "/components/getUserInfoBtn/index"
+  }
 }

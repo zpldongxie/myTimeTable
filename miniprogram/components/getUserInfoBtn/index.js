@@ -1,5 +1,6 @@
 const {
-  setCurrentUser
+  setCurrentUser,
+  getCurrentUser
 } = require("../../utils");
 
 // components/getUserInfoBtn/index.js
@@ -32,6 +33,7 @@ Component({
    */
   data: {
     canIUseGetUserProfile: false,
+    hasUserInfo: false,
   },
 
   lifetimes: {
@@ -39,6 +41,11 @@ Component({
       if (wx.getUserProfile) {
         this.setData({
           canIUseGetUserProfile: true
+        })
+      }
+      if (getCurrentUser()) {
+        this.setData({
+          hasUserInfo: true
         })
       }
     },
@@ -75,6 +82,10 @@ Component({
       // 放到全局用户信息中
       setCurrentUser(e.detail.userInfo);
       // 调用传入的回调方法
+      this.triggerEvent("callback");
+    },
+    doCallback: function () {
+      // 已经存在用户信息时，直接调用传入的回调方法
       this.triggerEvent("callback");
     }
   }

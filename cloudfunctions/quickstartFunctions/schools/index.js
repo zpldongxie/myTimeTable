@@ -48,7 +48,8 @@ exports.main = async (event, context) => {
       const {
         name,
         address,
-        creator
+        creator,
+        creatorUser,
       } = payload;
       if (!name) {
         return {
@@ -73,6 +74,7 @@ exports.main = async (event, context) => {
           name,
           address,
           creator,
+          creatorUser,
           createdAt: new Date()
         }
       });
@@ -83,7 +85,8 @@ exports.main = async (event, context) => {
         _id,
         name,
         address,
-        creator
+        creator,
+        creatorUser,
       } = payload;
       if (!_id) {
         return {
@@ -102,6 +105,7 @@ exports.main = async (event, context) => {
       }
       if (creator) {
         info.creator = creator;
+        info.creatorUser = creatorUser;
       }
       return await schoolDB.where({
           _id

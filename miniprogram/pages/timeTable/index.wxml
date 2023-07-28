@@ -7,7 +7,11 @@
   <view wx:if="{{isReday && schedule}}">有课表</view>
   <view wx:if="{{isReday && !schedule}}" class="subCon">
     <view>这个班级还没有课表</view>
-    <view>我来创建一个</view>
-    <view>邀请好友来创建</view>
+    <view>我来
+      <getUserInfoBtn text="创建一个" className="a" force failTips="不告诉我你是谁，就不让你去创建课表哦。" bind:callback="jumpPage" data-page="editSchedule" />
+    </view>
+    <view>
+      <button class="share a" open-type="share">邀请好友</button> 来创建
+    </view>
   </view>
 </view>

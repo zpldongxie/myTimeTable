@@ -1,5 +1,10 @@
 <!--components/getUserInfoBtn/index.wxml-->
 <block>
-  <button class="~{{className}}" wx:if="{{!force && canIUseGetUserProfile}}" bindtap="getUserProfile">{{text}}</button>
-  <button class="~{{className}}" wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{text}}</button>
+  <block wx:if="{{hasUserInfo}}">
+    <button class="~{{className}}" bindtap="doCallback">{{text}}</button>
+  </block>
+  <block wx:else>
+    <button class="~{{className}}" wx:if="{{!force && canIUseGetUserProfile}}" bindtap="getUserProfile">{{text}}</button>
+    <button class="~{{className}}" wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{text}}</button>
+  </block>
 </block>

@@ -26,7 +26,6 @@ Page({
       currentGrade: getCurrentGrade(),
       currentClass: getCurrentClass(),
     })
-    console.log('===', this.data.currentClass);
     callFunction('schedules', {
       method: 'get',
       classId: this.data.currentClass._id
@@ -47,5 +46,33 @@ Page({
         // TODO: 渲染课表
       }
     })
-  }
+  },
+
+  /** 分享好友 */
+  onShare () {
+    console.log('onShare start');
+    // 显示分享菜单供用户选择
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage']
+    });
+  },
+  // 设置要分享的小程序信息
+  onShareAppMessage: function () {
+    return {
+      title: '快来创建班级课表吧',
+      path: '/pages/index/index', // 小程序路径，可以带参数
+      imageUrl: 'cloud://cloud1-8ggb0v441269ef28.636c-cloud1-8ggb0v441269ef28-1319420876/code.png',
+    }
+  },
+
+  jumpPage(e) {
+    let url = `/pages/${e.currentTarget.dataset.page}/index`
+    if (e.currentTarget.dataset.params) {
+      url += `?${e.currentTarget.dataset.params}`
+    }
+    wx.navigateTo({
+      url
+    });
+  },
 });
