@@ -67,7 +67,7 @@ Page({
           // 查年级
           return getGradeByCode(userInfo.gradeCode);
         }).then(res => {
-          if (res.errCode) {
+          if (res?.errCode) {
             return res;
           }
           if (res) {
@@ -90,7 +90,7 @@ Page({
             name: userInfo.className
           });
         }).then(res => {
-          if (res.errCode) {
+          if (res?.errCode) {
             return res;
           }
           if (res) {
@@ -140,20 +140,20 @@ Page({
         icon: 'none'
       });
       setTimeout(() => {
-        wx.navigateTo({
-          url: `/pages/chooseClass/index?openId=${this.data.openId}`,
+        wx.redirectTo({
+          url: `/pages/chooseClass/index`,
         });
       }, 2000);
     } else {
-      wx.navigateTo({
-        url: `/pages/chooseClass/index?openId=${this.data.openId}`,
+      wx.redirectTo({
+        url: `/pages/chooseClass/index`,
       });
     }
   },
 
   /** 跳转到课表页 */
   gotoTimeTablePage() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: `/pages/timeTable/index`,
     });
   },

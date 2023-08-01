@@ -151,15 +151,11 @@ const getGrades = async () => {
   return callFunction('grades', {
     method: 'get',
   }).then(function (res) {
-    if (res.errMsg !== "cloud.callFunction:ok") {
-      console.error(res.errMsg);
-      return [];
-    }
-    if (res.result?.errMsg !== 'collection.get:ok') {
-      console.error(res.result);
-      return [];
-    }
-    return res.result.data;
+    return analysisRes({
+      res,
+      messageType: 'collection.get',
+      defaultValue: []
+    });
   }).catch(function (e) {
     console.error(e)
     return [];

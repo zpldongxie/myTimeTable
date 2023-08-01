@@ -7,7 +7,8 @@ const {
   setCurrentClass,
   getOpenId,
   getSchools,
-  getClasses
+  getClasses,
+  getCurrentClass
 } = require('../../utils.js');
 
 Page({
@@ -44,6 +45,36 @@ Page({
         showIntoButton: false,
       })
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+    const that = this;
+    // 回填班级列表
+    if (this.data.selectedGrade) {
+      getClasses({
+        schoolId: this.data.selectedSchool._id,
+        gradeCode: this.data.selectedGrade?.code
+      }).then((value) => {
+        that.setData({
+          classList: value,
+          classes: value.map(v => v.name),
+          showIntoButton: false
+        })
+        const selectedClass = getCurrentClass();
+        if (selectedClass) {
+          // 回填已选择班级
+          const selectedClassIndex = that.data.classes.indexOf(selectedClass.name);
+          this.setData({
+            selectedClass,
+            selectedClassIndex,
+            showIntoButton: true
+          });
+        }
+      })
+    }
   },
 
   jumpPage(e) {

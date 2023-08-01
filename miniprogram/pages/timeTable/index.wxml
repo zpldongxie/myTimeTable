@@ -14,4 +14,7 @@
       <button class="share a" open-type="share">邀请好友</button> 来创建
     </view>
   </view>
+  <view bindtap="jumpPage" data-page="chooseClass">
+    查看其他班级课表
+  </view>
 </view>
