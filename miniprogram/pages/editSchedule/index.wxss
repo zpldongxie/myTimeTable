@@ -1,1 +1,65 @@
 /* pages/editSchedule/index.wxss */
+.row {
+  display: flex;
+}
+
+/* 默认一行两列 */
+.col {
+  width: 50%;
+  margin: 1px;
+  background: #fff;
+  padding: 5px;
+}
+
+/* 表头 */
+.row.title .col {
+  background: saddlebrown;
+  color: #fff;
+}
+
+/* 区分不排课行 */
+.row.noClass .col {
+  background: rgba(220, 255, 255, .8)
+}
+
+/* 名称列加粗显示 */
+.name {
+  font-weight: 600;
+}
+
+/* 编辑模式下重新指定列宽 */
+.col1 {
+  width: 55%;
+}
+.col2 {
+  width: 25%;
+}
+
+.col3 {
+  width: 20%;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* 删除按钮 */
+.row .col3 {
+  color: #e64340;
+}
+
+/* 新增按钮 */
+.addRow .col3 {
+  color: #1aad19;
+}
+
+/* 下拉框后面加图标 */
+.picker-item::after {
+  content: '\003E';
+  float: right;
+  transform: rotate(90deg);
+  font-family: cursive;
+}
+
+/* 底部提示 */
+.tips.bottom {
+  margin-bottom: 50rpx;
+}

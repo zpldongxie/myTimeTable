@@ -1,4 +1,10 @@
-const { getCurrentUser } = require("../../utils");
+const {
+  getCurrentUser,
+  callFunction,
+  getCurrentClass,
+  getOpenId,
+  getTimetable,
+} = require("../../utils");
 
 // pages/editSchedule/index.js
 Page({
@@ -7,62 +13,146 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    currentData: [], // 显示的作息时间表
+    createInfo: {
+      name: '', // 名称
+      hasCourse: true, // 是否排课
+      selectedIndex: 0, // 辅助字段，记录下拉框选择索引
+    }, // 创建组件中的内容
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log('-----', getCurrentUser());
+    const that = this;
+    if (options.classId) {
+      // 若已指定当前作息配置id，则进入编辑模式
+      console.log('options.classId: ', options.classId);
+      getTimetable({
+        classId: options.classId
+      }).then(res => {
+        const {
+          schedules,
+          timeTable
+        } = res || {
+          schedules: null,
+          timeTable: null,
+        };
+        that.setData({
+          currentData: schedules?.data || []
+        })
+      });
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  /** 输入名称 */
+  handleInput(e) {
+    const inputValue = e.detail.value.trim(); // 获取输入框的值并去除首尾空格
+    this.setData({
+      createInfo: {
+        ...this.data.createInfo,
+        name: inputValue
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  /** 选择是否排课 */
+  handleChange(e) {
+    const index = e.detail.value;
+    const courses = [true, false];
+    this.setData({
+      createInfo: {
+        ...this.data.createInfo,
+        hasCourse: courses[index],
+        selectedIndex: index,
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  /** 点击创建 */
+  handleCreate() {
+    if (!this.data.createInfo.name) {
+      wx.showToast({
+        title: '请填写作息名称',
+        icon: 'none'
+      });
+      return;
+    }
+    const data = this.data.currentData;
+    data.push([this.data.createInfo.name, this.data.createInfo.hasCourse]);
+    this.setData({
+      currentData: data,
+      createInfo: {
+        ...this.data.createInfo,
+        name: ''
+      }
+    });
+    this.upsertSchedule();
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  /** 点击删除 */
+  async handleDel(e) {
+    const {
+      index
+    } = e.target.dataset;
+    const currentData = this.data.currentData;
+    currentData.splice(index, 1);
+    this.setData({
+      currentData
+    });
+    wx.showLoading();
+    await this.upsertSchedule();
+    wx.hideLoading();
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
+  /** 显示示例 */
+  shwoEg() {
+    wx.previewImage({
+      current: 'cloud://cloud1-8ggb0v441269ef28.636c-cloud1-8ggb0v441269ef28-1319420876/schedule_eg.jpg',
+      urls: ['cloud://cloud1-8ggb0v441269ef28.636c-cloud1-8ggb0v441269ef28-1319420876/schedule_eg.jpg'],
+    });
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
+  /** 创建或更新记录 */
+  async upsertSchedule() {
+    const info = {
+      classId: getCurrentClass()?._id,
+      data: this.data.currentData,
+      creator: getOpenId(),
+      creatorUser: getCurrentUser(),
+    };
+    try {
+      const res = await callFunction('schedules', {
+        method: 'upsert',
+        ...info,
+      });
+      if (res.errMsg !== 'cloud.callFunction:ok') {
+        console.error('云函数调用异常。');
+        console.error(res.errMsg);
+        wx.showToast({
+          title: '好像没有保存成功，请过一会再试试',
+          icon: 'none'
+        })
+        return;
+      }
+      if (res.result.errCode || (res.result.errMsg !== 'collection.add:ok' && res.result.errMsg !== 'document.update:ok')) {
+        console.error('数据库操作异常。');
+        console.error(res.result);
+        wx.showToast({
+          title: '好像没有保存成功，请过一会再试试',
+          icon: 'none'
+        })
+        return;
+      }
+    } catch (e) {
+      console.error('保存失败：', e);
+    }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  jumpToEditTimeTable () {
+    wx.navigateTo({
+      url: '/pages/editTimeTable/index',
+    })
   }
 })

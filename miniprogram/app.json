@@ -16,16 +16,16 @@
     "pages/editSchool/index",
     "pages/editClass/index",
     "pages/timeTable/index",
-    "pages/editSchedule/index"
+    "pages/editSchedule/index",
+    "pages/editTimeTable/index"
   ],
   "window": {
-    "backgroundColor": "#a29be4",
+    "backgroundColor": "#fff",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#a29be4",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "我班课表",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2",
   "lazyCodeLoading": "requiredComponents"
 }

@@ -1,2 +1,31 @@
 <!--pages/editSchedule/index.wxml-->
-<text>pages/editSchedule/index.wxml</text>
+<timeTableHeader type="作息表" style="margin: 10% 0 40rpx;" />
+<scroll-view scroll-y="true" style="height: calc(100vh - 10% - 438rpx);">
+  <view class="subCon">
+    <view class="row title">
+      <view class="col col1">名称</view>
+      <view class="col col2">是否排课</view>
+      <view class="col col3 a">操作</view>
+    </view>
+    <block wx:for="{{currentData}}" wx:key="index" wx:for-index="index" wx:for-item="data">
+      <view class="row{{data[1] ? '' : ' noClass'}}">
+        <view class="col col1 name">{{data[0]}}</view>
+        <view class="col col2">{{data[1] ? "排课" : "不排课"}}</view>
+        <view class="col col3 a" bindtap="handleDel" data-index="{{index}}">删除</view>
+      </view>
+    </block>
+  </view>
+  <view class="subCon">
+    <view class="row addRow">
+      <view class="col col1 name"><input class="input" placeholder="例：早读、第一节" maxlength="32" bindinput="handleInput" value="{{createInfo.name}}" /></view>
+      <view class="col col2">
+        <picker bindchange="handleChange" range="{{['排课','不排课']}}" value="{{createInfo.selectedIndex}}">
+          <view class="picker-item">{{['排课','不排课'][createInfo.selectedIndex]}}</view>
+        </picker>
+      </view>
+      <view class="col col3" bindtap="handleCreate">添加</view>
+    </view>
+  </view>
+</scroll-view>
+<view class="tips bottom">提示： 作息时间表有几行，课表就会显示，为了防止课表干扰信息太多，作息时间表应尽量精简。午休等整周拉通显示的不用排课。<text class="a" bindtap="shwoEg">查看示例</text></view>
+<button type="primary" style="margin: 1rem auto;" plain="true" bindtap="jumpToEditTimeTable">作息表信息无无误，进入课表编辑</button>

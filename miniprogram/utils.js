@@ -241,6 +241,43 @@ const getClass = async ({
   });
 };
 
+/** 按班级ID查课表 */
+const getTimetable = async ({
+  classId
+}) => {  
+  const returnData = {
+    schedules: null,
+    timeTable: null,
+  };
+  if (!classId) {
+    console.error('参数缺少classId');
+    return returnData;
+  }
+  return callFunction('schedules', {
+    method: 'get',
+    classId,
+  }).then(res => {
+    return analysisRes({
+      res,
+      messageType: 'collection.get',
+      defaultValue: []
+    });
+  }).then(res => {
+    if (res.length) {
+      // 保存作息时间
+      returnData.schedules = res[0];
+      // TODO: 查课表
+    }
+    return null
+  }).then(res => {
+    if (res) {
+      // 保存课表
+      returnData.timeTable = res[0];
+    }
+    return returnData;
+  })
+}
+
 module.exports = {
   /** 云函数调用封装 */
   callFunction,
@@ -273,4 +310,5 @@ module.exports = {
   getGradeByCode,
   getClasses,
   getClass,
+  getTimetable,
 }
