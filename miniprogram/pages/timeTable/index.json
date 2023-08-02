@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "getUserInfoBtn": "/components/getUserInfoBtn/index"
+    "getUserInfoBtn": "/components/getUserInfoBtn/index",
+    "timeTableHeader": "/components/timeTableHeader/index"
   }
 }

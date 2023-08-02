@@ -118,6 +118,9 @@ exports.main = async (event, context) => {
           data: info,
         });
     }
+    case 'del': {
+      // TODO 待实现，需要处理级联
+    }
     default:
       return {
         errCode: 1,

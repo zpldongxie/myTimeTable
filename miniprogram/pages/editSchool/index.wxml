@@ -1,21 +1,19 @@
-<view class="container">
-  <view class="top">{{type}}学校信息</view>
-  <view class="subCon">
-    <view class="formItem"><input type="text" class="input" placeholder="学校名" bindinput="handleNameInput" maxlength="32" value="{{current.name}}" />
-      <Text class="tips">填写学校名称，请尽可能使用全名</Text>
-    </view>
-    <view class="formItem">
-      <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-        <view wx:if="{{region.length}}" class="picker input">
-          {{region[0]}}，{{region[1]}}，{{region[2]}}
-        </view>
-        <view wx:else="{{region.length}}" class="picker input" style="color: #888">
-          请选择学校属地
-        </view>
-      </picker>
-      <Text class="tips">全国这么大，总有重名的可能，让大家知道是哪里的学校就不会错了</Text>
-    </view>
+<view class="top">{{type}}学校信息</view>
+<view class="subCon">
+  <view class="formItem"><input type="text" class="input" placeholder="学校名" bindinput="handleNameInput" maxlength="32" value="{{current.name}}" />
+    <Text class="tips">填写学校名称，请尽可能使用全名</Text>
   </view>
-  <Text class="bottomTips">您将创建一个学校的基本信息。只要能找到学校信息，任何人都可以加入并参与我们课表的维护。星星之火，可以燎原，期待我们学校所有的班级都来点亮自己的专属课表吧！</Text>
-  <view class="button" bindtap="handleSubmit">提交</view>
+  <view class="formItem">
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view wx:if="{{region.length}}" class="picker input">
+        {{region[0]}}，{{region[1]}}，{{region[2]}}
+      </view>
+      <view wx:else="{{region.length}}" class="picker input" style="color: #888">
+        请选择学校属地
+      </view>
+    </picker>
+    <Text class="tips">全国这么大，总有重名的可能，让大家知道是哪里的学校就不会错了</Text>
+  </view>
 </view>
+<Text class="bottomTips">您将创建一个学校的基本信息。只要能找到学校信息，任何人都可以加入并参与我们课表的维护。星星之火，可以燎原，期待我们学校所有的班级都来点亮自己的专属课表吧！</Text>
+<view class="button" bindtap="handleSubmit">提交</view>

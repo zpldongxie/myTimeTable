@@ -1,0 +1,17 @@
+/* components/timeTableHeader/index.wxss */
+.title {
+	color: #fff;
+	font-size: 1.8rem;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 0.2rem 0.4rem #474692;
+}
+
+.subTitle {
+	color: #474692;
+	font-size: 1rem;
+	font-weight: bolder;
+	text-align: center;
+	text-shadow: 0 0.2rem 0.4rem #474692;
+	margin-top: .8rem;
+}

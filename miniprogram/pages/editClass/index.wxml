@@ -1,14 +1,12 @@
 <!--pages/editClass/index.wxml-->
-<view class="container">
-  <view class="top">{{type}}班级</view>
-  <view class="subCon">
-    <view class="row">当前学校： {{currentSchool.name}}</view>
-    <view class="row">当前年级： {{currentGrade.name}}</view>
-  </view>
-  <view class="subCon">
-    <view class="formItem">
-      <input type="text" placeholder="输入班级名称" bindinput="handleNameInput" maxlength="32" />
-    </view>
-  </view>
-  <view class="button" bindtap="handleSubmit">提交</view>
+<view class="top">{{type}}班级</view>
+<view class="subCon">
+  <view class="row">当前学校： {{currentSchool.name}}</view>
+  <view class="row">当前年级： {{currentGrade.name}}</view>
 </view>
+<view class="subCon">
+  <view class="formItem">
+    <input type="text" placeholder="输入班级名称" bindinput="handleNameInput" maxlength="32" />
+  </view>
+</view>
+<view class="button" bindtap="handleSubmit">提交</view>

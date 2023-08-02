@@ -1,19 +1,19 @@
 // pages/timeTable/index.js
 const {
   analysisRes,
-  getCurrentSchool,
-  getCurrentGrade,
   getCurrentClass,
-  callFunction
+  callFunction,
+  getOpenId,
+  getTimetable
 } = require("../../utils");
 
 Page({
   data: {
-    currentSchool: null,
-    currentGrade: null,
     currentClass: null,
     isReday: false, // 是否完成数据请求
     schedule: null, // 作息数据
+    timeTable: null, // 课表数据
+    isCreator: false, // 是否为创建者
   },
 
   /**
@@ -21,35 +21,31 @@ Page({
    */
   onLoad(options) {
     const that = this;
+    const currentOpenId = getOpenId();
+    const currentClass = getCurrentClass();
+    console.log('currentClass: ', currentClass);
     this.setData({
-      currentSchool: getCurrentSchool(),
-      currentGrade: getCurrentGrade(),
-      currentClass: getCurrentClass(),
+      currentClass,
     })
-    callFunction('schedules', {
-      method: 'get',
-      classId: this.data.currentClass._id
-    }).then(res => {
-      return analysisRes({
-        res,
-        messageType: 'collection.get',
-        defaultValue: []
-      });
-    }).then(res => {
+    getTimetable({classId: currentClass._id}).then(res => {
+      const {
+        schedules,
+        timeTable
+      } = res || {
+        schedules: null,
+        timeTable: null,
+      };
       that.setData({
         isReday: true,
+        schedule: schedules,
+        timeTable,
+        isCreator: schedules?.creator === currentOpenId
       })
-      if (res.length) {
-        that.setData({
-          schedule: res[0]
-        })
-        // TODO: 渲染课表
-      }
-    })
+    });
   },
 
   /** 分享好友 */
-  onShare () {
+  onShare() {
     console.log('onShare start');
     // 显示分享菜单供用户选择
     wx.showShareMenu({

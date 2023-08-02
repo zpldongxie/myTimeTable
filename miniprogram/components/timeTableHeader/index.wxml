@@ -1,0 +1,6 @@
+<!--components/timeTableHeader/index.wxml-->
+<!--课表和作息表公用的头部-->
+<view class="top">
+  <view class="title">{{currentGrade.name}}{{currentClass.name}}{{type}}</view>
+  <view class="subTitle">{{currentSchool.name}}</view>
+</view>
