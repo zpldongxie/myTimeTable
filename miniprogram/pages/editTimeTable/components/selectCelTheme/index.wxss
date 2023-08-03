@@ -1,0 +1,37 @@
+/* pages/editTimeTable/components/selectCelTheme/index.wxss */
+.backCon {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.con {
+	position: absolute;	
+	left: 0;
+	right: 0;
+	background-color: #fff;
+	transition: bottom 0.2s;
+}
+
+.con .options {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: rgba(0, 0, 0, 0.1) 1px solid;
+	padding: 30rpx;
+	font-size: 34rpx;
+	color: #666;
+}
+
+.con .options .ok {
+	color: rgb(9, 187, 7);
+}
+
+picker-view-column .option {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

@@ -1,0 +1,16 @@
+<!--pages/editTimeTable/components/selectCelTheme/index.wxml-->
+<view wx:if="{{show}}" class="backCon" bindtap="onBackCon" data-class="backCon">
+	<view class="con" style="bottom: {{bottom}};">
+		<view class="options">
+			<view class="cancel" bindtap="onCancel">取消</view>
+			<view class="ok" bindtap="onOk">确定</view>
+		</view>
+		<picker-view style="width: 100%; height: 40vh;" value="{{index}}" bindchange="onSelectChange">
+			<picker-view-column>
+				<view class="option" wx:for="{{themes}}" wx:key="index" wx:for-item="theme">
+					<view style="width: 200rpx; padding: 8rpx; background-color: {{theme.bgColor}}; color: {{theme.fontColor}};">Abc</view>
+				</view>
+			</picker-view-column>
+		</picker-view>
+	</view>
+</view>
