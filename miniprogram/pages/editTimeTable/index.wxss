@@ -20,7 +20,6 @@
 
 /* 单元格文本区 */
 .day .text {
-	background-color: rgba(250, 128, 114, 0.8);
 	color: #fff;
 	height: 100%;
 	line-height: 55rpx;
@@ -86,4 +85,17 @@
 /* 课程管理操作列图标 */
 .courses .row .col .text icon {
 	margin: 0 20rpx;
+}
+
+/* 旋转图标 */
+.rotate-image {
+	animation: rotate 2s linear infinite; /* 通过animation属性设置旋转动画 */
+}
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg); /* 旋转起始角度为0度 */
+	}
+	100% {
+		transform: rotate(-360deg); /* 旋转结束角度为-360度 */
+	}
 }

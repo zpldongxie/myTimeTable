@@ -1,7 +1,36 @@
 <!--pages/timeTable/index.wxml-->
 <timeTableHeader type="课程表" style="margin: 20% 0 40rpx;" />
-<view wx:if="{{isReday && schedule}}">
-  有课表
+<view wx:if="{{isReday && schedule}}" style="width: 100%;">
+  <view class="subCon timetable">
+    <view class="row head">
+      <view class="day title">
+        <view class="text"></view>
+      </view>
+      <view class="day title" wx:for="{{days}}" wx:key="index" wx:for-item="day">
+        <view class="text">{{day}}</view>
+      </view>
+    </view>
+    <view class="row" wx:for="{{schedule}}" wx:key="index" wx:for-item="edu">
+      <block wx:if="{{edu[1]}}">
+        <view class="day title">
+          <view class="text">{{edu[0]}}</view>
+        </view>
+        <view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day" wx:for-index="colIndex">
+          <view class="text">
+            <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor}}; color: {{timetable[edu[0]][colIndex].style.fontColor}};">
+              {{timetable[edu[0]][colIndex].name}}
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="day noClass title">
+          <view class="text">{{edu[0]}}</view>
+        </view>
+      </block>
+
+    </view>
+  </view>
   <view wx:if="{{isCreator}}" class="a" bindtap="jumpPage" data-page="editSchedule">修改课表</view>
 </view>
 <view wx:if="{{isReday && !schedule}}" class="subCon">

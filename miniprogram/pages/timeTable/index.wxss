@@ -1,1 +1,38 @@
 /* pages/timeTable/index.wxss */
+.timetable {}
+
+/* 课表单行 */
+.timetable .row {
+	display: flex;
+}
+
+/* 单元格 */
+.day {
+	text-align: center;
+	width: calc(100% / 6);
+	padding: 2rpx;
+}
+
+/* 通栏单元格 */
+.day.noClass {
+	width: 100%;
+}
+
+/* 单元格文本区 */
+.day .text {
+	color: #fff;
+	height: 100%;
+	line-height: 55rpx;
+}
+
+/* 标题类单元格文本区 */
+.day.title .text {
+	background-color: silver;
+	color: #333;
+	font-weight: 500;
+}
+
+/* 表头文件区 */
+.head .day.title .text {
+	font-weight: 600;
+}

@@ -244,7 +244,7 @@ const getClass = async ({
 /** 按班级ID查课表 */
 const getTimetable = async ({
   classId
-}) => {  
+}) => {
   const returnData = {
     schedules: null,
     timeTable: null,
@@ -266,7 +266,16 @@ const getTimetable = async ({
     if (res.length) {
       // 保存作息时间
       returnData.schedules = res[0];
-      // TODO: 查课表
+      return callFunction('timetables', {
+        method: 'get',
+        classId,
+      }).then(res => {
+        return analysisRes({
+          res,
+          messageType: 'collection.get',
+          defaultValue: []
+        });
+      });
     }
     return null
   }).then(res => {

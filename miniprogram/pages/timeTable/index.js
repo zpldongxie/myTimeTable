@@ -9,10 +9,11 @@ const {
 
 Page({
   data: {
+    days: ['星期一', '星期二', '星期三', '星期四', '星期五'],
     currentClass: null,
     isReday: false, // 是否完成数据请求
-    schedule: null, // 作息数据
-    timeTable: null, // 课表数据
+    schedule: [], // 作息数据
+    timetable: null, // 课表数据
     isCreator: false, // 是否为创建者
   },
 
@@ -20,6 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+  },
+
+  onShow() {
     const that = this;
     const currentOpenId = getOpenId();
     const currentClass = getCurrentClass();
@@ -35,10 +39,11 @@ Page({
         schedules: null,
         timeTable: null,
       };
+      console.log(timeTable);
       that.setData({
         isReday: true,
-        schedule: schedules,
-        timeTable,
+        schedule: schedules?.data,
+        timetable: timeTable?.data,
         isCreator: schedules?.creator === currentOpenId
       })
     });

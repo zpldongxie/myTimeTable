@@ -11,6 +11,8 @@ const classes = require('./classes/index');
 const schedules = require('./schedules/index');
 // 班级课程
 const courses = require('./courses/index');
+// 班级课表
+const timetables = require('./timetables/index');
 const createCollection = require('./createCollection/index');
 const selectRecord = require('./selectRecord/index');
 const updateRecord = require('./updateRecord/index');
@@ -36,6 +38,8 @@ exports.main = async (event, context) => {
       return await schedules.main(event, context);
     case 'courses':
       return await courses.main(event, context);
+    case 'timetables':
+      return await timetables.main(event, context);
     case 'createCollection':
       return await createCollection.main(event, context);
     case 'selectRecord':

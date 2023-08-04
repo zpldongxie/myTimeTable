@@ -3,7 +3,8 @@ const {
   getTimetable,
   getCourses,
   callFunction,
-  analysisRes
+  analysisRes,
+  debounceAsync,
 } = require("../../utils");
 
 // pages/editTimeTable/index.js
@@ -11,8 +12,9 @@ Page({
   data: {
     days: ['星期一', '星期二', '星期三', '星期四', '星期五'],
     schedule: [], // 作息时间信息
-    timetable: [], // 课表信息
+    timetable: {}, // 课表信息
     courses: [], // 课程信息，时刻与数据库保持同步
+    currentCourse: null, // 正在排课的课程
     editCourses: {}, // 变动的课程信息，需要保存
     newCourse: { // 新增课程信息
       name: '',
@@ -27,6 +29,9 @@ Page({
 
   onLoad() {
     const that = this;
+    // 对保存课表做防抖处理
+    this.debouncedUpsertTimetable = debounceAsync(this.upsertTimetable, 500);
+
     const classId = getCurrentClass()?._id
     if (classId) {
       // 读取作息时间和课表
@@ -40,10 +45,24 @@ Page({
           schedules: null,
           timeTable: null,
         };
-        that.setData({
+        const data = {
           schedule: schedules?.data || [],
-          timetable: timeTable?.data || [],
-        })
+          timetable: timeTable?.data || {},
+        };
+        if (schedules && !timeTable) {
+          const timetable = {};
+          schedules.data.filter(s => s[1]).forEach(s => {
+            timetable[s[0]] = [1, 2, 3, 4, 5].map(i => ({
+              name: '-',
+              style: {
+                fontColor: '#eee',
+                bgColor: '#aaa',
+              }
+            }))
+          })
+          data.timetable = timetable;
+        }
+        that.setData(data)
       });
       // 读取课程
       getCourses({
@@ -64,6 +83,54 @@ Page({
         });
       }, 1000);
     }
+  },
+
+  /** 选择课程准备排课 */
+  handleSelectCourse(e) {
+    const _id = e.target.dataset.id;
+    const {
+      currentCourse
+    } = this.data;
+    if (_id === currentCourse?._id) {
+      this.setData({
+        currentCourse: null
+      })
+    } else {
+      const course = this.data.courses.find(c => c._id === _id);
+      this.setData({
+        currentCourse: course
+      })
+    }
+  },
+
+  /** 设置课表 */
+  setTimetable(e) {
+    const {
+      key,
+      index
+    } = e.currentTarget.dataset;
+    const {
+      timetable,
+      currentCourse
+    } = this.data;
+    if (!currentCourse) {
+      return;
+    }
+    if (timetable[key][index].name === currentCourse.name && timetable[key][index].style.fontColor === currentCourse.style.fontColor && timetable[key][index].style.bgColor === currentCourse.style.bgColor) {
+      timetable[key][index] = {
+        name: '-',
+        style: {
+          fontColor: '#eee',
+          bgColor: '#aaa',
+        }
+      };
+    } else {
+      timetable[key][index] = currentCourse;
+    }
+    this.setData({
+      timetable
+    });
+    this.debouncedUpsertTimetable();
   },
 
   /** 点击选择主题 */
@@ -94,6 +161,10 @@ Page({
       }
       if (!editCourse.name && !editCourse.style) {
         delete editCourses[_id];
+      } else if (this.data.currentCourse && this.data.currentCourse._id === _id) {
+        this.setData({
+          currentCourse: null
+        })
       }
       this.setData({
         shwoSelectTheme: false,
@@ -133,6 +204,10 @@ Page({
       editCourse.name = inputValue === course.name ? null : inputValue;
       if (!editCourse.name && !editCourse.style) {
         delete editCourses[_id];
+      } else if (this.data.currentCourse && this.data.currentCourse._id === _id) {
+        this.setData({
+          currentCourse: null
+        })
       }
       this.setData({
         editCourses
@@ -240,6 +315,11 @@ Page({
         courses
       })
       // 同步删除课表相关信息
+    }
+    if (this.data.currentCourse && this.data.currentCourse._id === e.target.dataset.id) {
+      this.setData({
+        currentCourse: null
+      })
     }
     wx.hideLoading();
   },
@@ -359,6 +439,45 @@ Page({
     } catch (e) {
       console.warn('保存失败：', e);
       return false;
+    }
+  },
+
+  /** 保存或更新课表 */
+  async upsertTimetable() {
+    const classId = getCurrentClass()?._id;
+    const info = {
+      classId,
+      data: this.data.timetable,
+    }
+    try {
+      const res = await callFunction('timetables', {
+        method: 'upsert',
+        ...info,
+      });
+      if (res.errMsg !== 'cloud.callFunction:ok') {
+        console.error('云函数调用异常。');
+        console.error(res.errMsg);
+        wx.showToast({
+          title: '课表好像没有保存成功，请过一会再试试',
+          icon: 'none'
+        })
+        return;
+      }
+      if (res.result.errCode || (res.result.errMsg !== 'collection.add:ok' && res.result.errMsg !== 'document.update:ok')) {
+        console.error('数据库操作异常。');
+        console.error(res.result);
+        wx.showToast({
+          title: '课表好像没有保存成功，请过一会再试试',
+          icon: 'none'
+        })
+        return;
+      }
+    } catch (e) {
+      console.error('保存失败：', e);
+      wx.showToast({
+        title: '课表好像没有保存成功，请过一会再试试',
+        icon: 'none'
+      })
     }
   },
 });

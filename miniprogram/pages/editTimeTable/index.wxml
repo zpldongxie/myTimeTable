@@ -20,13 +20,11 @@
 						<view class="day title">
 							<view class="text">{{edu[0]}}</view>
 						</view>
-						<view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day">
-							<view class="text">
-								<picker bindchange="bindPickerChange" range="{{courses}}" range-key="name">
-									<view class="picker" style="background-color: {{courses[index].style.bgColor}}; color: {{courses[index].style.fontColor}};">
-										abc
-									</view>
-								</picker>
+						<view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day" wx:for-index="colIndex">
+							<view class="text" bindtap="setTimetable" data-key="{{edu[0]}}" data-index="{{colIndex}}">
+								<view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor}}; color: {{timetable[edu[0]][colIndex].style.fontColor}};">
+									{{timetable[edu[0]][colIndex].name}}
+								</view>
 							</view>
 						</view>
 					</block>
@@ -71,6 +69,7 @@
 					<view class="col col3">
 						<view class="text">
 							<icon wx:if="{{!!editCourses[course._id]}}" class="icon-small" type="success" size="40rpx" bindtap="handleEditCourse" data-id="{{course._id}}"></icon>
+							<image wx:else src="../../images/sync.svg" class="{{currentCourse && currentCourse._id === course._id ? 'rotate-image' : ''}}" style="width: 42rpx; height: 42rpx;" bindtap="handleSelectCourse" data-id="{{course._id}}"></image>
 							<icon class="icon-small" type="cancel" size="40rpx" bindtap="handleDelCourse" data-id="{{course._id}}"></icon>
 						</view>
 					</view>
@@ -92,6 +91,20 @@
 							<icon class="icon-small" type="cancel" size="40rpx" bindtap="handleAddCourse" color="#09bb07" style="transform: rotate(45deg);"></icon>
 						</view>
 					</view>
+				</view>
+			</view>
+			<view style="padding: 2rpx; color: #666; line-height: 20rpx; margin: 20rpx 0;">
+				<view style="font-size: 24rpx;">
+					点击<icon class="icon-small" type="cancel" size="40rpx" bindtap="handleAddCourse" color="#09bb07" style="transform: rotate(45deg); vertical-align: middle; margin: 0 10rpx 0 5rpx"></icon>可添加课程。
+				</view>
+				<view style="font-size: 24rpx;">
+					修改课程内容后，会出现<icon class="icon-small" type="success" size="40rpx" style="vertical-align: middle; margin: 0 10rpx" bindtap="handleEditCourse" data-id="{{course._id}}"></icon>，点击可保存修改内容。
+				</view>
+				<view style="font-size: 24rpx;">
+					点击<icon class="icon-small" type="cancel" size="40rpx" style="vertical-align: middle; margin: 0 10rpx" bindtap="handleDelCourse" data-id="{{course._id}}"></icon>可删除课程。
+				</view>
+				<view style="font-size: 24rpx;">
+					点击<image src="../../images/sync.svg" style="width: 42rpx; height: 42rpx; vertical-align: middle; margin: 0 10rpx" bindtap="handleSelectCourse" data-id="{{course._id}}"></image>后激活课程，在上面课表中点击可快速排课。
 				</view>
 			</view>
 		</view>
