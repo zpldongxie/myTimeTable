@@ -1,6 +1,7 @@
 const {
   getCurrentClass,
   getTimetable,
+  upsertTimetable,
   getCourses,
   callFunction,
   analysisRes,
@@ -30,7 +31,7 @@ Page({
   onLoad() {
     const that = this;
     // 对保存课表做防抖处理
-    this.debouncedUpsertTimetable = debounceAsync(this.upsertTimetable, 500);
+    this.debouncedUpsertTimetable = debounceAsync(upsertTimetable, 500);
 
     const classId = getCurrentClass()?._id
     if (classId) {
@@ -47,9 +48,10 @@ Page({
         };
         const data = {
           schedule: schedules?.data || [],
-          timetable: timeTable?.data || {},
+          timetable: timeTable?.dataset || {},
         };
         if (schedules && !timeTable) {
+          // 有作息时间，没有课表时，进行结构初始化
           const timetable = {};
           schedules.data.filter(s => s[1]).forEach(s => {
             timetable[s[0]] = [1, 2, 3, 4, 5].map(i => ({
@@ -130,7 +132,7 @@ Page({
     this.setData({
       timetable
     });
-    this.debouncedUpsertTimetable();
+    this.debouncedUpsertTimetable(timetable);
   },
 
   /** 点击选择主题 */
@@ -442,42 +444,10 @@ Page({
     }
   },
 
-  /** 保存或更新课表 */
-  async upsertTimetable() {
-    const classId = getCurrentClass()?._id;
-    const info = {
-      classId,
-      data: this.data.timetable,
-    }
-    try {
-      const res = await callFunction('timetables', {
-        method: 'upsert',
-        ...info,
-      });
-      if (res.errMsg !== 'cloud.callFunction:ok') {
-        console.error('云函数调用异常。');
-        console.error(res.errMsg);
-        wx.showToast({
-          title: '课表好像没有保存成功，请过一会再试试',
-          icon: 'none'
-        })
-        return;
-      }
-      if (res.result.errCode || (res.result.errMsg !== 'collection.add:ok' && res.result.errMsg !== 'document.update:ok')) {
-        console.error('数据库操作异常。');
-        console.error(res.result);
-        wx.showToast({
-          title: '课表好像没有保存成功，请过一会再试试',
-          icon: 'none'
-        })
-        return;
-      }
-    } catch (e) {
-      console.error('保存失败：', e);
-      wx.showToast({
-        title: '课表好像没有保存成功，请过一会再试试',
-        icon: 'none'
-      })
-    }
+  jumpPage(e) {
+    let url = `/pages/${e.currentTarget.dataset.page}/index`;
+    wx.navigateTo({
+      url
+    });
   },
 });

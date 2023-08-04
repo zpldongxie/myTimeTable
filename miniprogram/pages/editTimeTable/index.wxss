@@ -1,4 +1,14 @@
 /* pages/editTimeTable/index.wxss */
+.topTitle {
+	background-color: #eee;
+	font-weight: 600;
+	padding: 10rpx 20rpx;
+	height: 42px;
+	line-height: 64rpx;
+	display: flex;
+	justify-content: space-between;
+}
+
 .timetable {}
 
 /* 课表单行 */
@@ -89,13 +99,18 @@
 
 /* 旋转图标 */
 .rotate-image {
-	animation: rotate 2s linear infinite; /* 通过animation属性设置旋转动画 */
+	animation: rotate 2s linear infinite;
+	/* 通过animation属性设置旋转动画 */
 }
+
 @keyframes rotate {
 	0% {
-		transform: rotate(0deg); /* 旋转起始角度为0度 */
+		transform: rotate(0deg);
+		/* 旋转起始角度为0度 */
 	}
+
 	100% {
-		transform: rotate(-360deg); /* 旋转结束角度为-360度 */
+		transform: rotate(-360deg);
+		/* 旋转结束角度为-360度 */
 	}
 }

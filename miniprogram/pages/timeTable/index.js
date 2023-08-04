@@ -43,7 +43,7 @@ Page({
       that.setData({
         isReday: true,
         schedule: schedules?.data,
-        timetable: timeTable?.data,
+        timetable: timeTable?.dataset,
         isCreator: schedules?.creator === currentOpenId
       })
     });

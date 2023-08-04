@@ -277,14 +277,55 @@ const getTimetable = async ({
         });
       });
     }
-    return null
+    return []
   }).then(res => {
-    if (res) {
+    if (res.length) {
       // 保存课表
       returnData.timeTable = res[0];
     }
     return returnData;
   })
+}
+
+/** 保存或更新课表 */
+const upsertTimetable = async (timetableData) => {
+  const classId = getCurrentClass()?._id;
+  const info = {
+    classId,
+    dataset: timetableData,
+  }
+  try {
+    const res = await callFunction('timetables', {
+      method: 'upsert',
+      ...info,
+    });
+    if (res.errMsg !== 'cloud.callFunction:ok') {
+      console.error('云函数调用异常。');
+      console.error(res.errMsg);
+      wx.showToast({
+        title: '课表好像没有保存成功，请过一会再试试',
+        icon: 'none'
+      })
+      return false;
+    }
+    if (res.result.errCode || (res.result.errMsg !== 'collection.add:ok' && res.result.errMsg !== 'document.update:ok' && res.result.errMsg !== 'document.set:ok')) {
+      console.error('数据库操作异常。');
+      console.error(res.result);
+      wx.showToast({
+        title: '课表好像没有保存成功，请过一会再试试',
+        icon: 'none'
+      })
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error('保存失败：', e);
+    wx.showToast({
+      title: '课表好像没有保存成功，请过一会再试试',
+      icon: 'none'
+    });
+    return false;
+  }
 }
 
 /** 按班级ID查所有课程 */
@@ -340,5 +381,6 @@ module.exports = {
   getClasses,
   getClass,
   getTimetable,
+  upsertTimetable,
   getCourses,
 }

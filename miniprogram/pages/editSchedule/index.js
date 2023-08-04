@@ -4,6 +4,7 @@ const {
   getCurrentClass,
   getOpenId,
   getTimetable,
+  upsertTimetable,
 } = require("../../utils");
 
 // pages/editSchedule/index.js
@@ -14,6 +15,7 @@ Page({
    */
   data: {
     currentData: [], // 显示的作息时间表
+    timeTable: null, // 课表信息
     createInfo: {
       name: '', // 名称
       hasCourse: true, // 是否排课
@@ -39,7 +41,8 @@ Page({
           timeTable: null,
         };
         that.setData({
-          currentData: schedules?.data || []
+          currentData: schedules?.data || [],
+          timeTable: timeTable?.dataset || null
         })
       });
     } else {
@@ -90,6 +93,14 @@ Page({
     }
     const data = this.data.currentData;
     data.push([this.data.createInfo.name, this.data.createInfo.hasCourse]);
+    if (this.data.createInfo.hasCourse) {
+      // 若是排课的节次，需要给课表做对应的结构初始化
+      const {
+        timeTable
+      } = this.data;
+      timeTable[this.data.createInfo.name] = [{}, {}, {}, {}, {}];
+      upsertTimetable(timeTable)
+    }
     this.setData({
       currentData: data,
       createInfo: {
@@ -106,11 +117,18 @@ Page({
       index
     } = e.target.dataset;
     const currentData = this.data.currentData;
-    currentData.splice(index, 1);
+    const cutData = currentData.splice(index, 1);
     this.setData({
       currentData
     });
     wx.showLoading();
+    const {
+      timeTable
+    } = this.data;
+    if (cutData[0][1] && timeTable) {
+      delete timeTable[cutData[0][0]];
+      upsertTimetable(timeTable)
+    }
     await this.upsertSchedule();
     wx.hideLoading();
   },

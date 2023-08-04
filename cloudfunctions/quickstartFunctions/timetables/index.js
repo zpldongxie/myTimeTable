@@ -27,9 +27,9 @@ exports.main = async (event, context) => {
       // 插入或更新
       const {
         classId,
-        data,
+        dataset,
       } = payload;
-      if (!classId || !data) {
+      if (!classId || !dataset) {
         return {
           errCode: 1,
           msg: '参数不完整，无法保存。',
@@ -37,27 +37,33 @@ exports.main = async (event, context) => {
       }
       const info = {
         classId,
-        data,
+        dataset,
       };
-      return await timetableDB.where({classId}).get().then(res => {
-        if (res.data.length) {
-          // update
-          return timetableDB.doc(res.data[0]._id).update({
-            data: {
-              ...info,
-              updatedAt: new Date()
-            }
-          });
-        } else {
-          // create
-          return timetableDB.add({
-            data: {
-              ...info,
-              createdAt: new Date()
-            }
-          });
-        }
-      });
+      const res = await timetableDB.where({
+        classId
+      }).get()
+
+      if (res.data.length) {
+        // update
+        const {
+          _id,
+          ...originalData
+        } = res.data[0];
+        const mergedData = Object.assign({}, originalData, info, {
+          updatedAt: new Date()
+        });
+        return timetableDB.doc(res.data[0]._id).set({
+          data: mergedData
+        });
+      } else {
+        // create
+        return timetableDB.add({
+          data: {
+            ...info,
+            createdAt: new Date()
+          }
+        });
+      }
     }
     case 'del': {
       // 按_id删除

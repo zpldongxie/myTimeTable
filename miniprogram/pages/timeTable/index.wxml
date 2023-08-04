@@ -17,8 +17,8 @@
         </view>
         <view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day" wx:for-index="colIndex">
           <view class="text">
-            <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor}}; color: {{timetable[edu[0]][colIndex].style.fontColor}};">
-              {{timetable[edu[0]][colIndex].name}}
+            <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || '#aaa'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#eee'}};">
+              {{timetable[edu[0]][colIndex].name || '-'}}
             </view>
           </view>
         </view>

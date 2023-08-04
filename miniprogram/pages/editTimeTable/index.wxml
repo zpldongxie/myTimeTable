@@ -4,7 +4,10 @@
 		<!-- 课表管理区 -->
 		<view class="subCon" style="margin: 0;">
 			<view style="text-align: center; padding: 2rpx;">
-				<view class="title" style="background-color: #eee; font-weight: 600; padding: 10rpx;">课表维护</view>
+				<view class="topTitle">
+					<view>课表维护</view>
+					<button size="mini" type="primary" plain="true" style="margin: 0;" bindtap="jumpPage" data-page="timeTable">回到首页</button>
+				</view>
 			</view>
 			<view class="timetable">
 				<view class="row head">
@@ -22,8 +25,8 @@
 						</view>
 						<view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day" wx:for-index="colIndex">
 							<view class="text" bindtap="setTimetable" data-key="{{edu[0]}}" data-index="{{colIndex}}">
-								<view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor}}; color: {{timetable[edu[0]][colIndex].style.fontColor}};">
-									{{timetable[edu[0]][colIndex].name}}
+								<view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || '#aaa'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#eee'}};">
+									{{timetable[edu[0]][colIndex].name || '-'}}
 								</view>
 							</view>
 						</view>
@@ -42,7 +45,9 @@
 		<!-- 课程管理区 -->
 		<view class="subCon" style="margin: 0;">
 			<view style="text-align: center; padding: 2rpx;">
-				<view class="title" style="background-color: #eee; font-weight: 600; padding: 10rpx;">课程维护</view>
+				<view class="topTitle">
+					<view>课程维护</view>
+				</view>
 			</view>
 			<view class="courses">
 				<view class="row head">
