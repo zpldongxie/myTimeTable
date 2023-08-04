@@ -1,10 +1,18 @@
 <!--components/dualContainer/index.wxml-->
 <!-- 上下双容器，支持拖动放大缩小 -->
 <movable-area class="movable-area-con">
-	<view class="top" style="height:{{topHeight}}%;"><slot name="one"></slot></view>
+	<view class="top" style="height:{{topHeight}}%;">
+		<scroll-view scroll-y="true" style="height: 100%;">
+			<slot name="one"></slot>
+		</scroll-view>
+	</view>
 	<movable-view class="divider" y="{{dividerY}}" direction="vertical" friction="50" bindtouchstart="onTouchStart" bindtouchend="onTouchEnd">
 		<view class="text">上下拖动滑块调整容器大小</view>
 		<view class="divLine"></view>
 	</movable-view>
-	<view class="bottom" style="height:{{bottomHeight}}%;"><slot name="tow"></slot></view>
+	<view class="bottom" style="height:{{bottomHeight}}%;">
+		<scroll-view scroll-y="true" style="height: 100%;">
+			<slot name="tow"></slot>
+		</scroll-view>
+	</view>
 </movable-area>

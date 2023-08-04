@@ -9,16 +9,14 @@ page {
 }
 .top {
 	width: 100%;
-	background-color: #f0f0f0;
 	transition: height 0.5s;
-	padding: 10rpx;
+	padding: 30rpx 10rpx 40rpx;
 }
 
 .bottom {
 	width: 100%;
-	background-color: #f7cfcf;
 	transition: height 0.5s;
-	padding: 10rpx;
+	padding: 30rpx 10rpx 40rpx;
 }
 
 .divider {
