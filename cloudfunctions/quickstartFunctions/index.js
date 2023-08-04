@@ -9,6 +9,8 @@ const grades = require('./grades/index');
 const classes = require('./classes/index');
 // 作息时间
 const schedules = require('./schedules/index');
+// 班级课程
+const courses = require('./courses/index');
 const createCollection = require('./createCollection/index');
 const selectRecord = require('./selectRecord/index');
 const updateRecord = require('./updateRecord/index');
@@ -32,6 +34,8 @@ exports.main = async (event, context) => {
       return await classes.main(event, context);
     case 'schedules':
       return await schedules.main(event, context);
+    case 'courses':
+      return await courses.main(event, context);
     case 'createCollection':
       return await createCollection.main(event, context);
     case 'selectRecord':

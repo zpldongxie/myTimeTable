@@ -26,11 +26,10 @@ Page({
    */
   onLoad(options) {
     const that = this;
-    if (options.classId) {
-      // 若已指定当前作息配置id，则进入编辑模式
-      console.log('options.classId: ', options.classId);
+    const classId = getCurrentClass()?._id
+    if (classId) {
       getTimetable({
-        classId: options.classId
+        classId
       }).then(res => {
         const {
           schedules,
@@ -43,6 +42,16 @@ Page({
           currentData: schedules?.data || []
         })
       });
+    } else {
+      wx.showToast({
+        title: '请先选择班级',
+        icon: 'none'
+      });
+      setTimeout(() => {
+        wx.redirectTo({
+          url: `/pages/chooseClass/index`,
+        });
+      }, 1000);
     }
   },
 
@@ -150,7 +159,7 @@ Page({
     }
   },
 
-  jumpToEditTimeTable () {
+  jumpToEditTimeTable() {
     wx.navigateTo({
       url: '/pages/editTimeTable/index',
     })

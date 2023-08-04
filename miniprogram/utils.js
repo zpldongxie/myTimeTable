@@ -102,7 +102,7 @@ const analysisRes = ({
     console.error(res.result);
     return defaultValue;
   }
-  return res.result.data;
+  return res.result.data || res.result._id || res.result.stats;
 }
 
 /** 按名称模糊搜索学校 */
@@ -278,6 +278,26 @@ const getTimetable = async ({
   })
 }
 
+/** 按班级ID查所有课程 */
+const getCourses = async ({
+  classId
+}) => {
+  if (!classId) {
+    console.error('参数缺少classId');
+    return null;
+  }
+  return callFunction('courses', {
+    method: 'get',
+    classId,
+  }).then(res => {
+    return analysisRes({
+      res,
+      messageType: 'collection.get',
+      defaultValue: []
+    });
+  })
+}
+
 module.exports = {
   /** 云函数调用封装 */
   callFunction,
@@ -311,4 +331,5 @@ module.exports = {
   getClasses,
   getClass,
   getTimetable,
+  getCourses,
 }

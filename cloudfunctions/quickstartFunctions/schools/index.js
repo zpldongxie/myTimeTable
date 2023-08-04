@@ -107,9 +107,7 @@ exports.main = async (event, context) => {
         info.creator = creator;
         info.creatorUser = creatorUser;
       }
-      return await schoolDB.where({
-          _id
-        })
+      return await schoolDB.doc(_id)
         .update({
           data: info,
         });

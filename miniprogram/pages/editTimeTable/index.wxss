@@ -1,1 +1,89 @@
 /* pages/editTimeTable/index.wxss */
+.timetable {}
+
+/* 课表单行 */
+.timetable .row {
+	display: flex;
+}
+
+/* 单元格 */
+.day {
+	text-align: center;
+	width: calc(100% / 6);
+	padding: 2rpx;
+}
+
+/* 通栏单元格 */
+.day.noClass {
+	width: 100%;
+}
+
+/* 单元格文本区 */
+.day .text {
+	background-color: rgba(250, 128, 114, 0.8);
+	color: #fff;
+	height: 100%;
+	line-height: 55rpx;
+}
+
+/* 标题类单元格文本区 */
+.day.title .text {
+	background-color: silver;
+	color: #333;
+	font-weight: 500;
+}
+
+/* 表头文件区 */
+.head .day.title .text {
+	font-weight: 600;
+}
+
+/* 课程管理 */
+.courses {}
+
+/* 课程管理行 */
+.courses .row {
+	display: flex;
+}
+
+/* 课程管理单元格 */
+.courses .row .col {
+	text-align: center;
+	padding: 2rpx;
+}
+
+/* 课程管理第一列 */
+.courses .row .col1 {
+	width: 30%;
+}
+
+/* 课程管理第二列 */
+.courses .row .col2 {
+	width: 40%;
+}
+
+/* 课程管理第三列 */
+.courses .row .col3 {
+	width: 30%;
+}
+
+/* 课程管理单元格文本区 */
+.courses .row .col .text {
+	background-color: #fff;
+	padding: 10rpx 5rpx;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 课程管理表头 */
+.courses .row.head .col .text {
+	background-color: rgba(10, 100, 50, .8);
+	color: #fff;
+}
+
+/* 课程管理操作列图标 */
+.courses .row .col .text icon {
+	margin: 0 20rpx;
+}

@@ -4,9 +4,13 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    show: {
+    show: { // 是否显示
       type: Boolean,
       value: false
+    },
+    otherData: { // 附带信息
+      type: String,
+      value: ''
     }
   },
 
@@ -62,7 +66,10 @@ Component({
       });
     },
     onOk: function () {
-      var myEventDetail = this.data.currentTheme // detail对象，提供给事件监听函数
+      var myEventDetail = {
+        data: this.data.currentTheme,
+        otherData: this.properties.otherData
+      } // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('onOk', myEventDetail, myEventOption)
     },
