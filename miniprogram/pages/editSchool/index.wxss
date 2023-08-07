@@ -1,3 +1,10 @@
+.top {
+  font-size: 35rpx;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+  margin: 10% 0 40rpx;
+}
+
 .formItem {
   margin: 16px 0;
 }
@@ -13,9 +20,13 @@
   color: #666;
 }
 
-.bottomTips {
-  color: #666;
-  font-size: 35rpx;
-  text-indent: 2em;
-  line-height: 50rpx;
+.tips.bottom {
+  position: absolute;
+  bottom: 20rpx;
+  width: 100%;
+  background-color: rgba(220, 255, 255, .8);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 50rpx;
+  line-height: 1.6em;
 }

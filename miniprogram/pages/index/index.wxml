@@ -1,2 +1,5 @@
 <!--pages/index/index.wxml-->
-<text>欢迎使用我班课表，马上为您打开……</text>
+<view class="loading">
+	<view>欢迎使用我班课表</view>
+	<view>马上为您打开……</view>
+</view>

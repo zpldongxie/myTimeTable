@@ -1,1 +1,7 @@
 /* pages/editClass/index.wxss */
+.top {
+  font-size: 35rpx;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+  margin: 10% 0 40rpx;
+}

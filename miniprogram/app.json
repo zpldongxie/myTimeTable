@@ -3,15 +3,7 @@
     "pages/index/index",
     "pages/getOpenId/index",
     "pages/getMiniProgramCode/index",
-    "pages/deployService/index",
-    "pages/createCollection/index",
     "pages/uploadFile/index",
-    "pages/selectRecord/index",
-    "pages/updateRecord/index",
-    "pages/updateRecordResult/index",
-    "pages/updateRecordSuccess/index",
-    "pages/sumRecord/index",
-    "pages/sumRecordResult/index",
     "pages/chooseClass/index",
     "pages/editSchool/index",
     "pages/editClass/index",
@@ -20,9 +12,9 @@
     "pages/editTimeTable/index"
   ],
   "window": {
-    "backgroundColor": "#fff",
+    "backgroundColor": "#daeef9",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#daeef9",
     "navigationBarTitleText": "我班课表",
     "navigationBarTextStyle": "black"
   },

@@ -33,13 +33,15 @@
 	color: #fff;
 	height: 100%;
 	line-height: 55rpx;
+	font-size: 28rpx;
 }
 
 /* 标题类单元格文本区 */
 .day.title .text {
-	background-color: silver;
-	color: #333;
-	font-weight: 500;
+	background-color: rgba(225, 222, 255, 0.6);
+	color: #475569;
+	font-weight: bold;
+	font-size: 28rpx;
 }
 
 /* 表头文件区 */
@@ -88,7 +90,7 @@
 
 /* 课程管理表头 */
 .courses .row.head .col .text {
-	background-color: rgba(10, 100, 50, .8);
+	background-color: #837bcc;
 	color: #fff;
 }
 
@@ -113,4 +115,13 @@
 		transform: rotate(-360deg);
 		/* 旋转结束角度为-360度 */
 	}
+}
+
+.tips.bottom {
+  width: 100%;
+  background-color: rgba(220, 255, 255, .8);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 50rpx;
+  line-height: 1.6em;
 }

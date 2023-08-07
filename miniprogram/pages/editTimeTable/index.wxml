@@ -25,7 +25,7 @@
 						</view>
 						<view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day" wx:for-index="colIndex">
 							<view class="text" bindtap="setTimetable" data-key="{{edu[0]}}" data-index="{{colIndex}}">
-								<view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || '#aaa'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#eee'}};">
+								<view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || 'rgba(225, 222, 255, 0.6)'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#475569'}};">
 									{{timetable[edu[0]][colIndex].name || '-'}}
 								</view>
 							</view>
@@ -98,7 +98,7 @@
 					</view>
 				</view>
 			</view>
-			<view style="padding: 2rpx; color: #666; line-height: 20rpx; margin: 20rpx 0;">
+			<view class="tips bottom">
 				<view style="font-size: 24rpx;">
 					点击<icon class="icon-small" type="cancel" size="40rpx" bindtap="handleAddCourse" color="#09bb07" style="transform: rotate(45deg); vertical-align: middle; margin: 0 10rpx 0 5rpx"></icon>可添加课程。
 				</view>

@@ -2,6 +2,14 @@ const {
   envList
 } = require('./envList.js');
 
+/** 尚未实现的功能 */
+const todo = () => {
+  wx.showToast({
+    title: '敬请期待。。。',
+    icon: 'none'
+  })
+}
+
 /** 云函数调用封装 */
 const callFunction = (type, data) => {
   console.log('type: ', type);
@@ -349,6 +357,7 @@ const getCourses = async ({
 }
 
 module.exports = {
+  todo,
   /** 云函数调用封装 */
   callFunction,
   /** 防抖方法封装 */

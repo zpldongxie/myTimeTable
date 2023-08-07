@@ -13,10 +13,6 @@ const schedules = require('./schedules/index');
 const courses = require('./courses/index');
 // 班级课表
 const timetables = require('./timetables/index');
-const createCollection = require('./createCollection/index');
-const selectRecord = require('./selectRecord/index');
-const updateRecord = require('./updateRecord/index');
-const sumRecord = require('./sumRecord/index');
 
 
 // 云函数入口函数
@@ -40,14 +36,6 @@ exports.main = async (event, context) => {
       return await courses.main(event, context);
     case 'timetables':
       return await timetables.main(event, context);
-    case 'createCollection':
-      return await createCollection.main(event, context);
-    case 'selectRecord':
-      return await selectRecord.main(event, context);
-    case 'updateRecord':
-      return await updateRecord.main(event, context);
-    case 'sumRecord':
-      return await sumRecord.main(event, context);
     default:
       return {
         errCode: 1,

@@ -20,8 +20,8 @@ Page({
     newCourse: { // 新增课程信息
       name: '',
       style: {
-        fontColor: '#eee',
-        bgColor: '#547095b3',
+        fontColor: '#475569',
+        bgColor: 'rgba(225, 222, 255, 0.6)',
       }
     },
     shwoSelectTheme: false,
@@ -57,8 +57,8 @@ Page({
             timetable[s[0]] = [1, 2, 3, 4, 5].map(i => ({
               name: '-',
               style: {
-                fontColor: '#eee',
-                bgColor: '#aaa',
+                fontColor: '#475569',
+                bgColor: 'rgba(225, 222, 255, 0.6)',
               }
             }))
           })
@@ -122,8 +122,8 @@ Page({
       timetable[key][index] = {
         name: '-',
         style: {
-          fontColor: '#eee',
-          bgColor: '#aaa',
+          fontColor: '#475569',
+          bgColor: 'rgba(225, 222, 255, 0.6)',
         }
       };
     } else {
@@ -270,8 +270,8 @@ Page({
         newCourse: {
           name: '',
           style: {
-            fontColor: '#eee',
-            bgColor: '#547095b3',
+            fontColor: '#475569',
+            bgColor: 'rgba(225, 222, 255, 0.6)',
           }
         }
       })

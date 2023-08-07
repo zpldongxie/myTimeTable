@@ -1,4 +1,8 @@
 /* pages/editSchedule/index.wxss */
+page {
+  padding: 0;
+}
+
 .row {
   display: flex;
 }
@@ -13,7 +17,7 @@
 
 /* 表头 */
 .row.title .col {
-  background: saddlebrown;
+  background: #837bcc;
   color: #fff;
 }
 
@@ -31,6 +35,7 @@
 .col1 {
   width: 55%;
 }
+
 .col2 {
   width: 25%;
 }
@@ -59,7 +64,23 @@
   font-family: cursive;
 }
 
+/* 进入课表编辑 */
+.gotoNext {
+  width: 100%;
+  background-color: rgba(220, 255, 255, .8);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: right;
+  font-size: 28rpx;
+  margin: 20rpx 0;
+}
+
 /* 底部提示 */
 .tips.bottom {
+  width: 100%;
+  background-color: rgba(220, 255, 255, .8);
+  border-radius: 10px;
+  padding: 10px;
   margin-bottom: 50rpx;
+  line-height: 1.6em;
 }

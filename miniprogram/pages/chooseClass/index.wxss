@@ -1,3 +1,14 @@
+page {
+	padding: 0;
+}
+
+.top {
+  font-size: 35rpx;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+  margin: 10% 0 40rpx;
+}
+
 .select-box {
   position: relative;
 }
@@ -5,8 +16,8 @@
 .select-box .input {
   height: 80rpx;
   line-height: 80rpx;
-  padding: 0 10px;
-  border-bottom: 1px solid #999;
+  padding: 2px 10px;
+  border-bottom: 1px solid rgba(91, 141, 129, 0.4);
 }
 
 .select-box .dropdown {
@@ -15,12 +26,11 @@
   left: 0;
   right: 0;
   max-height: 60vh;
-  background-color: #fff;
   overflow-y: auto;
-  border: 1px solid #ccc;
   border-top: none;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 6px 6px;
+  background: #e0dbfa;
+  box-shadow: 1px 2px 8px rgba(91, 141, 129, 0.3);
   z-index: 999;
 }
 
@@ -28,6 +38,7 @@
   padding: 10rpx;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .select-box .dropdown-item .item-address {
@@ -42,9 +53,9 @@
   height: 80rpx;
   line-height: 80rpx;
   padding: 0 10px;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid rgba(91, 141, 129, 0.4);
 }
 
-.tips {
-  margin-top: 20rpx;
+.label {
+  font-weight: bold;
 }

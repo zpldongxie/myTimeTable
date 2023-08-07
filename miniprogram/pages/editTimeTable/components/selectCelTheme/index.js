@@ -20,31 +20,28 @@ Component({
   data: {
     themes: [{
       fontColor: '#eee',
-      bgColor: '#547095b3',
+      bgColor: '#EF4444',
     }, {
       fontColor: '#eee',
-      bgColor: '#4590d0',
+      bgColor: '#F59E0B',
     }, {
       fontColor: '#eee',
-      bgColor: '#ce0800'
+      bgColor: '#16A34A'
     }, {
       fontColor: '#eee',
-      bgColor: '#949f00'
+      bgColor: '#0EA5E9'
     }, {
       fontColor: '#eee',
-      bgColor: '#09bb07'
+      bgColor: '#8B5CF6'
     }, {
       fontColor: '#eee',
-      bgColor: '#f7ad00'
+      bgColor: '#EC4899'
     }, {
       fontColor: '#eee',
-      bgColor: '#b6664f'
+      bgColor: '#A16207'
     }, {
       fontColor: '#eee',
-      bgColor: '#981b78'
-    }, {
-      fontColor: '#eee',
-      bgColor: '#f45c00'
+      bgColor: '#7E22CE'
     }], // 课表单元格样式 
     index: 0,
     currentTheme: {
