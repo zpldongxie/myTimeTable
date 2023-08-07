@@ -202,23 +202,20 @@ Page({
     const that = this;
     const selectedGradeIndex = e.detail.value; // 获取选中的年级索引
     const selectedGrade = this.data.gradeList.find(g => g.name === this.data.grades[selectedGradeIndex]) || null;
-    setCurrentGrade(selectedGrade);
-    this.setData({
-      selectedGrade,
-      selectedGradeIndex, // 更新选中的年级索引
-      selectedClass: null,
-      selectedClassIndex: -1,
-      showIntoButton: false
-    });
     getClasses({
       schoolId: this.data.selectedSchool._id,
-      gradeCode: this.data.selectedGrade?.code
+      gradeCode: selectedGrade?.code
     }).then((value) => {
-      that.setData({
+      setCurrentGrade(selectedGrade);
+      this.setData({
+        selectedGrade,
+        selectedGradeIndex, // 更新选中的年级索引
+        selectedClass: null,
+        selectedClassIndex: -1,
         classList: value,
         classes: value.map(v => v.name),
         showIntoButton: false
-      })
+      });
     })
   },
 

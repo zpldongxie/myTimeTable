@@ -49,7 +49,7 @@ exports.main = async (event, context) => {
         className,
         openId
       };
-      return await userDB.where(info).get().then(res => {
+      return await userDB.where({openId}).get().then(res => {
         if (res.data.length) {
           // update
           return userDB.doc(res.data[0]._id).update({
