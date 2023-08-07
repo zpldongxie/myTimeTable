@@ -98,8 +98,12 @@ Page({
       const {
         timeTable
       } = this.data;
-      timeTable[this.data.createInfo.name] = [{}, {}, {}, {}, {}];
-      upsertTimetable(timeTable)
+      const newTimeTable = timeTable || {};
+      newTimeTable[this.data.createInfo.name] = [{}, {}, {}, {}, {}];
+      upsertTimetable(newTimeTable)
+      this.setData({
+        timeTable: newTimeTable
+      });
     }
     this.setData({
       currentData: data,

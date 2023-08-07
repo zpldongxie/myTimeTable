@@ -21,7 +21,9 @@
         <view class="col col1 name"><input class="input" placeholder="例：早读、第一节" maxlength="32" bindinput="handleInput" value="{{createInfo.name}}" /></view>
         <view class="col col2">
           <picker bindchange="handleChange" range="{{['排课','不排课']}}" value="{{createInfo.selectedIndex}}">
-            <view class="picker-item">{{['排课','不排课'][createInfo.selectedIndex]}}</view>
+            <view class="picker-item">{{['排课','不排课'][createInfo.selectedIndex]}}
+            <image src="../../images/down.svg" />
+            </view>
           </picker>
         </view>
         <view class="col col3" bindtap="handleCreate">添加</view>

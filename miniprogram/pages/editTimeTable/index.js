@@ -13,7 +13,7 @@ Page({
   data: {
     days: ['星期一', '星期二', '星期三', '星期四', '星期五'],
     schedule: [], // 作息时间信息
-    timetable: {}, // 课表信息
+    timetable: null, // 课表信息
     courses: [], // 课程信息，时刻与数据库保持同步
     currentCourse: null, // 正在排课的课程
     editCourses: {}, // 变动的课程信息，需要保存
@@ -48,7 +48,7 @@ Page({
         };
         const data = {
           schedule: schedules?.data || [],
-          timetable: timeTable?.dataset || {},
+          timetable: timeTable?.dataset || null,
         };
         if (schedules && !timeTable) {
           // 有作息时间，没有课表时，进行结构初始化

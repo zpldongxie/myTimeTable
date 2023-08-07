@@ -42,7 +42,6 @@ Page({
         schedules: null,
         timeTable: null,
       };
-      console.log(timeTable);
       that.setData({
         isReday: true,
         schedule: schedules?.data,

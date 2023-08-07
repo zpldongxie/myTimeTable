@@ -57,11 +57,14 @@ page {
 }
 
 /* 下拉框后面加图标 */
-.picker-item::after {
-  content: '\003E';
-  float: right;
-  transform: rotate(90deg);
-  font-family: cursive;
+.picker-item {
+  position: relative;
+}
+.picker-item image {
+  width: 20rpx;
+  height: 100%;
+  position: absolute;
+  right: 5rpx;
 }
 
 /* 进入课表编辑 */
