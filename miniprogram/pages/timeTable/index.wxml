@@ -34,7 +34,7 @@
       </view>
     </view>
     <view wx:else class="subCon">
-      <view>这个班级还没有课表</view>
+      <view style="margin-bottom: 1rem; font-weight: bold;">这个班级还没有课表</view>
       <view>我来
         <getUserInfoBtn text="创建一个" className="a" force failTips="不告诉我你是谁，就不能创建课表哦。" bind:callback="jumpPage" data-page="editSchedule" />
       </view>
