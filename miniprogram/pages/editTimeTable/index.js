@@ -20,8 +20,8 @@ Page({
     newCourse: { // 新增课程信息
       name: '',
       style: {
-        fontColor: '#475569',
-        bgColor: 'rgba(225, 222, 255, 0.6)',
+        fontColor: '#fff',
+        bgColor: '#547095b3',
       }
     },
     shwoSelectTheme: false,
@@ -119,6 +119,7 @@ Page({
       return;
     }
     if (timetable[key][index].name === currentCourse.name && timetable[key][index].style.fontColor === currentCourse.style.fontColor && timetable[key][index].style.bgColor === currentCourse.style.bgColor) {
+      // 撤销排课信息
       timetable[key][index] = {
         name: '-',
         style: {
@@ -127,7 +128,9 @@ Page({
         }
       };
     } else {
-      timetable[key][index] = currentCourse;
+      timetable[key][index] = {
+        ...currentCourse
+      };
     }
     this.setData({
       timetable
@@ -140,7 +143,7 @@ Page({
     const _id = e.target.dataset.id;
     this.setData({
       shwoSelectTheme: true,
-      currentEditCourseId: _id,
+      currentEditCourseId: _id || '',
     })
   },
 
@@ -227,14 +230,19 @@ Page({
 
   /** 同步课程编辑记录 */
   syncEditCourses(_id) {
-    const course = this.data.courses.find(c => c._id === _id);
-    if (!course) {
-      // 若没有可编辑的记录，不做任何操作
-      return;
-    }
     const {
+      courses,
       editCourses
     } = this.data;
+    const course = courses.find(c => c._id === _id);
+    if (!course) {
+      // 若没有可编辑的记录，不做任何操作
+      console.log('没有可编辑的记录', _id);
+      return {
+        course: null,
+        editCourses
+      };
+    }
     // 查找编辑记录
     let editCourse = editCourses[_id];
     if (!editCourse) {
@@ -244,7 +252,9 @@ Page({
       };
     }
     return {
+      // 修改后的课程信息
       course,
+      // 修改后的课程编辑列表
       editCourses
     };
   },
@@ -270,8 +280,8 @@ Page({
         newCourse: {
           name: '',
           style: {
-            fontColor: '#475569',
-            bgColor: 'rgba(225, 222, 255, 0.6)',
+            fontColor: '#fff',
+            bgColor: '#547095b3',
           }
         }
       })
@@ -294,6 +304,7 @@ Page({
       for (let i = 0; i < courses.length; i++) {
         const course = courses[i];
         if (course._id === _id) {
+          this.uploadLocalTimetable(_id, currentCourse.name, currentCourse.style);
           course.name = currentCourse.name || course.name;
           course.style = currentCourse.style || course.style;
           break;
@@ -317,13 +328,48 @@ Page({
         courses
       })
       // 同步删除课表相关信息
+      this.uploadLocalTimetable(e.target.dataset.id);
     }
     if (this.data.currentCourse && this.data.currentCourse._id === e.target.dataset.id) {
+      // 取消活动状态
       this.setData({
         currentCourse: null
       })
     }
     wx.hideLoading();
+  },
+
+  /** 按课程_id批量更新课表 */
+  uploadLocalTimetable(_id, name, style) {
+    const {
+      timetable
+    } = this.data;
+    if (!timetable) {
+      return;
+    }
+    Object.keys(timetable).forEach(key => {
+      timetable[key].forEach((tt, i) => {
+        if (tt._id === _id) {
+          if (!name && !style) {
+            // name和style都不传，代表删除
+            timetable[key][i] = {
+              name: '-',
+              style: {
+                fontColor: '#475569',
+                bgColor: 'rgba(225, 222, 255, 0.6)',
+              }
+            }
+          } else {
+            tt.name = name || tt.name;
+            tt.style = style || tt.style;
+          }
+        }
+      })
+    })
+    this.setData({
+      timetable
+    });
+    this.debouncedUpsertTimetable(timetable);
   },
 
   /** 创建课程 */

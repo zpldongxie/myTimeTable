@@ -8,7 +8,8 @@ const {
   getOpenId,
   getSchools,
   getClasses,
-  getCurrentClass
+  getCurrentClass,
+  getCurrentSchool
 } = require('../../utils.js');
 
 Page({
@@ -52,6 +53,13 @@ Page({
    */
   onShow() {
     const that = this;
+    // 回填学校名称
+    const currentSchool = getCurrentSchool();
+    if (currentSchool) {
+      this.setData({
+        selectedSchool: currentSchool
+      })
+    }
     // 回填班级列表
     if (this.data.selectedGrade) {
       getClasses({

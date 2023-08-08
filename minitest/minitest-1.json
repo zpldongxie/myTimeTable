@@ -1,0 +1,3136 @@
+{
+  "meta": {
+    "caseId": "5013a3e7-2f91-4f0a-9dfa-32060b0aee6d",
+    "caseName": "minitest-1",
+    "remarks": "",
+    "version": "0.0.1",
+    "startTime": 1691467984520,
+    "endTime": 1691468045918,
+    "appid": "wx80accc12abfb0f2d",
+    "casePath": "",
+    "caseType": "normal",
+    "commonParams": [
+      {
+        "key": "1691468045939",
+        "name": "",
+        "value": ""
+      }
+    ]
+  },
+  "env": {
+    "wxapplibVersion": "2.14.1",
+    "devtoolsVersion": "1.06.2306020",
+    "openid": "o6zAJszOcj0WfgU_1rATMds58hsc",
+    "entry": {
+      "path": "pages/timeTable/index",
+      "query": "",
+      "scene": 1001
+    },
+    "mock": [
+      "none"
+    ],
+    "maxWaitFor": 5000,
+    "ignoreSelectors": [],
+    "mockAPIs": [],
+    "cleanCache": [
+      "all"
+    ],
+    "groupTouch": false,
+    "replaySetting": {
+      "screenshot": "none"
+    },
+    "simulatorType": "wechat",
+    "device": "iPhone 12/13 (Pro)",
+    "recordAPIs": []
+  },
+  "commands": [
+    {
+      "layer": "tool",
+      "commandType": "operate",
+      "command": "startRecord",
+      "waitfor": 0,
+      "timeStamp": 1691467984520,
+      "desc": ""
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "view.edit",
+      "value": null,
+      "path": "pages/timeTable/index",
+      "text": "维护课表",
+      "eventData": {
+        "detail": {
+          "x": 162,
+          "y": 689.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 162,
+            "clientY": 689.75,
+            "force": 1,
+            "pageX": 162,
+            "pageY": 689.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 217,
+            "screenY": 933
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 162,
+            "clientY": 689.75,
+            "force": 1,
+            "pageX": 162,
+            "pageY": 689.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 217,
+            "screenY": 933
+          }
+        ]
+      },
+      "targetCandidates": [
+        "view.edit",
+        ".edit",
+        "/view/view/view[2]/view[1]/view[1]"
+      ],
+      "timeStamp": 15671,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "input",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input",
+      "childName": "input",
+      "path": "pages/editTimeTable/index",
+      "text": "输入名称",
+      "eventData": {
+        "detail": {}
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input"
+      ],
+      "timeStamp": 19279,
+      "waitfor": 3608,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "input",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input",
+      "childName": "input",
+      "path": "pages/editTimeTable/index",
+      "text": "输入名称",
+      "eventData": {
+        "detail": {}
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input"
+      ],
+      "timeStamp": 19305,
+      "waitfor": 26,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "input",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input",
+      "childName": "input",
+      "path": "pages/editTimeTable/index",
+      "text": "输入名称",
+      "eventData": {
+        "detail": {
+          "x": 80,
+          "y": 526.75
+        }
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input"
+      ],
+      "timeStamp": 19306,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "input",
+      "command": "input",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input",
+      "value": "语文",
+      "childName": "input",
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {},
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input"
+      ],
+      "timeStamp": 21444,
+      "waitfor": 2138,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "语文",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 189,
+            "clientY": 517.75,
+            "force": 1,
+            "pageX": 189,
+            "pageY": 517.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 244,
+            "screenY": 761
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 189,
+            "clientY": 517.75,
+            "force": 1,
+            "pageX": 189,
+            "pageY": 517.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 244,
+            "screenY": 761
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 22896,
+      "waitfor": 1452,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "语文",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 189,
+            "clientY": 517.75,
+            "pageX": 189,
+            "pageY": 517.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 244,
+            "screenY": 761
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 23077,
+      "waitfor": 181,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "语文",
+      "eventData": {
+        "detail": {
+          "x": 189,
+          "y": 517.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 189,
+            "clientY": 517.75,
+            "force": 1,
+            "pageX": 189,
+            "pageY": 517.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 244,
+            "screenY": 761
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 189,
+            "clientY": 517.75,
+            "force": 1,
+            "pageX": 189,
+            "pageY": 517.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 244,
+            "screenY": 761
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 23078,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/selectceltheme/view/view/picker-view/picker-view-column/view[1]/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "Abc",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 209,
+            "clientY": 594.75,
+            "force": 1,
+            "pageX": 209,
+            "pageY": 594.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 264,
+            "screenY": 838
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 209,
+            "clientY": 594.75,
+            "force": 1,
+            "pageX": 209,
+            "pageY": 594.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 264,
+            "screenY": 838
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/picker-view/picker-view-column/view[1]/view"
+      ],
+      "timeStamp": 24103,
+      "waitfor": 1025,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchmove",
+      "target": "/selectceltheme/view/view/picker-view/picker-view-column/view[1]/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "Abc",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 213,
+            "clientY": 533,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 533,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 776
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 213,
+            "clientY": 533,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 533,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 776
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/picker-view/picker-view-column/view[1]/view"
+      ],
+      "timeStamp": 24990,
+      "waitfor": 887,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/selectceltheme/view/view/picker-view/picker-view-column/view[1]/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "Abc",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 213,
+            "clientY": 533,
+            "pageX": 213,
+            "pageY": 533,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 776
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/picker-view/picker-view-column/view[1]/view"
+      ],
+      "timeStamp": 25218,
+      "waitfor": 228,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/selectceltheme/view/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "取消\n确定",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 365,
+            "clientY": 436.75,
+            "force": 1,
+            "pageX": 365,
+            "pageY": 436.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 420,
+            "screenY": 680
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 365,
+            "clientY": 436.75,
+            "force": 1,
+            "pageX": 365,
+            "pageY": 436.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 420,
+            "screenY": 680
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view"
+      ],
+      "timeStamp": 26055,
+      "waitfor": 837,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/selectceltheme/view/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "取消\n确定",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 365,
+            "clientY": 436.75,
+            "pageX": 365,
+            "pageY": 436.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 420,
+            "screenY": 680
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view"
+      ],
+      "timeStamp": 26149,
+      "waitfor": 94,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/selectceltheme/view/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "取消\n确定",
+      "eventData": {
+        "detail": {
+          "x": 365,
+          "y": 436.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 365,
+            "clientY": 436.75,
+            "force": 1,
+            "pageX": 365,
+            "pageY": 436.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 420,
+            "screenY": 680
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 365,
+            "clientY": 436.75,
+            "force": 1,
+            "pageX": 365,
+            "pageY": 436.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 420,
+            "screenY": 680
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view"
+      ],
+      "timeStamp": 26150,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/selectceltheme/view/view/view/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "确定",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 352,
+            "clientY": 424.75,
+            "force": 1,
+            "pageX": 352,
+            "pageY": 424.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 407,
+            "screenY": 668
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 352,
+            "clientY": 424.75,
+            "force": 1,
+            "pageX": 352,
+            "pageY": 424.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 407,
+            "screenY": 668
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view/view[2]"
+      ],
+      "timeStamp": 27055,
+      "waitfor": 905,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/selectceltheme/view/view/view/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "确定",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 352,
+            "clientY": 424.75,
+            "pageX": 352,
+            "pageY": 424.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 407,
+            "screenY": 668
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view/view[2]"
+      ],
+      "timeStamp": 27150,
+      "waitfor": 95,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/selectceltheme/view/view/view/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "确定",
+      "eventData": {
+        "detail": {
+          "x": 352,
+          "y": 424.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 352,
+            "clientY": 424.75,
+            "force": 1,
+            "pageX": 352,
+            "pageY": 424.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 407,
+            "screenY": 668
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 352,
+            "clientY": 424.75,
+            "force": 1,
+            "pageX": 352,
+            "pageY": 424.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 407,
+            "screenY": 668
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view/view[2]"
+      ],
+      "timeStamp": 27151,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 318,
+            "clientY": 522.75,
+            "force": 1,
+            "pageX": 318,
+            "pageY": 522.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 373,
+            "screenY": 766
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 318,
+            "clientY": 522.75,
+            "force": 1,
+            "pageX": 318,
+            "pageY": 522.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 373,
+            "screenY": 766
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon"
+      ],
+      "timeStamp": 28119,
+      "waitfor": 968,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 319,
+            "clientY": 523,
+            "pageX": 319,
+            "pageY": 523,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 374,
+            "screenY": 766
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon"
+      ],
+      "timeStamp": 28221,
+      "waitfor": 102,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {
+          "x": 319,
+          "y": 523
+        },
+        "changedTouches": [
+          {
+            "clientX": 318,
+            "clientY": 522.75,
+            "force": 1,
+            "pageX": 318,
+            "pageY": 522.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 373,
+            "screenY": 766
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 318,
+            "clientY": 522.75,
+            "force": 1,
+            "pageX": 318,
+            "pageY": 522.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 373,
+            "screenY": 766
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon"
+      ],
+      "timeStamp": 28222,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "image",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 300,
+            "clientY": 501.75,
+            "force": 1,
+            "pageX": 300,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 355,
+            "screenY": 745
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 300,
+            "clientY": 501.75,
+            "force": 1,
+            "pageX": 300,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 355,
+            "screenY": 745
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image"
+      ],
+      "timeStamp": 29943,
+      "waitfor": 1721,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "image",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 300,
+            "clientY": 501.75,
+            "pageX": 300,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 355,
+            "screenY": 745
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image"
+      ],
+      "timeStamp": 30037,
+      "waitfor": 94,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "image",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {
+          "x": 300,
+          "y": 501.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 300,
+            "clientY": 501.75,
+            "force": 1,
+            "pageX": 300,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 355,
+            "screenY": 745
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 300,
+            "clientY": 501.75,
+            "force": 1,
+            "pageX": 300,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 355,
+            "screenY": 745
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image"
+      ],
+      "timeStamp": 30038,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 105,
+            "clientY": 145.75,
+            "force": 1,
+            "pageX": 105,
+            "pageY": 145.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 160,
+            "screenY": 389
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 105,
+            "clientY": 145.75,
+            "force": 1,
+            "pageX": 105,
+            "pageY": 145.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 160,
+            "screenY": 389
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 31215,
+      "waitfor": 1177,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 105,
+            "clientY": 145.75,
+            "pageX": 105,
+            "pageY": 145.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 160,
+            "screenY": 389
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 31285,
+      "waitfor": 70,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {
+          "x": 105,
+          "y": 145.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 105,
+            "clientY": 145.75,
+            "force": 1,
+            "pageX": 105,
+            "pageY": 145.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 160,
+            "screenY": 389
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 105,
+            "clientY": 145.75,
+            "force": 1,
+            "pageX": 105,
+            "pageY": 145.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 160,
+            "screenY": 389
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 31286,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[4]/view[3]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 165,
+            "clientY": 175.75,
+            "force": 1,
+            "pageX": 165,
+            "pageY": 175.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 220,
+            "screenY": 419
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 165,
+            "clientY": 175.75,
+            "force": 1,
+            "pageX": 165,
+            "pageY": 175.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 220,
+            "screenY": 419
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[4]/view[3]/view/view"
+      ],
+      "timeStamp": 31791,
+      "waitfor": 505,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[4]/view[3]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 165,
+            "clientY": 175.75,
+            "pageX": 165,
+            "pageY": 175.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 220,
+            "screenY": 419
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[4]/view[3]/view/view"
+      ],
+      "timeStamp": 31877,
+      "waitfor": 86,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[4]/view[3]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {
+          "x": 165,
+          "y": 175.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 165,
+            "clientY": 175.75,
+            "force": 1,
+            "pageX": 165,
+            "pageY": 175.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 220,
+            "screenY": 419
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 165,
+            "clientY": 175.75,
+            "force": 1,
+            "pageX": 165,
+            "pageY": 175.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 220,
+            "screenY": 419
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[4]/view[3]/view/view"
+      ],
+      "timeStamp": 31878,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[4]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 238,
+            "clientY": 147.75,
+            "force": 1,
+            "pageX": 238,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 293,
+            "screenY": 391
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 238,
+            "clientY": 147.75,
+            "force": 1,
+            "pageX": 238,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 293,
+            "screenY": 391
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[4]/view/view"
+      ],
+      "timeStamp": 32759,
+      "waitfor": 881,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[4]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 238,
+            "clientY": 147.75,
+            "pageX": 238,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 293,
+            "screenY": 391
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[4]/view/view"
+      ],
+      "timeStamp": 32846,
+      "waitfor": 87,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[4]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {
+          "x": 238,
+          "y": 147.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 238,
+            "clientY": 147.75,
+            "force": 1,
+            "pageX": 238,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 293,
+            "screenY": 391
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 238,
+            "clientY": 147.75,
+            "force": 1,
+            "pageX": 238,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 293,
+            "screenY": 391
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[4]/view/view"
+      ],
+      "timeStamp": 32847,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "语文",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 205,
+            "clientY": 500.75,
+            "force": 1,
+            "pageX": 205,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 260,
+            "screenY": 744
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 205,
+            "clientY": 500.75,
+            "force": 1,
+            "pageX": 205,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 260,
+            "screenY": 744
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[2]/view/view"
+      ],
+      "timeStamp": 34207,
+      "waitfor": 1360,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "语文",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 205,
+            "clientY": 500.75,
+            "pageX": 205,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 260,
+            "screenY": 744
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[2]/view/view"
+      ],
+      "timeStamp": 34302,
+      "waitfor": 95,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "语文",
+      "eventData": {
+        "detail": {
+          "x": 205,
+          "y": 500.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 205,
+            "clientY": 500.75,
+            "force": 1,
+            "pageX": 205,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 260,
+            "screenY": 744
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 205,
+            "clientY": 500.75,
+            "force": 1,
+            "pageX": 205,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 260,
+            "screenY": 744
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[2]/view/view"
+      ],
+      "timeStamp": 34303,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/selectceltheme/view/view/picker-view/picker-view-column/view[3]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "Abc",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 219,
+            "clientY": 584.75,
+            "force": 1,
+            "pageX": 219,
+            "pageY": 584.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 274,
+            "screenY": 828
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 219,
+            "clientY": 584.75,
+            "force": 1,
+            "pageX": 219,
+            "pageY": 584.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 274,
+            "screenY": 828
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/picker-view/picker-view-column/view[3]"
+      ],
+      "timeStamp": 35239,
+      "waitfor": 936,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchmove",
+      "target": "/selectceltheme/view/view/picker-view/picker-view-column/view[3]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "Abc",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 220,
+            "clientY": 616,
+            "force": 1,
+            "pageX": 220,
+            "pageY": 616,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 275,
+            "screenY": 859
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 220,
+            "clientY": 616,
+            "force": 1,
+            "pageX": 220,
+            "pageY": 616,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 275,
+            "screenY": 859
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/picker-view/picker-view-column/view[3]"
+      ],
+      "timeStamp": 35765,
+      "waitfor": 526,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/selectceltheme/view/view/picker-view/picker-view-column/view[3]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "Abc",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 220,
+            "clientY": 616,
+            "pageX": 220,
+            "pageY": 616,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 275,
+            "screenY": 859
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/picker-view/picker-view-column/view[3]"
+      ],
+      "timeStamp": 36005,
+      "waitfor": 240,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/selectceltheme/view/view/view/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "确定",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 355,
+            "clientY": 427.75,
+            "force": 1,
+            "pageX": 355,
+            "pageY": 427.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 410,
+            "screenY": 671
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 355,
+            "clientY": 427.75,
+            "force": 1,
+            "pageX": 355,
+            "pageY": 427.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 410,
+            "screenY": 671
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view/view[2]"
+      ],
+      "timeStamp": 37049,
+      "waitfor": 1044,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/selectceltheme/view/view/view/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "确定",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 355,
+            "clientY": 427.75,
+            "pageX": 355,
+            "pageY": 427.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 410,
+            "screenY": 671
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view/view[2]"
+      ],
+      "timeStamp": 37150,
+      "waitfor": 101,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/selectceltheme/view/view/view/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "确定",
+      "eventData": {
+        "detail": {
+          "x": 355,
+          "y": 427.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 355,
+            "clientY": 427.75,
+            "force": 1,
+            "pageX": 355,
+            "pageY": 427.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 410,
+            "screenY": 671
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 355,
+            "clientY": 427.75,
+            "force": 1,
+            "pageX": 355,
+            "pageY": 427.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 410,
+            "screenY": 671
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view/view[2]"
+      ],
+      "timeStamp": 37151,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon[1]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 298,
+            "clientY": 501.75,
+            "force": 1,
+            "pageX": 298,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 353,
+            "screenY": 745
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 298,
+            "clientY": 501.75,
+            "force": 1,
+            "pageX": 298,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 353,
+            "screenY": 745
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon[1]"
+      ],
+      "timeStamp": 38985,
+      "waitfor": 1834,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon[1]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 298,
+            "clientY": 501.75,
+            "pageX": 298,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 353,
+            "screenY": 745
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon[1]"
+      ],
+      "timeStamp": 39069,
+      "waitfor": 84,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon[1]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {
+          "x": 298,
+          "y": 501.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 298,
+            "clientY": 501.75,
+            "force": 1,
+            "pageX": 298,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 353,
+            "screenY": 745
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 298,
+            "clientY": 501.75,
+            "force": 1,
+            "pageX": 298,
+            "pageY": 501.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 353,
+            "screenY": 745
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon[1]"
+      ],
+      "timeStamp": 39070,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 334,
+            "clientY": 500.75,
+            "force": 1,
+            "pageX": 334,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 389,
+            "screenY": 744
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 334,
+            "clientY": 500.75,
+            "force": 1,
+            "pageX": 334,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 389,
+            "screenY": 744
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon"
+      ],
+      "timeStamp": 40784,
+      "waitfor": 1714,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 334,
+            "clientY": 500.75,
+            "pageX": 334,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 389,
+            "screenY": 744
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon"
+      ],
+      "timeStamp": 40877,
+      "waitfor": 93,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {
+          "x": 334,
+          "y": 500.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 334,
+            "clientY": 500.75,
+            "force": 1,
+            "pageX": 334,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 389,
+            "screenY": 744
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 334,
+            "clientY": 500.75,
+            "force": 1,
+            "pageX": 334,
+            "pageY": 500.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 389,
+            "screenY": 744
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/icon"
+      ],
+      "timeStamp": 40878,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "input",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input",
+      "childName": "input",
+      "path": "pages/editTimeTable/index",
+      "text": "输入名称",
+      "eventData": {
+        "detail": {}
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input"
+      ],
+      "timeStamp": 44865,
+      "waitfor": 3987,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "input",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input",
+      "childName": "input",
+      "path": "pages/editTimeTable/index",
+      "text": "输入名称",
+      "eventData": {
+        "detail": {}
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input"
+      ],
+      "timeStamp": 44867,
+      "waitfor": 2,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "input",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input",
+      "childName": "input",
+      "path": "pages/editTimeTable/index",
+      "text": "输入名称",
+      "eventData": {
+        "detail": {
+          "x": 66,
+          "y": 523.75
+        }
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input"
+      ],
+      "timeStamp": 44869,
+      "waitfor": 2,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "input",
+      "command": "input",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input",
+      "value": "数学",
+      "childName": "input",
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {},
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[1]/view/input"
+      ],
+      "timeStamp": 46213,
+      "waitfor": 1344,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "数学",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 213,
+            "clientY": 523.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 523.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 767
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 213,
+            "clientY": 523.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 523.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 767
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 47682,
+      "waitfor": 1469,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "数学",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 213,
+            "clientY": 523.75,
+            "pageX": 213,
+            "pageY": 523.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 767
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 47757,
+      "waitfor": 75,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "数学",
+      "eventData": {
+        "detail": {
+          "x": 213,
+          "y": 523.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 213,
+            "clientY": 523.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 523.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 767
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 213,
+            "clientY": 523.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 523.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 767
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 47759,
+      "waitfor": 2,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/selectceltheme/view/view/picker-view/picker-view-column/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "Abc",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 213,
+            "clientY": 616.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 616.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 860
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 213,
+            "clientY": 616.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 616.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 860
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/picker-view/picker-view-column/view[2]"
+      ],
+      "timeStamp": 48358,
+      "waitfor": 599,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchmove",
+      "target": "/selectceltheme/view/view/picker-view/picker-view-column/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "Abc",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 229,
+            "clientY": 525,
+            "force": 1,
+            "pageX": 229,
+            "pageY": 525,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 284,
+            "screenY": 768
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 229,
+            "clientY": 525,
+            "force": 1,
+            "pageX": 229,
+            "pageY": 525,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 284,
+            "screenY": 768
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/picker-view/picker-view-column/view[2]"
+      ],
+      "timeStamp": 48829,
+      "waitfor": 471,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/selectceltheme/view/view/picker-view/picker-view-column/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "Abc",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 229,
+            "clientY": 525,
+            "pageX": 229,
+            "pageY": 525,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 284,
+            "screenY": 768
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/picker-view/picker-view-column/view[2]"
+      ],
+      "timeStamp": 49277,
+      "waitfor": 448,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/selectceltheme/view/view/view/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "确定",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 360,
+            "clientY": 428.75,
+            "force": 1,
+            "pageX": 360,
+            "pageY": 428.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 415,
+            "screenY": 672
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 360,
+            "clientY": 428.75,
+            "force": 1,
+            "pageX": 360,
+            "pageY": 428.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 415,
+            "screenY": 672
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view/view[2]"
+      ],
+      "timeStamp": 50224,
+      "waitfor": 947,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/selectceltheme/view/view/view/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "确定",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 360,
+            "clientY": 428.75,
+            "pageX": 360,
+            "pageY": 428.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 415,
+            "screenY": 672
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view/view[2]"
+      ],
+      "timeStamp": 50318,
+      "waitfor": 94,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/selectceltheme/view/view/view/view[2]",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "确定",
+      "eventData": {
+        "detail": {
+          "x": 360,
+          "y": 428.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 360,
+            "clientY": 428.75,
+            "force": 1,
+            "pageX": 360,
+            "pageY": 428.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 415,
+            "screenY": 672
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 360,
+            "clientY": 428.75,
+            "force": 1,
+            "pageX": 360,
+            "pageY": 428.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 415,
+            "screenY": 672
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/selectceltheme/view/view/view/view[2]"
+      ],
+      "timeStamp": 50319,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 324,
+            "clientY": 524.75,
+            "force": 1,
+            "pageX": 324,
+            "pageY": 524.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 379,
+            "screenY": 768
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 324,
+            "clientY": 524.75,
+            "force": 1,
+            "pageX": 324,
+            "pageY": 524.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 379,
+            "screenY": 768
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon"
+      ],
+      "timeStamp": 51277,
+      "waitfor": 958,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 324,
+            "clientY": 524.75,
+            "pageX": 324,
+            "pageY": 524.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 379,
+            "screenY": 768
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon"
+      ],
+      "timeStamp": 51357,
+      "waitfor": 80,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "icon",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {
+          "x": 324,
+          "y": 524.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 324,
+            "clientY": 524.75,
+            "force": 1,
+            "pageX": 324,
+            "pageY": 524.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 379,
+            "screenY": 768
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 324,
+            "clientY": 524.75,
+            "force": 1,
+            "pageX": 324,
+            "pageY": 524.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 379,
+            "screenY": 768
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[3]/view[3]/view/icon"
+      ],
+      "timeStamp": 51359,
+      "waitfor": 2,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "image",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 303,
+            "clientY": 498.75,
+            "force": 1,
+            "pageX": 303,
+            "pageY": 498.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 358,
+            "screenY": 742
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 303,
+            "clientY": 498.75,
+            "force": 1,
+            "pageX": 303,
+            "pageY": 498.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 358,
+            "screenY": 742
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image"
+      ],
+      "timeStamp": 52615,
+      "waitfor": 1256,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "image",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 303,
+            "clientY": 498.75,
+            "pageX": 303,
+            "pageY": 498.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 358,
+            "screenY": 742
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image"
+      ],
+      "timeStamp": 52685,
+      "waitfor": 70,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "image",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "",
+      "eventData": {
+        "detail": {
+          "x": 303,
+          "y": 498.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 303,
+            "clientY": 498.75,
+            "force": 1,
+            "pageX": 303,
+            "pageY": 498.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 358,
+            "screenY": 742
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 303,
+            "clientY": 498.75,
+            "force": 1,
+            "pageX": 303,
+            "pageY": 498.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 358,
+            "screenY": 742
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[2]/scroll-view/view/view/view[2]/view[2]/view[3]/view/image"
+      ],
+      "timeStamp": 52686,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 104,
+            "clientY": 147.75,
+            "force": 1,
+            "pageX": 104,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 159,
+            "screenY": 391
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 104,
+            "clientY": 147.75,
+            "force": 1,
+            "pageX": 104,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 159,
+            "screenY": 391
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 53783,
+      "waitfor": 1097,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 104,
+            "clientY": 147.75,
+            "pageX": 104,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 159,
+            "screenY": 391
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 53861,
+      "waitfor": 78,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {
+          "x": 104,
+          "y": 147.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 104,
+            "clientY": 147.75,
+            "force": 1,
+            "pageX": 104,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 159,
+            "screenY": 391
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 104,
+            "clientY": 147.75,
+            "force": 1,
+            "pageX": 104,
+            "pageY": 147.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 159,
+            "screenY": 391
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[3]/view[2]/view/view"
+      ],
+      "timeStamp": 53862,
+      "waitfor": 1,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[8]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 107,
+            "clientY": 297.75,
+            "force": 1,
+            "pageX": 107,
+            "pageY": 297.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 162,
+            "screenY": 541
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 107,
+            "clientY": 297.75,
+            "force": 1,
+            "pageX": 107,
+            "pageY": 297.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 162,
+            "screenY": 541
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[8]/view[2]/view/view"
+      ],
+      "timeStamp": 54679,
+      "waitfor": 817,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[8]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 107,
+            "clientY": 297.75,
+            "pageX": 107,
+            "pageY": 297.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 162,
+            "screenY": 541
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[8]/view[2]/view/view"
+      ],
+      "timeStamp": 54765,
+      "waitfor": 86,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[8]/view[2]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {
+          "x": 107,
+          "y": 297.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 107,
+            "clientY": 297.75,
+            "force": 1,
+            "pageX": 107,
+            "pageY": 297.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 162,
+            "screenY": 541
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 107,
+            "clientY": 297.75,
+            "force": 1,
+            "pageX": 107,
+            "pageY": 297.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 162,
+            "screenY": 541
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[8]/view[2]/view/view"
+      ],
+      "timeStamp": 54767,
+      "waitfor": 2,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[5]/view[4]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 213,
+            "clientY": 208.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 208.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 452
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 213,
+            "clientY": 208.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 208.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 452
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[5]/view[4]/view/view"
+      ],
+      "timeStamp": 55255,
+      "waitfor": 488,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[5]/view[4]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 213,
+            "clientY": 208.75,
+            "pageX": 213,
+            "pageY": 208.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 452
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[5]/view[4]/view/view"
+      ],
+      "timeStamp": 55341,
+      "waitfor": 86,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "view",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[5]/view[4]/view/view",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "-",
+      "eventData": {
+        "detail": {
+          "x": 213,
+          "y": 208.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 213,
+            "clientY": 208.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 208.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 452
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 213,
+            "clientY": 208.75,
+            "force": 1,
+            "pageX": 213,
+            "pageY": 208.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 268,
+            "screenY": 452
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[2]/view[5]/view[4]/view/view"
+      ],
+      "timeStamp": 55343,
+      "waitfor": 2,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "button",
+      "command": "touchstart",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[1]/view/button",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "回到首页",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 307,
+            "clientY": 44.75,
+            "force": 1,
+            "pageX": 307,
+            "pageY": 44.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 362,
+            "screenY": 288
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 307,
+            "clientY": 44.75,
+            "force": 1,
+            "pageX": 307,
+            "pageY": 44.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 362,
+            "screenY": 288
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[1]/view/button"
+      ],
+      "timeStamp": 57734,
+      "waitfor": 2391,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "button",
+      "command": "touchend",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[1]/view/button",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "回到首页",
+      "eventData": {
+        "detail": {},
+        "changedTouches": [
+          {
+            "clientX": 307,
+            "clientY": 44.75,
+            "pageX": 307,
+            "pageY": 44.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 362,
+            "screenY": 288
+          }
+        ],
+        "touches": []
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[1]/view/button"
+      ],
+      "timeStamp": 57829,
+      "waitfor": 95,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "tagName": "button",
+      "command": "tap",
+      "target": "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[1]/view/button",
+      "value": null,
+      "path": "pages/editTimeTable/index",
+      "text": "回到首页",
+      "eventData": {
+        "detail": {
+          "x": 307,
+          "y": 44.75
+        },
+        "changedTouches": [
+          {
+            "clientX": 307,
+            "clientY": 44.75,
+            "force": 1,
+            "pageX": 307,
+            "pageY": 44.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 362,
+            "screenY": 288
+          }
+        ],
+        "touches": [
+          {
+            "clientX": 307,
+            "clientY": 44.75,
+            "force": 1,
+            "pageX": 307,
+            "pageY": 44.75,
+            "radiusX": 11.5,
+            "radiusY": 11.5,
+            "screenX": 362,
+            "screenY": 288
+          }
+        ]
+      },
+      "targetCandidates": [
+        "/dualcontainer/movable-area/view[1]/scroll-view/view/view/view[1]/view/button"
+      ],
+      "timeStamp": 57831,
+      "waitfor": 2,
+      "desc": "",
+      "commandType": "operate",
+      "layer": "pageframe"
+    },
+    {
+      "timeStamp": 61398,
+      "waitfor": 3567,
+      "desc": "",
+      "layer": "tool",
+      "commandType": "operate",
+      "command": "stopRecord"
+    }
+  ]
+}

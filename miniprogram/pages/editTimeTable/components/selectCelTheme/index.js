@@ -20,6 +20,9 @@ Component({
   data: {
     themes: [{
       fontColor: '#eee',
+      bgColor: '#547095b3',
+    },{
+      fontColor: '#eee',
       bgColor: '#EF4444',
     }, {
       fontColor: '#eee',
