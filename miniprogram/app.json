@@ -9,8 +9,7 @@
     "pages/editClass/index",
     "pages/timeTable/index",
     "pages/editSchedule/index",
-    "pages/editTimeTable/index",
-    "pages/pkys/index"
+    "pages/editTimeTable/index"
   ],
   "window": {
     "backgroundColor": "#daeef9",
