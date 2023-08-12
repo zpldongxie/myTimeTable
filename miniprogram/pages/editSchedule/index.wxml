@@ -1,40 +1,66 @@
 <!--pages/editSchedule/index.wxml-->
 <view class="contaner">
-  <timeTableHeader type="作息表" style="margin: 5% 0 40rpx;" />
-  <scroll-view scroll-y="true" style="height: calc(100vh - 5% - 220rpx);">
-    <view class="subCon">
-      <view class="row title">
-        <view class="col col1">名称</view>
-        <view class="col col2">是否排课</view>
-        <view class="col col3 a">操作</view>
-      </view>
-      <block wx:for="{{currentData}}" wx:key="index" wx:for-index="index" wx:for-item="data">
-        <view class="row{{data[1] ? '' : ' noClass'}}">
-          <view class="col col1 name">{{data[0]}}</view>
-          <view class="col col2">{{data[1] ? "排课" : "不排课"}}</view>
-          <view class="col col3 a" bindtap="handleDel" data-index="{{index}}">删除</view>
-        </view>
-      </block>
-    </view>
-    <view class="subCon">
-      <view class="row addRow">
-        <view class="col col1 name"><input class="input" placeholder="例：早读、第一节" maxlength="20" bindinput="handleInput" value="{{createInfo.name}}" /></view>
-        <view class="col col2">
-          <picker bindchange="handleChange" range="{{['排课','不排课']}}" value="{{createInfo.selectedIndex}}">
-            <view class="picker-item">{{['排课','不排课'][createInfo.selectedIndex]}}
-            <image src="../../images/down.svg" />
+    <timeTableHeader type="作息表" style="margin: 5% 0 40rpx;" />
+    <scroll-view scroll-y="true" style="height: calc(100vh - 5% - 220rpx);">
+        <view class="subCon">
+            <view class="row title">
+                <view class="col col1">名称</view>
+                <view class="col col2">是否排课</view>
+                <view class="col col3 a">操作</view>
             </view>
-          </picker>
+            <block wx:for="{{dataList}}" wx:key="index" wx:for-index="index" wx:for-item="data">
+                <block wx:if="{{editData.length && editData[2] == index}}">
+                    <view class="row editRow">
+                        <view class="col col1 name"><input class="input" placeholder="例：早读、第一节" maxlength="20" bindinput="handleInputEditData" value="{{editData[0]}}" style="border-bottom: 1px solid #eee; color: #666" auto-focus /></view>
+                        <view class="col col2">
+                            <picker bindchange="handleChangeEditData" range="{{['排课','不排课']}}">
+                                <view class="picker-item" style="color: #666;">{{editData[1] ? "排课" : "不排课"}}
+                                    <image src="../../images/down.svg" />
+                                </view>
+                            </picker>
+                        </view>
+                        <view class="col col3" style="display: flex; justify-content: space-around;">
+                            <icon class="icon-small" type="success" size="40rpx" bindtap="handleEditOk" data-id="{{course._id}}"></icon>
+                            <icon class="icon-small" type="cancel" size="40rpx" bindtap="handleEditCancel" data-id="{{course._id}}"></icon>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="row{{data[1] ? '' : ' noClass'}}">
+                        <view class="col col1 name">{{data[0]}}</view>
+                        <view class="col col2">{{data[1] ? "排课" : "不排课"}}</view>
+                        <view class="col col3">
+                            <picker bindchange="optionChange" range="{{['上移', '下移', '插入', '修改', '删除']}}" data-index="{{index}}">
+                                <view class="picker-item">
+                                    <image src="../../images/edit.svg" style="position: initial; width: 42rpx; height: 42rpx; vertical-align: middle; margin: 0 10rpx" bindtap="handleSelectSchedule" />
+                                </view>
+                            </picker>
+                        </view>
+                    </view>
+                </block>
+            </block>
         </view>
-        <view class="col col3" bindtap="handleCreate">添加</view>
-      </view>
-    </view>
-    <view class="gotoNext">检查作息表信息无误后，<button type="primary" size="mini" style="vertical-align: middle;" bindtap="jumpToEditTimeTable">进入课表编辑</button></view>
-    <view class="tips bottom">
-      <view>提示：</view>
-      <view>1. 作息时间表会影响课表显示的行数，为了防止课表干扰信息太多，作息时间表应尽量精简。</view>
-      <view>2. 午休等整周拉通显示的不用排课。</view>
-      <view style="text-align: right;"><text class="a" bindtap="shwoEg">查看示例</text></view>
-    </view>
-  </scroll-view>
+        <view class="subCon">
+            <view class="row addRow">
+                <view class="col col1 name"><input class="input" placeholder="例：早读、第一节" maxlength="20" bindinput="handleInput" value="{{createInfo.name}}" /></view>
+                <view class="col col2">
+                    <picker bindchange="handleChange" range="{{['排课','不排课']}}" value="{{createInfo.selectedIndex}}">
+                        <view class="picker-item">{{['排课','不排课'][createInfo.selectedIndex]}}
+                            <image src="../../images/down.svg" />
+                        </view>
+                    </picker>
+                </view>
+                <view class="col col3" bindtap="handleCreate">
+                    <icon class="icon-small" type="cancel" size="40rpx" color="#09bb07" style="transform: rotate(45deg);"></icon>
+                </view>
+            </view>
+        </view>
+        <view class="gotoNext">检查作息表信息无误后，<button type="primary" size="mini" style="vertical-align: middle;" bindtap="jumpToEditTimeTable">进入课表编辑</button></view>
+        <view class="tips bottom">
+            <view>提示：</view>
+            <view>1. 作息时间表会影响课表显示的行数，为了防止课表干扰信息太多，作息时间表应尽量精简。</view>
+            <view>2. 午休等整周拉通显示的不用排课。</view>
+            <view style="text-align: right;"><text class="a" bindtap="shwoEg">查看示例</text></view>
+        </view>
+    </scroll-view>
 </view>

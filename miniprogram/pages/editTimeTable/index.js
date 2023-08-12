@@ -16,7 +16,7 @@ Page({
     timetable: null, // 课表信息
     courses: [], // 课程信息，时刻与数据库保持同步
     currentCourse: null, // 正在排课的课程
-    editCourses: {}, // 变动的课程信息，需要保存
+    editCourse: {}, // 正在编辑的课程，同一时间只能有一个
     newCourse: {
       // 新增课程信息
       name: '',
@@ -25,8 +25,7 @@ Page({
         bgColor: '#547095b3'
       }
     },
-    shwoSelectTheme: false,
-    currentEditCourseId: '' // 当前正在编辑的课程ID，传递给下拉组件
+    shwoSelectTheme: false
   },
 
   onLoad() {
@@ -73,6 +72,7 @@ Page({
         that.setData({
           courses
         })
+        console.log('courses: ', courses)
       })
     } else {
       wx.showToast({
@@ -85,6 +85,14 @@ Page({
         })
       }, 1000)
     }
+  },
+
+  /** 更新当前编辑的课程 */
+  updateEditCourse(_id) {
+    const { courses } = this.data
+    const course = courses.find(c => c._id === _id)
+    this.setData({ editCourse: course || {} })
+    return course || {}
   },
 
   /** 选择课程准备排课 */
@@ -137,38 +145,58 @@ Page({
   /** 点击选择主题 */
   handleThemeClick(e) {
     const _id = e.target.dataset.id
-    this.setData({
-      shwoSelectTheme: true,
-      currentEditCourseId: _id || ''
-    })
+    const { editCourse } = this.data
+    if (_id) {
+      if (editCourse._id != _id) {
+        this.updateEditCourse(_id)
+      }
+      this.setData({
+        shwoSelectTheme: true
+      })
+    } else {
+      this.setData({
+        shwoSelectTheme: true,
+        editCourse: {}
+      })
+    }
   },
 
   /** 确定选择主题 */
   selectThemeOk(e) {
     const _id = e.detail.otherData
+    console.log('_id: ', _id)
     const style = e.detail.data
     if (_id) {
       // update
-      const { course, editCourses } = this.syncEditCourses(_id)
-      const editCourse = editCourses[_id]
-      // 更新编辑记录，若与原数据相同则置空
-      if (style.bgColor === course.style.bgColor && style.fontColor === course.style.fontColor) {
-        editCourse.style = null
-      } else {
-        editCourse.style = style
+      const { editCourse } = this.data
+      let newEditCourse = editCourse
+      if (editCourse._id != _id) {
+        const course = this.updateEditCourse(_id)
+        newEditCourse = { ...course }
       }
-      if (!editCourse.name && !editCourse.style) {
-        delete editCourses[_id]
+      // 更新编辑记录，若与原数据相同则置空
+      if (style.bgColor === newEditCourse.style.bgColor && style.fontColor === newEditCourse.style.fontColor) {
+        newEditCourse.style = null
+      } else {
+        newEditCourse.style = style
+      }
+      if (!newEditCourse.name && !newEditCourse.style) {
+        this.setData({
+          shwoSelectTheme: false,
+          editCourse: {}
+        })
       } else if (this.data.currentCourse && this.data.currentCourse._id === _id) {
         this.setData({
-          currentCourse: null
+          shwoSelectTheme: false,
+          currentCourse: null,
+          editCourse: newEditCourse
+        })
+      } else {
+        this.setData({
+          shwoSelectTheme: false,
+          editCourse: newEditCourse
         })
       }
-      this.setData({
-        shwoSelectTheme: false,
-        editCourses,
-        currentEditCourseId: ''
-      })
     } else {
       this.setData({
         shwoSelectTheme: false,
@@ -182,6 +210,10 @@ Page({
 
   /** 取消选择主题 */
   selectThemeCancel(e) {
+    const { editCourse } = this.data
+    if (!editCourse.name && !editCourse.style) {
+      this.setData({ editCourse: {} })
+    }
     this.setData({
       shwoSelectTheme: false
     })
@@ -193,20 +225,31 @@ Page({
     const _id = e.target.dataset.id
     if (_id) {
       // update
-      const { course, editCourses } = this.syncEditCourses(_id)
-      const editCourse = editCourses[_id]
+      const { editCourse } = this.data
+      let newEditCourse = editCourse
+      if (editCourse._id != _id) {
+        const course = this.updateEditCourse(_id)
+        newEditCourse = { ...course }
+      }
       // 更新编辑记录，若与原数据相同则置空
-      editCourse.name = inputValue === course.name ? null : inputValue
-      if (!editCourse.name && !editCourse.style) {
-        delete editCourses[_id]
+      newEditCourse.name = inputValue === newEditCourse.name ? null : inputValue
+      if (!newEditCourse.name && !newEditCourse.style) {
+        this.setData({
+          shwoSelectTheme: false,
+          editCourse: {}
+        })
       } else if (this.data.currentCourse && this.data.currentCourse._id === _id) {
         this.setData({
-          currentCourse: null
+          shwoSelectTheme: false,
+          currentCourse: null,
+          editCourse: newEditCourse
+        })
+      } else {
+        this.setData({
+          shwoSelectTheme: false,
+          editCourse: newEditCourse
         })
       }
-      this.setData({
-        editCourses
-      })
     } else {
       // create
       this.setData({
@@ -215,34 +258,6 @@ Page({
           name: inputValue
         }
       })
-    }
-  },
-
-  /** 同步课程编辑记录 */
-  syncEditCourses(_id) {
-    const { courses, editCourses } = this.data
-    const course = courses.find(c => c._id === _id)
-    if (!course) {
-      // 若没有可编辑的记录，不做任何操作
-      console.log('没有可编辑的记录', _id)
-      return {
-        course: null,
-        editCourses
-      }
-    }
-    // 查找编辑记录
-    let editCourse = editCourses[_id]
-    if (!editCourse) {
-      // 创建编辑记录
-      editCourses[_id] = {
-        _id: course._id
-      }
-    }
-    return {
-      // 修改后的课程信息
-      course,
-      // 修改后的课程编辑列表
-      editCourses
     }
   },
 
@@ -278,49 +293,60 @@ Page({
   /** 点击修改课程 */
   async handleEditCourse(e) {
     const _id = e.target.dataset.id
-    const currentCourse = this.data.editCourses[_id]
-    if (!currentCourse) {
+    const { editCourse } = this.data
+    if (!editCourse || editCourse._id != _id) {
       return
     }
-    const res = await this.updateCourse(_id, currentCourse.name, currentCourse.style)
+    const res = await this.updateCourse(_id, editCourse.name, editCourse.style)
     if (res) {
-      const { courses, editCourses } = this.data
+      const { courses } = this.data
       for (let i = 0; i < courses.length; i++) {
         const course = courses[i]
         if (course._id === _id) {
-          this.uploadLocalTimetable(_id, currentCourse.name, currentCourse.style)
-          course.name = currentCourse.name || course.name
-          course.style = currentCourse.style || course.style
+          this.uploadLocalTimetable(_id, editCourse.name, editCourse.style)
+          course.name = editCourse.name || course.name
+          course.style = editCourse.style || course.style
           break
         }
       }
-      delete editCourses[_id]
-      this.setData({
-        courses,
-        editCourses
-      })
+      this.setData({ courses, editCourse: {} })
     }
   },
 
   /** 点击删除课程 */
   async handleDelCourse(e) {
-    wx.showLoading()
-    const res = await this.delCourse(e.target.dataset.id)
-    if (res) {
-      const courses = this.data.courses.filter(c => c._id !== e.target.dataset.id)
+    if (this.data.editCourse._id === e.target.dataset.id) {
+      // 取消编辑
       this.setData({
-        courses
+        editCourse: {}
       })
-      // 同步删除课表相关信息
-      this.uploadLocalTimetable(e.target.dataset.id)
-    }
-    if (this.data.currentCourse && this.data.currentCourse._id === e.target.dataset.id) {
-      // 取消活动状态
-      this.setData({
-        currentCourse: null
+    } else {
+      wx.showModal({
+        title: '确定删除吗',
+        content: '',
+        complete: async res => {
+          if (res.confirm) {
+            wx.showLoading()
+            const res = await this.delCourse(e.target.dataset.id)
+            if (res) {
+              const courses = this.data.courses.filter(c => c._id !== e.target.dataset.id)
+              this.setData({
+                courses
+              })
+              // 同步删除课表相关信息
+              this.uploadLocalTimetable(e.target.dataset.id)
+            }
+            if (this.data.currentCourse && this.data.currentCourse._id === e.target.dataset.id) {
+              // 取消活动状态
+              this.setData({
+                currentCourse: null
+              })
+            }
+            wx.hideLoading()
+          }
+        }
       })
     }
-    wx.hideLoading()
   },
 
   /** 按课程_id批量更新课表 */
