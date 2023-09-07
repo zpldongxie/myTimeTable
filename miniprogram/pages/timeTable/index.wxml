@@ -19,7 +19,7 @@
           </view>
           <view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day" wx:for-index="colIndex">
             <view class="text">
-              <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || 'rgba(225, 222, 255, 0.6)'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#475569'}};">
+              <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || 'rgba(225, 222, 255, 0.6)'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#475569'}}; height: 100%; display: flex; justify-content: center; align-items: center;">
                 {{timetable[edu[0]][colIndex].name || '-'}}
               </view>
             </view>

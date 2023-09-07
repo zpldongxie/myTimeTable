@@ -25,7 +25,7 @@
                         </view>
                         <view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day" wx:for-index="colIndex">
                             <view class="text" bindtap="setTimetable" data-key="{{edu[0]}}" data-index="{{colIndex}}">
-                                <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || 'rgba(225, 222, 255, 0.6)'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#475569'}};">
+                                <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || 'rgba(225, 222, 255, 0.6)'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#475569'}}; height: 100%; display: flex; justify-content: center; align-items: center;">
                                     {{timetable[edu[0]][colIndex].name || '-'}}
                                 </view>
                             </view>
@@ -64,7 +64,7 @@
                 </view>
                 <view class="row" wx:for="{{courses}}" wx:key="index" wx:for-item="course" style="flex-wrap: wrap;">
                     <view class="col col1">
-                        <view class="text"><input placeholder="课程名" value="{{editCourse._id == course._id ? (editCourse.name || course.name) : course.name}}" maxlength="4" bindinput="handleCourseName" data-id="{{course._id}}" /></view>
+                        <view class="text"><input placeholder="课程名" value="{{editCourse._id == course._id ? (editCourse.name || course.name) : course.name}}" maxlength="20" bindinput="handleCourseName" data-id="{{course._id}}" /></view>
                     </view>
                     <view class="col col2">
                         <view class="text">
@@ -84,7 +84,7 @@
                     <view style="background-color: rgba(225, 222, 255, 0.85);color: #333; padding: 5px;font-size: 28rpx;">添加课程</view>
                     <view class="row add">
                         <view class="col col1">
-                            <view class="text"><input placeholder="输入名称" value="{{newCourse.name}}" maxlength="4" bindinput="handleCourseName" /></view>
+                            <view class="text"><input placeholder="输入名称" value="{{newCourse.name}}" maxlength="20" bindinput="handleCourseName" /></view>
                         </view>
                         <view class="col col2">
                             <view class="text">

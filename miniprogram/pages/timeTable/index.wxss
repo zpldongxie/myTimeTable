@@ -6,6 +6,7 @@ page {
 .timetable {
 	position: relative;
 	margin-top: 50rpx;
+	margin-bottom: 6rem;
 }
 
 .clock {
@@ -47,6 +48,9 @@ page {
 	color: #475569;
 	font-weight: bold;
 	font-size: 28rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* 表头文件区 */
