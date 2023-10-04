@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "getUserInfoBtn": "/components/getUserInfoBtn/index"
+  }
+}

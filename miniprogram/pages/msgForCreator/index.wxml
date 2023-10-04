@@ -1,0 +1,17 @@
+<!-- 面向创建者的消息队列 -->
+<view class="titleCon">
+  <button type="primary" size="mini" bind:tap="readAll">全部设为已读</button>
+</view>
+<scroll-view class="message-list" scroll-y bindscrolltolower="loadMore">
+  <view class="message-item" wx:for="{{messageList}}" wx:key="index" wx:for-item="item">
+    <view class="imageCon">
+      <image class="avatar" src="{{item.sender.avatarUrl || ''}}"></image>
+    </view>
+    <view class="message-content" bind:tap="read" data-id="{{item._id}}">
+      <view class="message-name">{{item.sender.nickName}}</view>
+      <view class="message-text">{{item.msg}}</view>
+      <view class="message-time">{{item.createdAt}}</view>
+    </view>
+    <view class="badge" wx:if="{{!item.read}}"></view>
+  </view>
+</scroll-view>

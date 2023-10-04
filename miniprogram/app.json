@@ -9,7 +9,9 @@
     "pages/editClass/index",
     "pages/timeTable/index",
     "pages/editSchedule/index",
-    "pages/editTimeTable/index"
+    "pages/editTimeTable/index",
+    "pages/fuZhuang/index",
+    "pages/msgForCreator/index"
   ],
   "window": {
     "backgroundColor": "#daeef9",

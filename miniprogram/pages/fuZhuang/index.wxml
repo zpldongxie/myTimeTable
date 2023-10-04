@@ -1,0 +1,13 @@
+<!--pages/fuZhuang/index.wxml-->
+<block wx:if="{{isReday}}">
+  <view wx:if="{{!!data.length}}">hahahah</view>
+  <view wx:else class="loading" style="font-size: 35rpx; line-height: 2;">
+    <view>着装信息还未配置</view>
+    <view>快
+      <getUserInfoBtn text="@管理员" type="warn" size="mini" force failTips="请告诉管理员是谁给他提的这么好的意见^_^" bind:callback="callAdmin" style="vertical-align: text-top; margin: 0 5px 0 0px;" />维护吧
+    </view>
+  </view>
+</block>
+<view wx:else class="loading">
+  正在加载着装信息...
+</view>

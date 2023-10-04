@@ -19,7 +19,7 @@
           </view>
           <view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day" wx:for-index="colIndex">
             <view class="text">
-              <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || 'rgba(225, 222, 255, 0.6)'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#475569'}}; height: 100%; display: flex; justify-content: center; align-items: center;">
+              <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || 'rgba(225, 222, 255, 0.6)'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#475569'}}; height: 100%; display: flex; justify-content: center; align-items: center; font-size: 26rpx;">
                 {{timetable[edu[0]][colIndex].name || '-'}}
               </view>
             </view>
@@ -46,12 +46,19 @@
       <view class="manager" wx:if="{{isCreator}}">
         <view class="edit" bindtap="doEdit" style="margin: 0 1rem">维护课表</view>
         <view class="gave" style="margin: 0 1rem" bindtap="doZR">转让管理</view>
+        <navigator class="msg" style="margin: 0 1rem" url="/pages/msgForCreator/index">
+          消息<view wx:if="{{unread > 0}}" class="badge">{{unread > 999 ? 999 : unread}}</view>
+        </navigator>
       </view>
       <view class="common">
-        <view class="dz" bindtap="doDZ">
+        <view class="dz" bindtap="doDZ" hidden>
           <image src="../../images/dz.svg" />
           点赞
         </view>
+        <navigator class="fz" url="/pages/fuZhuang/index">
+          <image src="../../images/fu-zhuang.svg" />
+          着装
+        </navigator>
         <view class="ds" bindtap="doDS">
           <image src="../../images/ds.svg" />
           打赏

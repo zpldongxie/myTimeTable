@@ -25,7 +25,7 @@
                         </view>
                         <view class="day" wx:for="{{days}}" wx:key="index" wx:for-item="day" wx:for-index="colIndex">
                             <view class="text" bindtap="setTimetable" data-key="{{edu[0]}}" data-index="{{colIndex}}">
-                                <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || 'rgba(225, 222, 255, 0.6)'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#475569'}}; height: 100%; display: flex; justify-content: center; align-items: center;">
+                                <view style="background-color: {{timetable[edu[0]][colIndex].style.bgColor || 'rgba(225, 222, 255, 0.6)'}}; color: {{timetable[edu[0]][colIndex].style.fontColor || '#475569'}}; height: 100%; display: flex; justify-content: center; align-items: center; font-size: 26rpx;">
                                     {{timetable[edu[0]][colIndex].name || '-'}}
                                 </view>
                             </view>

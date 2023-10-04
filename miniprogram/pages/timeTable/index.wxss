@@ -1,100 +1,118 @@
 /* pages/timeTable/index.wxss */
 page {
-	padding: 0;
+  padding: 0;
+}
+
+.badge {
+  position: absolute;
+  top: -10rpx;
+  right: -20rpx;
+  background-color: red;
+  color: white;
+  padding: 2rpx;
+  border-radius: 20rpx;
+  font-size: 14rpx;
+  /* height: 20rpx; */
+  min-width: 20rpx;
 }
 
 .timetable {
-	position: relative;
-	margin-top: 50rpx;
-	margin-bottom: 6rem;
+  position: relative;
+  margin-top: 50rpx;
+  margin-bottom: 6rem;
 }
 
 .clock {
-	position: absolute;
-	top: -5rem;
-	right: 0;
-	width: 7rem;
-	height: 7rem;
-	z-index: 1;
+  position: absolute;
+  top: -5rem;
+  right: 0;
+  width: 7rem;
+  height: 7rem;
+  z-index: 1;
 }
 
 /* 课表单行 */
 .timetable .row {
-	display: flex;
+  display: flex;
 }
 
 /* 单元格 */
 .day {
-	text-align: center;
-	width: calc(100% / 6);
-	padding: 2rpx;
+  text-align: center;
+  width: calc(100% / 6);
+  padding: 2rpx;
 }
 
 /* 通栏单元格 */
 .day.noClass {
-	width: 100%;
+  width: 100%;
 }
 
 /* 单元格文本区 */
 .day .text {
-	color: #fff;
-	height: 100%;
-	line-height: 64rpx;
+  color: #fff;
+  height: 100%;
+  line-height: 64rpx;
 }
 
 /* 标题类单元格文本区 */
 .day.title .text {
-	background-color: rgba(225, 222, 255, 0.6);
-	color: #475569;
-	font-weight: bold;
-	font-size: 28rpx;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  background-color: rgba(225, 222, 255, 0.6);
+  color: #475569;
+  font-weight: bold;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 表头文件区 */
 .head .day.title .text {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 /* 底部操作区 */
 .bottom {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	text-align: center;
-	font-size: 24rpx;
-	color: #888;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: #888;
+}
+
+.bottom .msg {
+  position: relative;
 }
 
 .bottom image {
-	width: 50rpx;
-	height: 50rpx;
-	vertical-align: middle;
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle;
 }
 
+.bottom .fz image,
 .bottom .ds image {
-	box-sizing: border-box;
-	padding: 2px;
+  box-sizing: border-box;
+  padding: 2px;
 }
 
 .bottom .manager {
-	display: flex;
-	justify-content: center;
-	background: rgba(255, 255, 255, .9);
-	width: fit-content;
-	padding: 10px;
-	border-radius: 20px;
-	margin: 20rpx auto;
-	box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  width: fit-content;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 20rpx auto;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .bottom .common {
-	display: flex;
-	justify-content: space-around;
-	background: rgba(255, 255, 255, .9);
-	padding: 8px 16px 10rpx;
-	margin: 10rpx auto 0;
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px 20rpx;
+  margin: 10rpx auto 0;
 }
