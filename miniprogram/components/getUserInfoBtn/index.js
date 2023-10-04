@@ -1,7 +1,4 @@
-const {
-  setCurrentUser,
-  getCurrentUser
-} = require("../../utils");
+const { setCurrentUser, getCurrentUser } = require('../../utils');
 
 // components/getUserInfoBtn/index.js
 Component({
@@ -11,21 +8,29 @@ Component({
   properties: {
     text: {
       type: String,
-      value: '获取用户信息'
+      value: '获取用户信息',
     }, // 按钮文本
     tips: {
       type: String,
-      value: '我们想知道是谁在为大家做贡献'
+      value: '我们想知道是谁在为大家做贡献',
     }, // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写，不超过30个字符
     failTips: {
       type: String,
-      value: '必须获得授权才能进行下一步操作'
+      value: '必须获得授权才能进行下一步操作',
     }, // 被拒绝授权后，提示什么信息
     className: String,
     force: {
       type: Boolean,
-      value: false
+      value: false,
     }, // 是否强制获取用户信息不显示提示
+    type: {
+      type: String,
+      value: 'default',
+    },
+    size: {
+      type: String,
+      value: 'default',
+    },
   },
 
   /**
@@ -40,13 +45,13 @@ Component({
     attached() {
       if (wx.getUserProfile) {
         this.setData({
-          canIUseGetUserProfile: true
-        })
+          canIUseGetUserProfile: true,
+        });
       }
       if (getCurrentUser()) {
         this.setData({
-          hasUserInfo: true
-        })
+          hasUserInfo: true,
+        });
       }
     },
   },
@@ -66,27 +71,29 @@ Component({
           // 放到全局用户信息中
           setCurrentUser(res.userInfo);
           // 调用传入的回调方法
-          that.triggerEvent("callback");
+          that.triggerEvent('callback');
         },
         fail: function (e) {
           console.warn('用户拒绝授权', e);
           wx.showToast({
             title: that.properties.failTips,
-            icon: 'none'
-          })
-        }
-      })
+            icon: 'none',
+          });
+        },
+      });
     },
     getUserInfo: function (e) {
       // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-      // 放到全局用户信息中
-      setCurrentUser(e.detail.userInfo);
-      // 调用传入的回调方法
-      this.triggerEvent("callback");
+      if (e.detail.userInfo) {
+        // 放到全局用户信息中
+        setCurrentUser(e.detail.userInfo);
+        // 调用传入的回调方法
+        this.triggerEvent('callback');
+      }
     },
     doCallback: function () {
       // 已经存在用户信息时，直接调用传入的回调方法
-      this.triggerEvent("callback");
-    }
-  }
-})
+      this.triggerEvent('callback');
+    },
+  },
+});
