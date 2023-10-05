@@ -128,8 +128,17 @@ const analysisRes = ({ res, messageType, defaultValue }) => {
     console.error(res.errMsg)
     return defaultValue
   }
+  let messageTypeNotSame = messageType && res.result.errMsg !== messageType + ':ok'
+  if (messageType === 'upsert') {
+    messageTypeNotSame =
+      messageType &&
+      res.result.errMsg !== 'collection.add:ok' &&
+      res.result.errMsg !== 'document.update:ok' &&
+      res.result.errMsg !== 'document.set:ok'
+  }
+
   // messageType为数据库信息类型，例如列表查询为collection.get，按id查询为document.get，创建为collection.add，更新为document.update
-  if (res.result.errCode || (messageType && res.result.errMsg !== messageType + ':ok')) {
+  if (res.result.errCode || messageTypeNotSame) {
     console.warn('数据库操作异常。')
     console.error(res.result)
     return defaultValue

@@ -22,8 +22,8 @@ exports.main = async (event, context) => {
         .get()
     case 'upsert': {
       // 插入或更新
-      const { classId, data } = payload
-      if (!classId || !data) {
+      const { classId, day, data } = payload
+      if (!classId || !day || !data) {
         return {
           errCode: 1,
           msg: '参数不完整，无法保存。'
@@ -31,10 +31,11 @@ exports.main = async (event, context) => {
       }
       const info = {
         classId,
-        data
+        day,
+        ...data
       }
       return await fuzhuangDB
-        .where({ classId })
+        .where({ classId, day })
         .get()
         .then(res => {
           if (res.data.length) {

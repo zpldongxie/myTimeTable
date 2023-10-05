@@ -1,12 +1,46 @@
 <!--pages/fuZhuang/index.wxml-->
 <block wx:if="{{isReday}}">
-  <view wx:if="{{!!data.length}}">hahahah</view>
-  <view wx:else class="loading" style="font-size: 35rpx; line-height: 2;">
-    <view>着装信息还未配置</view>
-    <view>快
-      <getUserInfoBtn text="@管理员" type="warn" size="mini" force failTips="请告诉管理员是谁给他提的这么好的意见^_^" bind:callback="callAdmin" style="vertical-align: text-top; margin: 0 5px 0 0px;" />维护吧
+  <view class="title">{{currentGrade.name}}{{currentClass.name}}着装要求</view>
+  <view class="subTitle">更新时间：{{lastUpdateTime}}</view>
+  <block wx:if="{{isCreator}}">
+    <swiper class="imageContainer" bindchange="handleChange" previous-margin="140rpx" next-margin="140rpx" circular current="{{currentIndex}}">
+      <block wx:for="{{days}}" wx:key="index">
+        <swiper-item class="item">
+          <view class="itemDay">{{item}}</view>
+          <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_wt}}" bindtap="toPick" data-day="{{item}}" data-type="wt"></image>
+          <view class="itemText">外套</view>
+          <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_sy}}" bindtap="toPick" data-day="{{item}}" data-type="sy"></image>
+          <view class="itemText">上衣</view>
+          <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_xy}}" bindtap="toPick" data-day="{{item}}" data-type="xy"></image>
+          <view class="itemText">裤子</view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <color-picker bindchangeColor="pickColor" bindclose="closePick" initColor="{{rgb}}" show="{{pick}}" />
+  </block>
+  <block wx:else>
+    <view wx:if="{{hasValue}}" style="width: 100%;">
+      <swiper class="imageContainer" bindchange="handleChange" previous-margin="140rpx" next-margin="140rpx" circular current="{{currentIndex}}">
+        <block wx:for="{{days}}" wx:key="index">
+          <swiper-item class="item">
+            <view class="itemDay">{{item}}</view>
+            <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_wt}}"></image>
+            <view class="itemText">外套</view>
+            <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_sy}}"></image>
+            <view class="itemText">上衣</view>
+            <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_xy}}"></image>
+            <view class="itemText">裤子</view>
+          </swiper-item>
+        </block>
+      </swiper>
     </view>
-  </view>
+    <view wx:else class="loading" style="font-size: 35rpx; line-height: 2;">
+      <view>着装信息还未配置</view>
+      <view>快
+        <getUserInfoBtn text="@管理员" type="warn" size="mini" force failTips="请告诉管理员是谁给他提的这么好的建议^_^" bind:callback="callAdmin" style="vertical-align: text-top; margin: 0 5px 0 0px;" />维护吧
+      </view>
+    </view>
+  </block>
 </block>
 <view wx:else class="loading">
   正在加载着装信息...

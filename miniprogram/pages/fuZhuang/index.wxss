@@ -1,1 +1,58 @@
-/* pages/fuZhuang/index.wxss */
+.title {
+  text-align: center;
+  font-weight: bold;
+  color: #d1e6da;
+  font-size: 50rpx;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 10rpx;
+  margin-top: 2vh;
+}
+.subTitle {
+  font-size: 25rpx;
+  color: #b2c2b9;
+}
+
+.imageContainer {
+  margin-top: 2vh;
+  width: 100%;
+  height: 1200rpx;
+}
+
+.item {
+  background-color: rgba(200, 200, 200, 0.3);
+  padding: 20rpx 0;
+}
+
+.itemImg {
+  width: 90%;
+  height: 300rpx;
+  border-radius: 15rpx;
+  opacity: 0.7;
+  margin: 40rpx 30rpx 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: height 0.2s;
+}
+
+.active {
+  opacity: 1;
+  height: 360rpx;
+  margin-top: 0;
+  transition: all 0.2s ease-in 0s;
+  box-shadow: 5px 5px 10px rgba(100, 100, 100, 0.2);
+}
+
+.itemDay {
+  text-align: center;
+  font-weight: bold;
+  color: #d1e6da;
+  font-size: 40rpx;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 10rpx;
+}
+.itemText {
+  text-align: center;
+  color: #4e7a61;
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+  display: none;
+}
