@@ -25,7 +25,8 @@ Page({
     // 拾色器
     rgb: 'rgb(0,154,97)', //初始值
     pick: false,
-    choose: {} // 当前正在操作的颜色
+    choose: {}, // 当前正在操作的颜色
+    inputText: '', // 当前正在操作的文字内容
   },
 
   /**
@@ -74,7 +75,10 @@ Page({
               day: d,
               src_wt: that.getWTImg(current?.color_wt || '#999'),
               src_sy: that.getSYImg(current?.color_sy || '#999'),
-              src_xy: that.getXYImg(current?.color_xy || '#999')
+              src_xy: that.getXYImg(current?.color_xy || '#999'),
+              text_wt: current?.text_wt || '外套',
+              text_sy: current?.text_sy || '上衣',
+              text_xy: current?.text_xy || '裤子'
             }
           })
         })
@@ -138,7 +142,7 @@ Page({
     })
   },
 
-  //取色结果回调
+  // 取色结果回调，设置到对应的衣服上
   pickColor(e) {
     const that = this
     const rgb = e.detail.color
@@ -183,6 +187,59 @@ Page({
           }月${new Date().getDate()}日 ${new Date().getHours()}:${new Date().getMinutes()}`
         })
       })
+  },
+
+  // 设置文本
+  setText(e) {
+    const that = this
+    const { day, type } = e.currentTarget.dataset
+    const text = e.detail.value;
+    callFunction('fu_zhuang', {
+      method: 'upsert',
+      classId: this.data.currentClass._id,
+      day,
+      data: { ['text_' + type]: text }
+    })
+      .then(res => {
+        return analysisRes({
+          res,
+          messageType: 'upsert',
+          defaultValue: {}
+        })
+      })
+      .then(res => {
+        console.log('res: ', res)
+        that.setData({
+          data: [...that.data.data].map(item => {
+            if (item.day === day) {
+              switch (type) {
+                case 'wt':
+                  item.text_wt = text
+                  break
+                case 'sy':
+                  item.text_sy = text
+                  break
+                case 'xy':
+                  item.text_xy = text
+                  break
+                default:
+                  break
+              }
+            }
+            return item
+          }),
+          lastUpdateTime: `${new Date().getFullYear()}年${
+            new Date().getMonth() + 1
+          }月${new Date().getDate()}日 ${new Date().getHours()}:${new Date().getMinutes()}`
+        })
+      })
+  },
+  bindInput: function (e) {
+    const value = e.detail.value
+
+    this.setData({
+      inputText: value
+    })
   },
 
   /**

@@ -8,11 +8,11 @@
         <swiper-item class="item">
           <view class="itemDay">{{item}}</view>
           <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_wt}}" bindtap="toPick" data-day="{{item}}" data-type="wt"></image>
-          <view class="itemText">外套</view>
+          <view class="itemText"><input maxlength="20" value="{{data[index].text_wt || '外套'}}" bindblur="setText" data-day="{{item}}" data-type="wt" /></view>
           <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_sy}}" bindtap="toPick" data-day="{{item}}" data-type="sy"></image>
-          <view class="itemText">上衣</view>
+          <view class="itemText"><input maxlength="20" value="{{data[index].text_sy || '上衣'}}" bindblur="setText" data-day="{{item}}" data-type="sy" /></view>
           <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_xy}}" bindtap="toPick" data-day="{{item}}" data-type="xy"></image>
-          <view class="itemText">裤子</view>
+          <view class="itemText"><input maxlength="20" value="{{data[index].text_xy || '裤子'}}" bindblur="setText" data-day="{{item}}" data-type="xy" /></view>
         </swiper-item>
       </block>
     </swiper>
@@ -25,11 +25,17 @@
           <swiper-item class="item">
             <view class="itemDay">{{item}}</view>
             <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_wt}}"></image>
-            <view class="itemText">外套</view>
+            <view class="itemText">
+              <view>{{data[index].text_wt || '外套'}}</view>
+            </view>
             <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_sy}}"></image>
-            <view class="itemText">上衣</view>
+            <view class="itemText">
+              <view>{{data[index].text_sy || '上衣'}}</view>
+            </view>
             <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_xy}}"></image>
-            <view class="itemText">裤子</view>
+            <view class="itemText">
+              <view>{{data[index].text_xy || '裤子'}}</view>
+            </view>
           </swiper-item>
         </block>
       </swiper>
