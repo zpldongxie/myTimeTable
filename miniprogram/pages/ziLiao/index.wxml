@@ -1,0 +1,8 @@
+<!--pages/ziLiao/index.wxml-->
+<text class="header">参考资料</text>
+<view class="shuJia">
+	<view class="{{randomHPClassname}}"></view>
+	<view class="shuJiaHead"></view>
+	<view wx:for="{{[1,2,3]}}" wx:key="index" class="row"></view>
+	<view class="shuJiaFoot"></view>
+</view>

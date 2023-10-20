@@ -11,7 +11,8 @@
     "pages/editSchedule/index",
     "pages/editTimeTable/index",
     "pages/fuZhuang/index",
-    "pages/msgForCreator/index"
+    "pages/msgForCreator/index",
+    "pages/ziLiao/index"
   ],
   "window": {
     "backgroundColor": "#daeef9",

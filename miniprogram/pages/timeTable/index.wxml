@@ -59,10 +59,14 @@
           <image src="../../images/fu-zhuang.svg" />
           着装
         </navigator>
-        <view class="ds" bindtap="doDS">
+        <view class="ds" bindtap="doDS" hidden>
           <image src="../../images/ds.svg" />
           打赏
         </view>
+        <navigator class="zl" url="/pages/ziLiao/index">
+          <image src="../../images/zi-liao.svg" />
+          参考资料
+        </navigator>
         <view class="fk" bindtap="doFK">
           <image src="../../images/fk.svg" />
           问题反馈
