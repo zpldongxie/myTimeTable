@@ -1,21 +1,21 @@
-// pages/ziLiao/index.js
+// pages/guShiJiangJie/context.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    fileList: [{
-      cover: 'https://gsjj-1301580990.cos.ap-nanjing.myqcloud.com/cover.png',
-      url: '/pages/guShiJiangJie/index'
-    }], // 文件目录列表
-    randomHPClassname: ''
+    key: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  onLoad(options) {
+    this.setData({
+      key: options.key
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -28,12 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    // 随机切换花瓶
-    const index = Math.floor(Math.random() * 3) + 1; // 生成一个 0 到 2 的随机整数
-    const classname = `hp hp${index}`; // 根据随机整数生成 classname
-    this.setData({
-      randomHPClassname: classname
-    });
+
   },
 
   /**

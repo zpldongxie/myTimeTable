@@ -12,7 +12,9 @@
     "pages/editTimeTable/index",
     "pages/fuZhuang/index",
     "pages/msgForCreator/index",
-    "pages/ziLiao/index"
+    "pages/ziLiao/index",
+    "pages/guShiJiangJie/index",
+    "pages/guShiJiangJie/context"
   ],
   "window": {
     "backgroundColor": "#daeef9",

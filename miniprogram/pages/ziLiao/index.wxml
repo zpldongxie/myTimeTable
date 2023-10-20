@@ -1,8 +1,13 @@
 <!--pages/ziLiao/index.wxml-->
-<text class="header">参考资料</text>
 <view class="shuJia">
 	<view class="{{randomHPClassname}}"></view>
 	<view class="shuJiaHead"></view>
-	<view wx:for="{{[1,2,3]}}" wx:key="index" class="row"></view>
-	<view class="shuJiaFoot"></view>
+	<view class="row">
+		<navigator class="book" style="width: 200rpx; background-image: url({{fileList[0].cover}});" url="{{fileList[0].url}}"></navigator>
+	</view>
+	<view class="row">
+	</view>
+	<view class="row">
+	</view>
+	<view class="shuJiaFoot">参 考 资 料</view>
 </view>

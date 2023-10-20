@@ -1,11 +1,4 @@
 /* pages/ziLiao/index.wxss */
-.header {
-  font-size: 24rpx;
-  font-weight: bold;
-  margin-bottom: 20rpx;
-  color: #333;
-}
-
 .shuJia {
 	width: 100%;
 	position: absolute;
@@ -19,14 +12,17 @@
 	background-repeat: no-repeat;
 	background-position: bottom right;
 }
+
 .hp1 {
 	background-image: url(https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/hp01.png?sign=75ecad457b8b3dec60d637bbb41a5f90&t=1697792376);
 	margin-bottom: -30rpx;
 }
+
 .hp2 {
 	background-image: url(https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/hp02.png?sign=b2967422163884134828ba7f29b9c361&t=1697792397);
 	margin-bottom: -39rpx;
 }
+
 .hp3 {
 	background-image: url(https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/hp03.png?sign=c19ca1e77d4ecd7648314d0bb51bd7b1&t=1697792411);
 	margin-bottom: -16rpx;
@@ -37,14 +33,29 @@
 	background: url(https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/shu-jia-head.jpg?sign=6975f9ff982414d9acc9f43da88e36eb&t=1697790988);
 	background-size: 100% 100%;
 }
+
 .row {
 	width: 100%;
 	height: 180rpx;
 	background: url(https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/shu-jia.jpg?sign=1940532ca8781612d08b1525fbcbed8e&t=1697790594);
 	background-size: 100% 100%;
+	padding-top: 20rpx;
 }
+
+.row .book {
+	height: 100%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+
 .shuJiaFoot {
 	height: 250rpx;
 	background: url(https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/shu-jia-foot.jpg?sign=ee3c4d2fc48ce5dc0003059d21b97099&t=1697791738);
 	background-size: 100% 100%;
+	font-size: 40rpx;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	line-height: 200rpx;
 }
