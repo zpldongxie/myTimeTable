@@ -1,1 +1,19 @@
 /* pages/guShiJiangJie/context.wxss */
+.title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #fff;
+  margin: 20rpx auto 30rpx;
+}
+.listCon {
+  width: 100%;
+  height: calc(100vh - 170rpx);
+  overflow-y: auto;
+}
+.item {
+  width: 80%;
+  margin: 0 auto;
+}
+.audioItem {
+  width: 100%;
+}

@@ -1,3 +1,10 @@
 <!--pages/guShiJiangJie/context.wxml-->
-<text>{{key}}</text>
-<audio author="大语文名师团：统编版古诗讲解" name="01《风》朗读（一年级上）" poster="https://636c-cloud1-0gq03z948cf60a2f-1313616796.tcb.qcloud.la/111111.png?sign=9d6db5733a31686af7132b981d4e9c88&t=1663494912" src="https://gsjj-1301580990.cos.ap-nanjing.myqcloud.com/0101%2F01%E3%80%8A%E9%A3%8E%E3%80%8B%E6%9C%97%E8%AF%BB%EF%BC%88%E4%B8%80%E5%B9%B4%E7%BA%A7%E4%B8%8A%EF%BC%89.mp3" id="myAudio" controls></audio>
+<view class="title">{{title}}</view>
+<view class="listCon" wx:if="{{list.length}}">
+  <view wx:for="{{list}}" wx:key="index" class="item">
+    <audio name="{{item.Key}}" author="大语文名师团：统编版古诗讲解" src="{{item.url}}" id="{{item.ETag}}" controls class="audioItem"></audio>
+  </view>
+</view>
+<view wx:else>
+  内容陆续上传中，敬请期待……
+</view>

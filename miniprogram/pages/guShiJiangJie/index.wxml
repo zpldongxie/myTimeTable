@@ -1,5 +1,5 @@
 <!--pages/guShiJiangJie/index.wxml-->
 <text class="title">大语文名师团：统编版古诗讲解</text>
 <view class="listCon">
-	<navigator wx:for="{{list}}" class="item" url="/pages/guShiJiangJie/context?key={{item.key}}">--- {{item.name}} ---</navigator>
+  <navigator wx:for="{{list}}" class="item" url="/pages/guShiJiangJie/context?key={{item.key}}&title={{item.name}}" wx:key="key">--- {{item.name}} ---</navigator>
 </view>

@@ -1,26 +1,26 @@
 /* pages/guShiJiangJie/index.wxss */
 .title {
-	color: #fff;
-	font-size: 35rpx;
-	margin: 20rpx auto 30rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #fff;
+  margin: 20rpx auto 30rpx;
 }
 
 .listCon {
-	background-color: rgba(255, 255, 255, 0.8);
-	padding: 20rpx;
-	width: 80%;
-	border-radius: 20rpx;
-	max-height: calc(100vh - 170rpx);
-	overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20rpx;
+  width: 80%;
+  border-radius: 20rpx;
+  max-height: calc(100vh - 170rpx);
+  overflow-y: auto;
 }
 
 .item {
-	color: #333;
-	text-align: center;
-	margin: 20rpx auto;
-	border: 1px solid #11CD6E;
-	border-radius: 20rpx;
-	background-color: #11CD6E;
-	padding: 5rpx;
-	font-size: 25rpx;
+  color: #333;
+  text-align: center;
+  margin: 20rpx auto;
+  border-radius: 20rpx;
+  background-color: rgb(17 205 110 / 0.8);
+  padding: 10rpx;
+  font-size: 25rpx;
 }
