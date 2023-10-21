@@ -54,6 +54,54 @@ const sensitiveWordsFilter = msg => {
     })
 }
 
+/**
+ * rsa加密
+ *
+ * @param {*} data 待加密内容
+ * @return {boolean} 加密结果
+ */
+const encrypt = data => {
+  if (!data) {
+    return null
+  }
+  return callFunction('openApi', {
+    method: 'encrypt',
+    data
+  })
+    .then(function (res) {
+      console.log('🚀 ~ file: utils.js:72 ~ sensitiveWordsFilter ~ res:', res)
+      return res.result
+    })
+    .catch(function (e) {
+      console.error(e)
+      return ''
+    })
+}
+
+/**
+ * rsa解密
+ *
+ * @param {*} data 待解密内容
+ * @return {boolean} 解密结果
+ */
+const decrypt = data => {
+  if (!data) {
+    return null
+  }
+  return callFunction('openApi', {
+    method: 'decrypt',
+    data
+  })
+    .then(function (res) {
+      console.log('🚀 ~ file: utils.js:96 ~ sensitiveWordsFilter ~ res:', res)
+      return res.result
+    })
+    .catch(function (e) {
+      console.error(e)
+      return null
+    })
+}
+
 const app = getApp()
 /** 全局，获取openId */
 const getOpenId = () => {
@@ -409,6 +457,8 @@ const getCourses = async ({ classId }) => {
 module.exports = {
   todo,
   sensitiveWordsFilter,
+  encrypt,
+  decrypt,
   /** 云函数调用封装 */
   callFunction,
   /** 防抖方法封装 */
