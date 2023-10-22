@@ -15,18 +15,18 @@ Page({
   data: {
     days: ['星期一', '星期二', '星期三', '星期四', '星期五'],
     data: [],
-    currentIndex: new Date().getDay() - 1,
+    currentIndex: (new Date().getDay() < 1 || new Date().getDay() > 5 ? 1 : new Date().getDay()) - 1,
     currentGrade: null,
     currentClass: null,
     isCreator: false, // 是否为创建者
     isReday: false, // 是否完成数据请求
     hasValue: false, // 是否已经配置内容，用于普通用户显示控制
-    lastUpdateTime: null, // 最后更新时间
+    lastUpdateTime: '', // 最后更新时间
     // 拾色器
     rgb: 'rgb(0,154,97)', //初始值
     pick: false,
     choose: {}, // 当前正在操作的颜色
-    inputText: '', // 当前正在操作的文字内容
+    inputText: '' // 当前正在操作的文字内容
   },
 
   /**
@@ -51,10 +51,12 @@ Page({
         })
       })
       .then(res => {
-        let lastUpdateTime = that.data.lastUpdateTime
+        let lastUpdateTime = that.data.lastUpdateTime.replace(/\.\S{4}/, '')
         res.forEach(r => {
           const { createdAt = '0', updatedAt = '0' } = r
-          const maxTime = new Date(createdAt) > new Date(updatedAt) ? createdAt : updatedAt
+          const createdAtStr = createdAt.replace(/\.\S{4}/, '')
+          const updatedAtStr = updatedAt.replace(/\.\S{4}/, '')
+          const maxTime = new Date(createdAtStr) > new Date(updatedAtStr) ? createdAtStr : updatedAtStr
           if (!lastUpdateTime || new Date(maxTime) > new Date(lastUpdateTime)) {
             lastUpdateTime = maxTime
           }
@@ -193,7 +195,7 @@ Page({
   setText(e) {
     const that = this
     const { day, type } = e.currentTarget.dataset
-    const text = e.detail.value;
+    const text = e.detail.value
     callFunction('fu_zhuang', {
       method: 'upsert',
       classId: this.data.currentClass._id,
