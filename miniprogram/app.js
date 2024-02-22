@@ -20,6 +20,7 @@ App({
       currentGrade: null,
       currentClass: null,
       currentUser: null,
+      bgUrl: null,
       /** 腾讯云存储对象 */
       cos_tencent: null
     }

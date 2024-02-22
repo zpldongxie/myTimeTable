@@ -3,6 +3,18 @@ page {
   padding: 0;
 }
 
+.contaner {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-bottom: 200rpx;
+}
+
+.timetable {
+  margin-top: 50rpx;
+}
+
 .badge {
   position: absolute;
   top: -10rpx;
@@ -14,21 +26,6 @@ page {
   font-size: 14rpx;
   /* height: 20rpx; */
   min-width: 20rpx;
-}
-
-.timetable {
-  position: relative;
-  margin-top: 50rpx;
-  margin-bottom: 6rem;
-}
-
-.clock {
-  position: absolute;
-  top: -5rem;
-  right: 0;
-  width: 7rem;
-  height: 7rem;
-  z-index: 1;
 }
 
 /* 课表单行 */

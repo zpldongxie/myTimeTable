@@ -5,7 +5,8 @@ const {
   callFunction,
   analysisRes,
   getOpenId,
-  getCurrentGrade
+  getCurrentGrade,
+  getBG
 } = require('../../utils')
 
 Page({
@@ -26,7 +27,8 @@ Page({
     rgb: 'rgb(0,154,97)', //初始值
     pick: false,
     choose: {}, // 当前正在操作的颜色
-    inputText: '' // 当前正在操作的文字内容
+    inputText: '', // 当前正在操作的文字内容
+    bgImg: null,
   },
 
   /**
@@ -38,6 +40,7 @@ Page({
     const currentGrade = getCurrentGrade()
     const currentClass = getCurrentClass()
     this.setData({
+      bgImg: getBG(),
       currentGrade,
       currentClass,
       isCreator: currentClass?.creator === currentOpenId

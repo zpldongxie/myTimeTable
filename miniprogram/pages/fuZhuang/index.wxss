@@ -1,7 +1,7 @@
 .title {
   text-align: center;
   font-weight: bold;
-  color: #d1e6da;
+  color: #4e7c61;
   font-size: 50rpx;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin-bottom: 10rpx;
@@ -9,7 +9,7 @@
 }
 .subTitle {
   font-size: 25rpx;
-  color: #b2c2b9;
+  color: #8ea397;
 }
 
 .imageContainer {
@@ -23,14 +23,20 @@
   padding: 20rpx 0;
 }
 
-.itemImg {
+.subItem {
+  background: linear-gradient(135deg, #001f3f, #0088a9, #00c9a7, #92d5c6, #ebf5ee);
   width: 90%;
   height: 250rpx;
   border-radius: 15rpx;
-  opacity: 0.7;
+  opacity: 0.95;
   margin: 40rpx 30rpx 0;
-  background-color: rgba(255, 255, 255, 0.8);
   transition: height 0.2s;
+  margin-bottom: 10px;
+}
+
+.itemImg {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .active {
@@ -44,7 +50,7 @@
 .itemDay {
   text-align: center;
   font-weight: bold;
-  color: #d1e6da;
+  color: #6ca083;
   font-size: 40rpx;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin-bottom: 10rpx;

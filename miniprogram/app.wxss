@@ -12,11 +12,13 @@ page,
   font-weight: 400;
   font-size: 32rpx;
   padding: 10rpx;
-  background-image: url(https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/tu01.png?sign=2317d88…&t=1691378368);
-  background-size: 80%;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  background-color: #a29be6;
+  /* background-image: url(https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/bg/bg.jpg?sign=a831f8fbc92a96d88e7de5de3296bafc&t=1708318230); */
+  background-size: cover;
+  background-position: center;
+}
+
+page {
+  padding: 0;
 }
 
 page view {
@@ -31,7 +33,7 @@ page view {
   font-size: 40rpx;
   font-weight: bold;
   color: rgba(255, 255, 255, 0.6);
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
   padding: 10px;
   border-radius: 5px;
   max-width: 50%;

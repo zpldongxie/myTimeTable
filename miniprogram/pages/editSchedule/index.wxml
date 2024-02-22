@@ -1,5 +1,5 @@
 <!--pages/editSchedule/index.wxml-->
-<view class="contaner">
+<view class="contaner" style="{{bgImg ? 'background-image: url('+bgImg+');' : ''}}">
     <timeTableHeader type="作息表" style="margin: 5% 0 40rpx;" />
     <scroll-view scroll-y="true" style="height: calc(100vh - 5% - 220rpx);">
         <view class="subCon">

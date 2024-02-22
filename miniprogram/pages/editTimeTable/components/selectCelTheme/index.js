@@ -23,7 +23,7 @@ Component({
       bgColor: '#547095b3',
     },{
       fontColor: '#eee',
-      bgColor: '#EF4444',
+      bgColor: '#f58590',
     }, {
       fontColor: '#eee',
       bgColor: '#F59E0B',
@@ -41,7 +41,7 @@ Component({
       bgColor: '#EC4899'
     }, {
       fontColor: '#eee',
-      bgColor: '#A16207'
+      bgColor: '#A17522'
     }, {
       fontColor: '#eee',
       bgColor: '#7E22CE'

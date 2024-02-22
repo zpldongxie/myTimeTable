@@ -1,5 +1,16 @@
 // pages/timeTable/index.js
-const { analysisRes, getCurrentClass, callFunction, getOpenId, getTimetable, todo } = require('../../utils')
+const {
+  analysisRes,
+  getCurrentClass,
+  callFunction,
+  getOpenId,
+  getTimetable,
+  setBG,
+  getBgImg,
+  todo,
+  uploadImg,
+  upsertBgImg
+} = require('../../utils')
 
 Page({
   data: {
@@ -9,13 +20,20 @@ Page({
     schedule: null, // 作息数据
     timetable: null, // 课表数据
     isCreator: false, // 是否为创建者
-    unread: 0 // 未读消息数，只针对创建者
+    unread: 0, // 未读消息数，只针对创建者
+    bgImg: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  async onLoad(options) {
+    const bgImg = await getBgImg()
+    console.log('bgImg: ', bgImg);
+    this.setData({
+      bgImg
+    })
+  },
 
   onShow() {
     const that = this
@@ -31,7 +49,10 @@ Page({
     getTimetable({
       classId: currentClass._id
     }).then(res => {
-      const { schedules, timeTable } = res || {
+      const {
+        schedules,
+        timeTable
+      } = res || {
         schedules: null,
         timeTable: null
       }
@@ -42,7 +63,10 @@ Page({
       })
     })
     if (currentClass?.creator === currentOpenId) {
-      callFunction('msg_creator', { method: 'getUnread', openId: currentOpenId })
+      callFunction('msg_creator', {
+          method: 'getUnread',
+          openId: currentOpenId
+        })
         .then(res => {
           return analysisRes({
             res,
@@ -51,7 +75,9 @@ Page({
           })
         })
         .then(res => {
-          that.setData({ unread: res })
+          that.setData({
+            unread: res
+          })
         })
     }
   },
@@ -75,10 +101,11 @@ Page({
   },
 
   doEdit() {
-    const itemList = ['改作息']
+    const that = this
+    const itemList = ['调整作息时间']
     if (!!this.data.timetable) {
-      itemList.push('改课表')
-      itemList.push('改背景图')
+      itemList.push('维护课表')
+      itemList.push('设置背景图(建议尺寸1080×1920)')
     }
     wx.showActionSheet({
       itemList,
@@ -87,16 +114,26 @@ Page({
           const index = res.tapIndex
           switch (index) {
             case 0:
+              // 改作息
               wx.navigateTo({
                 url: '/pages/editSchedule/index'
               })
               break
             case 1:
+              // 改课表
               wx.navigateTo({
                 url: '/pages/editTimeTable/index'
               })
               break
-
+            case 2:
+              // 改背景图
+              uploadImg('bg/', ({
+                url,
+                fileID
+              }) => {
+                upsertBgImg(url, fileID, that.onLoad)
+              })
+              break
             default:
               todo()
               break

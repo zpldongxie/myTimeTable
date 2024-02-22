@@ -1,4 +1,6 @@
-const { envList } = require('./envList.js')
+const {
+  envList
+} = require('./envList.js')
 
 /** 尚未实现的功能 */
 const todo = () => {
@@ -41,9 +43,9 @@ const sensitiveWordsFilter = msg => {
     return true
   }
   return callFunction('openApi', {
-    method: 'msgSecCheck',
-    msg
-  })
+      method: 'msgSecCheck',
+      msg
+    })
     .then(function (res) {
       console.log('🚀 ~ file: utils.js:43 ~ sensitiveWordsFilter ~ res:', res)
       return true
@@ -143,6 +145,14 @@ const getCurrentUser = () => {
 const setCurrentUser = info => {
   app.globalData.currentUser = info
 }
+/** 全局，获取背景图 */
+const getBG = () => {
+  return app.globalData.bgUrl || 'https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/bg/bg.jpg'
+}
+/** 全局，设置背景图 */
+const setBG = info => {
+  app.globalData.bgUrl = info
+}
 
 /** 防抖方法封装 */
 const debounceAsync = function (func, wait) {
@@ -170,7 +180,11 @@ const debounceAsync = function (func, wait) {
  * @param {any} defaultValue 默认值
  * @returns {any} 返回分析后的数据
  */
-const analysisRes = ({ res, messageType, defaultValue }) => {
+const analysisRes = ({
+  res,
+  messageType,
+  defaultValue
+}) => {
   if (res.errMsg !== 'cloud.callFunction:ok') {
     console.warn('云函数调用异常。')
     console.error(res.errMsg)
@@ -209,9 +223,9 @@ const getSchools = async name => {
     return []
   }
   return callFunction('schools', {
-    method: 'filter',
-    name
-  })
+      method: 'filter',
+      name
+    })
     .then(function (res) {
       return analysisRes({
         res,
@@ -232,9 +246,9 @@ const getSchoolById = async _id => {
     return null
   }
   return callFunction('schools', {
-    method: 'getById',
-    _id
-  })
+      method: 'getById',
+      _id
+    })
     .then(function (res) {
       return analysisRes({
         res,
@@ -251,8 +265,8 @@ const getSchoolById = async _id => {
 /** 查询所有年级 */
 const getGrades = async () => {
   return callFunction('grades', {
-    method: 'get'
-  })
+      method: 'get'
+    })
     .then(function (res) {
       return analysisRes({
         res,
@@ -277,7 +291,10 @@ const getGradeByCode = async code => {
 }
 
 /** 按学校和年级查找班级列表 */
-const getClasses = async ({ schoolId, gradeCode }) => {
+const getClasses = async ({
+  schoolId,
+  gradeCode
+}) => {
   if (!schoolId) {
     console.error('参数缺少schoolId')
     return []
@@ -287,10 +304,10 @@ const getClasses = async ({ schoolId, gradeCode }) => {
     return []
   }
   return callFunction('classes', {
-    method: 'get',
-    schoolId,
-    gradeCode
-  })
+      method: 'get',
+      schoolId,
+      gradeCode
+    })
     .then(function (res) {
       return analysisRes({
         res,
@@ -305,7 +322,11 @@ const getClasses = async ({ schoolId, gradeCode }) => {
 }
 
 /** 按条件查找单个班级 */
-const getClass = async ({ schoolId, gradeCode, name }) => {
+const getClass = async ({
+  schoolId,
+  gradeCode,
+  name
+}) => {
   if (!schoolId) {
     console.error('参数缺少schoolId')
     return null
@@ -319,11 +340,11 @@ const getClass = async ({ schoolId, gradeCode, name }) => {
     return null
   }
   return callFunction('classes', {
-    method: 'get',
-    schoolId,
-    gradeCode,
-    name
-  })
+      method: 'get',
+      schoolId,
+      gradeCode,
+      name
+    })
     .then(function (res) {
       return analysisRes({
         res,
@@ -344,7 +365,9 @@ const getClass = async ({ schoolId, gradeCode, name }) => {
 }
 
 /** 按班级ID查课表 */
-const getTimetable = async ({ classId }) => {
+const getTimetable = async ({
+  classId
+}) => {
   const returnData = {
     schedules: null,
     timeTable: null
@@ -354,9 +377,9 @@ const getTimetable = async ({ classId }) => {
     return returnData
   }
   return callFunction('schedules', {
-    method: 'get',
-    classId
-  })
+      method: 'get',
+      classId
+    })
     .then(res => {
       return analysisRes({
         res,
@@ -437,7 +460,9 @@ const upsertTimetable = async timetableData => {
 }
 
 /** 按班级ID查所有课程 */
-const getCourses = async ({ classId }) => {
+const getCourses = async ({
+  classId
+}) => {
   if (!classId) {
     console.error('参数缺少classId')
     return null
@@ -452,6 +477,119 @@ const getCourses = async ({ classId }) => {
       defaultValue: []
     })
   })
+}
+
+/** 查询班级背景图 */
+const getBgImg = async () => {
+  const classId = getCurrentClass()?._id
+  return callFunction('bgImgs', {
+      method: 'get',
+      classId
+    })
+    .then(function (res) {
+      const list = analysisRes({
+        res,
+        messageType: 'collection.get',
+        defaultValue: []
+      })
+      if (list.length) {
+        setBG(list[0].url)
+        return list[0].url
+      }
+      return 'https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/bg/bg.jpg';
+    })
+    .catch(function (e) {
+      console.error('背景图获取失败：', e)
+      setBG(null)
+      return 'https://636c-cloud1-8ggb0v441269ef28-1319420876.tcb.qcloud.la/bg/bg.jpg'
+    })
+}
+
+/** 更新班级背景图 */
+const upsertBgImg = async (url, fileID, callback) => {
+  const classId = getCurrentClass()?._id
+  const info = {
+    classId,
+    url,
+    fileID
+  }
+  try {
+    const res = await callFunction('bgImgs', {
+      method: 'upsert',
+      ...info
+    })
+    callback()
+    console.log('res===', res);
+  } catch (e) {
+    console.error('背景图设置失败：', e)
+    wx.showToast({
+      title: '背景图没有设置成功，请过一会再试试',
+      icon: 'none'
+    })
+    return false
+  }
+}
+
+/** 上传图片到云储存 */
+const uploadImg = function (path = '', callback) {
+  wx.chooseMedia({ // 选择图片
+    count: 1, // 规定选择图片的数量，默认9
+    mediaType: ['image'],
+    sizeType: ['compressed'], // 压缩图
+    success: (chooseres) => { // 接口调用成功的时候执行的函数
+      // console.log('===', chooseres);
+      if (chooseres.tempFiles[0].size > 1024 * 1024 * 2) {
+        wx.showToast({
+          title: '上传图片不能大于2M',
+          icon: 'error'
+        })
+        return;
+      }
+      wx.showLoading({ // 显示加载提示框 不会自动关闭 只能wx.hideLoading关闭
+        title: "图片上传中", // 提示框显示的提示信息
+        mask: true, // 显示透明蒙层，防止触摸。为true提示的时候不可以对屏幕进行操作，不写或为false时可以操作屏幕
+      });
+      // 选择图片后可以在这里上传
+      const filePath = chooseres.tempFiles[0].tempFilePath;
+      const extension = filePath.split('.').pop(); // 获取文件扩展名
+      wx.cloud.uploadFile({
+        cloudPath: path + new Date().getTime() + "-" + Math.floor(Math.random() * 1000) + "." + extension, // 云储存的路径及文件名
+        filePath: chooseres.tempFiles[0].tempFilePath, // 要上传的图片/文件路径 这里使用的是选择图片返回的临时地址
+        success: (uploadres) => { // 上传图片到云储存成功
+          // console.log('---', uploadres)
+          wx.cloud.getTempFileURL({
+            fileList: [uploadres.fileID],
+            success: res => {
+              // get temp file URL
+              console.log(res.fileList)
+              callback({
+                url: res.fileList[0].tempFileURL,
+                fileID: res.fileList[0].fileID
+              })
+            },
+            fail: err => {
+              // handle error
+            }
+          })
+          wx.showToast({
+            title: '上传成功',
+            icon: 'success'
+          })
+        },
+        fail: (err) => {
+          console.log(err)
+          wx.showToast({
+            title: '上传失败',
+            icon: 'error'
+          })
+        }
+      })
+    },
+    fail: (err) => {
+      console.log(err)
+    }
+  })
+
 }
 
 module.exports = {
@@ -483,6 +621,10 @@ module.exports = {
   getCurrentUser,
   /** 全局，设置当前用户 */
   setCurrentUser,
+  /** 全局，获取背景图 */
+  getBG,
+  /** 全局，设置背景图 */
+  setBG,
   analysisRes,
   getSchools,
   getSchoolById,
@@ -492,5 +634,8 @@ module.exports = {
   getClass,
   getTimetable,
   upsertTimetable,
-  getCourses
+  getCourses,
+  getBgImg,
+  upsertBgImg,
+  uploadImg
 }

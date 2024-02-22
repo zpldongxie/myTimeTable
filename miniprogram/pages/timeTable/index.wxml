@@ -1,9 +1,8 @@
 <!--pages/timeTable/index.wxml-->
-<view class="contaner" style="{{customeBg ? 'background-image: url({customeBg});background-size: cover;' : ''}}">
-  <timeTableHeader type="课程表" style="margin: 12% 0 40rpx;" />
+<view class="contaner" style="{{bgImg ? 'background-image: url('+bgImg+');' : ''}}">
+  <timeTableHeader type="课程表" style="margin-top: 50rpx;" />
   <view wx:if="{{isReday}}" style="width: 100%;">
     <view wx:if="{{!!schedule}}" class="subCon timetable">
-      <image src="../../images/sun.png" class="clock"></image>
       <view class="row head">
         <view class="day title">
           <view class="text"></view>
@@ -33,7 +32,7 @@
 
       </view>
     </view>
-    <view wx:else class="subCon">
+    <view wx:else>
       <view style="margin-bottom: 1rem; font-weight: bold;">这个班级还没有课表</view>
       <view>我来
         <getUserInfoBtn text="创建一个" className="a" force failTips="不告诉我你是谁，就不能创建课表哦。" bind:callback="jumpPage" data-page="editSchedule" />
@@ -78,7 +77,7 @@
       </view>
     </view>
   </view>
-  <view wx:else class="loading">
+  <view wx:else class="loading" class="subCon">
     正在加载课表...
   </view>
 </view>

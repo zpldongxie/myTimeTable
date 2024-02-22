@@ -1,4 +1,4 @@
-<view class="contaner">
+<view class="contaner" style="{{bgImg ? 'background-image: url('+bgImg+');' : ''}}">
   <view class="top">选择我的班级</view>
   <view class="subCon">
     <text class="label">学校名称</text>

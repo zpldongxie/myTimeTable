@@ -17,9 +17,9 @@
     "pages/guShiJiangJie/context"
   ],
   "window": {
-    "backgroundColor": "#daeef9",
+    "backgroundColor": "#fff",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#daeef9",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "我班课表",
     "navigationBarTextStyle": "black"
   },

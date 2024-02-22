@@ -9,7 +9,8 @@ const {
   getSchools,
   getClasses,
   getCurrentClass,
-  getCurrentSchool
+  getCurrentSchool,
+  getBG
 } = require('../../utils.js');
 
 Page({
@@ -30,6 +31,7 @@ Page({
     classes: [], // 所有班级，下拉框数据
     selectedClassIndex: -1, // 选中的班级索引
     showIntoButton: false, // 显示跳转课表页按钮
+    bgImg: null,
   },
 
   /**
@@ -41,6 +43,7 @@ Page({
     this.debouncedFindSchool = debounceAsync(getSchools, 500);
     getGrades().then(function (gradeList) {
       that.setData({
+        bgImg: getBG(),
         gradeList,
         grades: gradeList.map(g => g.name),
         showIntoButton: false,

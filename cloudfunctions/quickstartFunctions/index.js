@@ -15,6 +15,8 @@ const schedules = require('./schedules/index')
 const courses = require('./courses/index')
 // 班级课表
 const timetables = require('./timetables/index')
+// 班级背景
+const bgImgs = require('./bgImgs/index')
 // 着装
 const fu_zhuang = require('./fu-zhuang/index')
 // 着装
@@ -43,6 +45,8 @@ exports.main = async (event, context) => {
       return await courses.main(event, context)
     case 'timetables':
       return await timetables.main(event, context)
+    case 'bgImgs':
+      return await bgImgs.main(event, context)
     case 'fu_zhuang':
       return await fu_zhuang.main(event, context)
     case 'msg_creator':

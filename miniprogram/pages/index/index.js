@@ -6,7 +6,8 @@ const {
   getSchoolById,
   getGradeByCode,
   getClass,
-  setCurrentClass
+  setCurrentClass,
+  getBgImg
 } = require('../../utils.js');
 
 Page({

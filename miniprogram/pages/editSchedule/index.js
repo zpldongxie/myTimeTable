@@ -4,7 +4,8 @@ const {
   getCurrentClass,
   getOpenId,
   getTimetable,
-  upsertTimetable
+  upsertTimetable,
+  getBG
 } = require('../../utils')
 
 // pages/editSchedule/index.js
@@ -20,7 +21,8 @@ Page({
       name: '', // 名称
       hasCourse: true, // 是否排课
       selectedIndex: 0 // 辅助字段，记录下拉框选择索引
-    } // 创建组件中的内容
+    }, // 创建组件中的内容
+    bgImg: null,
   },
 
   /**
@@ -38,6 +40,7 @@ Page({
           timeTable: null
         }
         that.setData({
+          bgImg: getBG(),
           dataList: schedules?.data || [],
           timeTable: timeTable?.dataset || null
         })

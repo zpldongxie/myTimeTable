@@ -1,5 +1,5 @@
 <!--pages/fuZhuang/index.wxml-->
-<block wx:if="{{isReday}}">
+<view wx:if="{{isReday}}" class="contaner" style="{{bgImg ? 'background-image: url('+bgImg+'); padding: 0;' : ''}}">
   <view class="title">{{currentGrade.name}}{{currentClass.name}}着装要求</view>
   <view class="subTitle">更新时间：{{lastUpdateTime}}</view>
   <block wx:if="{{isCreator}}">
@@ -7,11 +7,17 @@
       <block wx:for="{{days}}" wx:key="index">
         <swiper-item class="item">
           <view class="itemDay">{{item}}</view>
-          <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_wt}}" bindtap="toPick" data-day="{{item}}" data-type="wt"></image>
+          <view class="subItem">
+            <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_wt}}" bindtap="toPick" data-day="{{item}}" data-type="wt"></image>
+          </view>
           <view class="itemText"><input maxlength="20" value="{{data[index].text_wt || '外套'}}" bindblur="setText" data-day="{{item}}" data-type="wt" /></view>
-          <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_sy}}" bindtap="toPick" data-day="{{item}}" data-type="sy"></image>
+          <view class="subItem">
+            <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_sy}}" bindtap="toPick" data-day="{{item}}" data-type="sy"></image>
+          </view>
           <view class="itemText"><input maxlength="20" value="{{data[index].text_sy || '上衣'}}" bindblur="setText" data-day="{{item}}" data-type="sy" /></view>
-          <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_xy}}" bindtap="toPick" data-day="{{item}}" data-type="xy"></image>
+          <view class="subItem">
+            <image class="{{currentIndex == index ? 'itemImg active': 'itemImg'}}" src="{{data[index].src_xy}}" bindtap="toPick" data-day="{{item}}" data-type="xy"></image>
+          </view>
           <view class="itemText"><input maxlength="20" value="{{data[index].text_xy || '裤子'}}" bindblur="setText" data-day="{{item}}" data-type="xy" /></view>
         </swiper-item>
       </block>
@@ -47,7 +53,7 @@
       </view>
     </view>
   </block>
-</block>
+</view>
 <view wx:else class="loading">
   正在加载着装信息...
 </view>
